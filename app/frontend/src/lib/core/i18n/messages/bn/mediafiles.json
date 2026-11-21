@@ -442,6 +442,8 @@
 	"mediafiles.releaseSheet.recommended": "প্রস্তাবিত",
 	"mediafiles.releaseSheet.sent": "পাঠানো হয়েছে",
 	"mediafiles.releaseSheet.pickAnyway": "তবুও বাছুন",
+	"mediafiles.releaseSheet.forceDownload": "জোর করে ডাউনলোড",
+	"mediafiles.releaseSheet.mayNotBe": "এটি হয়তো আপনি যা খুঁজছিলেন তা নয়। জোর করে ডাউনলোড তবুও এটি পাঠায়, আপনার খোঁজা সিজনের প্রতিটি এপিসোডে বা অ্যালবামের প্রতিটি ট্র্যাকে।",
 	"mediafiles.releaseSheet.pick": "বাছুন",
 	"mediafiles.releaseSheet.neverPick": "{name} আর কখনো বাছবেন না",
 	"mediafiles.releaseSheet.neverPickThis": "এটি আর কখনো বাছবেন না",

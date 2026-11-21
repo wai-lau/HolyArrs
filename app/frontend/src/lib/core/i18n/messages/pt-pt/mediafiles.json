@@ -442,6 +442,8 @@
 	"mediafiles.releaseSheet.recommended": "Recomendado",
 	"mediafiles.releaseSheet.sent": "Enviado",
 	"mediafiles.releaseSheet.pickAnyway": "Escolher mesmo assim",
+	"mediafiles.releaseSheet.forceDownload": "Forçar transferência",
+	"mediafiles.releaseSheet.mayNotBe": "Isto pode não ser o que procurou. Forçar transferência envia-o mesmo assim, para cada episódio da temporada ou cada faixa do álbum que procurou.",
 	"mediafiles.releaseSheet.pick": "Escolher",
 	"mediafiles.releaseSheet.neverPick": "Nunca escolher {name}",
 	"mediafiles.releaseSheet.neverPickThis": "Nunca escolher este",

@@ -442,6 +442,8 @@
 	"mediafiles.releaseSheet.recommended": "Rekomenduojama",
 	"mediafiles.releaseSheet.sent": "Išsiųsta",
 	"mediafiles.releaseSheet.pickAnyway": "Vis tiek pasirinkti",
+	"mediafiles.releaseSheet.forceDownload": "Priverstinai atsisiųsti",
+	"mediafiles.releaseSheet.mayNotBe": "Tai gali būti ne tai, ko ieškojote. Priverstinis atsisiuntimas vis tiek nusiųs tai kiekvienam ieškoto sezono epizodui arba kiekvienam ieškoto albumo takeliui.",
 	"mediafiles.releaseSheet.pick": "Pasirinkti",
 	"mediafiles.releaseSheet.neverPick": "Niekada nerinkti: {name}",
 	"mediafiles.releaseSheet.neverPickThis": "Niekada nerinkti šito",

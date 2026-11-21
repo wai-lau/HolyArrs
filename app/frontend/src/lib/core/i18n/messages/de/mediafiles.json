@@ -443,6 +443,8 @@
 	"mediafiles.releaseSheet.recommended": "Empfohlen",
 	"mediafiles.releaseSheet.sent": "Gesendet",
 	"mediafiles.releaseSheet.pickAnyway": "Trotzdem wählen",
+	"mediafiles.releaseSheet.forceDownload": "Download erzwingen",
+	"mediafiles.releaseSheet.mayNotBe": "Das ist vielleicht nicht das Gesuchte. Download erzwingen schickt es trotzdem, an jede Folge der gesuchten Staffel oder jeden Track des gesuchten Albums.",
 	"mediafiles.releaseSheet.pick": "Wählen",
 	"mediafiles.releaseSheet.neverPick": "{name} nie wählen",
 	"mediafiles.releaseSheet.neverPickThis": "Dieses nie wählen",

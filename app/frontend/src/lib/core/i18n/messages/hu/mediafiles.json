@@ -442,6 +442,8 @@
 	"mediafiles.releaseSheet.recommended": "Ajánlott",
 	"mediafiles.releaseSheet.sent": "Elküldve",
 	"mediafiles.releaseSheet.pickAnyway": "Mégis kiválasztom",
+	"mediafiles.releaseSheet.forceDownload": "Letöltés kényszerítése",
+	"mediafiles.releaseSheet.mayNotBe": "Lehet, hogy nem ezt kerested. A kényszerített letöltés mégis elküldi, a keresett évad minden epizódjához vagy a keresett album minden számához.",
 	"mediafiles.releaseSheet.pick": "Kiválasztás",
 	"mediafiles.releaseSheet.neverPick": "Soha ne válassza ezt: {name}",
 	"mediafiles.releaseSheet.neverPickThis": "Soha ne válassza ezt",

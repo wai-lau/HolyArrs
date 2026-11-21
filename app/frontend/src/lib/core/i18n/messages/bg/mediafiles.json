@@ -442,6 +442,8 @@
 	"mediafiles.releaseSheet.recommended": "Препоръчан",
 	"mediafiles.releaseSheet.sent": "Изпратен",
 	"mediafiles.releaseSheet.pickAnyway": "Избери въпреки това",
+	"mediafiles.releaseSheet.forceDownload": "Принудително изтегляне",
+	"mediafiles.releaseSheet.mayNotBe": "Това може да не е търсеното. Принудителното изтегляне го изпраща въпреки това, към всеки епизод от сезона или всяка песен от албума, които сте търсили.",
 	"mediafiles.releaseSheet.pick": "Избор",
 	"mediafiles.releaseSheet.neverPick": "Никога да не се избира {name}",
 	"mediafiles.releaseSheet.neverPickThis": "Никога да не се избира този",

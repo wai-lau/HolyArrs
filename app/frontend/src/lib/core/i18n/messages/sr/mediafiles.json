@@ -442,6 +442,8 @@
 	"mediafiles.releaseSheet.recommended": "Препоручено",
 	"mediafiles.releaseSheet.sent": "Послато",
 	"mediafiles.releaseSheet.pickAnyway": "Ипак изабери",
+	"mediafiles.releaseSheet.forceDownload": "Принудно преузми",
+	"mediafiles.releaseSheet.mayNotBe": "Ово можда није оно што сте тражили. Принудно преузимање ипак га шаље, свакој епизоди сезоне или сваком нумери албума које сте тражили.",
 	"mediafiles.releaseSheet.pick": "Изабери",
 	"mediafiles.releaseSheet.neverPick": "Никад не бирај {name}",
 	"mediafiles.releaseSheet.neverPickThis": "Никад не бирај ово",

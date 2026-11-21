@@ -442,6 +442,8 @@
 	"mediafiles.releaseSheet.recommended": "Προτεινόμενη",
 	"mediafiles.releaseSheet.sent": "Στάλθηκε",
 	"mediafiles.releaseSheet.pickAnyway": "Επιλογή παρ' όλα αυτά",
+	"mediafiles.releaseSheet.forceDownload": "Αναγκαστική λήψη",
+	"mediafiles.releaseSheet.mayNotBe": "Ίσως δεν είναι αυτό που αναζητήσατε. Η αναγκαστική λήψη το στέλνει ούτως ή άλλως, σε κάθε επεισόδιο της σεζόν ή κάθε κομμάτι του άλμπουμ που αναζητήσατε.",
 	"mediafiles.releaseSheet.pick": "Επιλογή",
 	"mediafiles.releaseSheet.neverPick": "Να μην επιλεγεί ποτέ: {name}",
 	"mediafiles.releaseSheet.neverPickThis": "Να μην επιλεγεί ποτέ αυτή",
