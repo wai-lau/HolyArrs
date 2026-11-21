@@ -468,7 +468,7 @@
 	"mediafiles.releaseSheet.filterName": "Filter by name",
 	"mediafiles.releaseSheet.whyAll": "All {n} reasons",
 	"mediafiles.releaseSheet.whyHide": "Fewer reasons",
-	"mediafiles.releaseSheet.anywayWarn": "This one broke the rules above. Tap Pick anyway to send it.",
+	"mediafiles.releaseSheet.anywayWarn": "This one broke the rules above, or may not be what you searched for. Tap Pick anyway to send it regardless.",
 	"mediafiles.releaseSheet.showMore": "Show more ({shown} of {total})",
 	"mediafiles.rename.renamedOne": "1 file renamed",
 	"mediafiles.rename.renamedMany": "{n} files renamed",

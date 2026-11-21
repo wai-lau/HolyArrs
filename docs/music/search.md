@@ -23,6 +23,8 @@ Only the owner and admins see music search. Movies and shows work the same way, 
    You should see every Release found, with its verdict and the reasons in plain words.
 4. Choose one. It fills every track it holds.
 
+   If you choose a Release anyway and it matches no track of the album, the button turns red, the warning says so, and a second click on **Pick anyway** sends the Release to every track of the album you searched, whatever its name says, so it may not be what you wanted. Tracks that already have a copy as good, or a protected copy, are left out.
+
 Turn a Release down and HolyArrs never picks it again for this album.
 
 ## What HolyArrs searches by itself

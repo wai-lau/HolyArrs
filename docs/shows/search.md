@@ -39,6 +39,8 @@ You should see the episodes on **Downloads**. Each release lists the episodes it
 
 The confirm box warns you when the release failed the rules (the button then says **Choose anyway**), when the episode has not aired, or when you already have a good enough copy.
 
+On a season's list, a forced pick of a release that matches none of the season's episodes turns the **Pick anyway** button red, and clicking it again sends the release to every episode of the season you searched, whatever its name says, so it may not be what you wanted. Episodes that already have a copy as good, or a protected copy, are left out. A pack that also holds another season is not offered.
+
 :::tip
 **Turn down** on an episode's list turns the release down for that episode only. On a season's list it covers every episode the release holds.
 :::
