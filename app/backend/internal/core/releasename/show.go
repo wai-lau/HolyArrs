@@ -6,6 +6,7 @@ import (
 	"slices"
 	"strconv"
 	"strings"
+	"unicode"
 )
 
 // Show patterns, tried in this order; the first that fits wins. The order
@@ -287,6 +288,40 @@ func findShow(s string, anime, show bool) (showHit, int, int, bool) {
 	return showHit{}, 0, 0, false
 }
 
+// latinRun drops the CJK alt-titles of a title, wherever they sit: before the
+// Latin title, after it, or in the middle ("新吊带袜天使 New Panty Stocking",
+// "Sword Art Online アリシゼーション Alicization"). Every word with a CJK
+// character goes, and the Latin words around them stay in order. A word that
+// mixes the two ("Re:ゼロ", "Fate/ゼロ", "ストッキングwith") goes whole: its
+// Latin part is not safe to keep on its own, so a title that only has such a
+// word loses it. An "&" next to a dropped word goes too. A title with no
+// Latin-only word (pure CJK, or only glued words) stays whole.
+func latinRun(words []string) []string {
+	if !slices.ContainsFunc(words, func(w string) bool { return strings.IndexFunc(w, isLatin) >= 0 && !isCJK(w) }) {
+		return words
+	}
+	out := make([]string, 0, len(words))
+	for i, w := range words {
+		if isCJK(w) {
+			continue
+		}
+		if w == "&" && (i == 0 || isCJK(words[i-1]) || i == len(words)-1 || isCJK(words[i+1])) {
+			continue
+		}
+		out = append(out, w)
+	}
+	return out
+}
+
+func isLatin(c rune) bool { return unicode.Is(unicode.Latin, c) && unicode.IsLetter(c) }
+
+// isCJK says a word holds Han, kana or Hangul characters.
+func isCJK(w string) bool {
+	return strings.IndexFunc(w, func(c rune) bool {
+		return unicode.In(c, unicode.Han, unicode.Hiragana, unicode.Katakana, unicode.Hangul)
+	}) >= 0
+}
+
 // parseShow fills a Result for a show Release: the title is what comes
 // before the numbers (with a year at its end, if any), the tags what comes
 // after. anime says the name began with a [group].
@@ -307,7 +342,7 @@ func parseShow(r *Result, h showHit, pre, post string, trailing []string, anime 
 		r.Year = sure(atoi(toks[k-1]))
 		toks = toks[:k-1]
 	}
-	title := strings.Join(toks, " ")
+	title := strings.Join(latinRun(toks), " ")
 	if m := reArticle.FindStringSubmatch(title); m != nil {
 		title = m[2] + " " + m[1]
 	}
