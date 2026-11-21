@@ -87,6 +87,8 @@ var ShowCases = []ShowCase{
 	{ID: "A14", Name: "[Hoshizora] Starfall Kitchen - 112 [480p]", Kind: KindAbsolute, Title: "Starfall Kitchen", Show: ShowNumbers{Absolute: []int{112}}, Resolution: 480, Source: "web_dl", SrcConf: Likely, Group: "Hoshizora"},
 	{ID: "A15", Name: "[Lab Fansub] Starfall Kitchen - 112 [1080p]", Kind: KindAbsolute, Title: "Starfall Kitchen", Show: ShowNumbers{Absolute: []int{112}}, Resolution: 1080, Source: "web_dl", SrcConf: Likely, Group: "Lab Fansub"},
 
+	{ID: "A19", Name: "[7³ACG  amp  343 Labs] New Panty  amp  Stocking S2 [BDRip 1080p AV1 OPUS]", Kind: KindSeasonPack, Title: "New Panty & Stocking", Show: sn(s1(2)), Resolution: 1080, Source: "bluray", Codec: "av1", Audio: "opus", Group: "7³ACG & 343 Labs"},
+
 	{ID: "T27", Name: "Unit 24 (2008) S01E01 1080p BluRay x264-OXBOW", Kind: KindEpisode, Title: "Unit 24", Year: 2008, Show: sn(s1(1), 1), Resolution: 1080, Source: "bluray", Codec: "h264", Group: "OXBOW"},
 }
 
@@ -230,5 +232,21 @@ func TestCrossNeedsSeparator(t *testing.T) {
 	}
 	if p := Parse("Copper.Valley.HDTV11x03.x264-OXBOW", Hints{}); p.Show != nil {
 		t.Errorf("glued 11x03 read as episode: %+v", p.Show)
+	}
+}
+
+// A stray "amp" between words is what is left of an HTML "&amp;".
+func TestAmpWordReadsAsAmpersand(t *testing.T) {
+	for in, want := range map[string]string{
+		"Law amp Order S01E01 1080p WEB h264-GRP": "Law & Order",
+		"Amp S01E01 1080p WEB h264-GRP":           "Amp",
+		"Tesla amp S01E01 1080p WEB h264-GRP":     "Tesla amp",
+	} {
+		if p := Parse(in, Hints{}); p.Title.Value != want {
+			t.Errorf("%s: title %q, want %q", in, p.Title.Value, want)
+		}
+	}
+	if p := Parse("Law amp Order 1080p WEB h264-GRP", Hints{}); p.Title.Value != "Law & Order" {
+		t.Errorf("movie title %q, want %q", p.Title.Value, "Law & Order")
 	}
 }

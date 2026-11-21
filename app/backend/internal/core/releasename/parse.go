@@ -316,7 +316,7 @@ func Parse(name string, h Hints) Result {
 	body = strings.ReplaceAll(body, "_", " ")
 	if sh, start, end, ok := findShow(body, lead != "", h.Show); ok {
 		if lead != "" && r.Group.Conf == Unknown {
-			r.Group = sure(lead)
+			r.Group = sure(strings.Join(ampToAnd(strings.Fields(lead)), " "))
 		}
 		parseShow(&r, sh, body[:start], body[end:], trailing, lead != "", flags, h)
 		for f := range flags {
@@ -362,7 +362,7 @@ func Parse(name string, h Hints) Result {
 	} else {
 		r.Year.Conf = Unknown
 	}
-	title := strings.Join(toks[:end], " ")
+	title := strings.Join(ampToAnd(toks[:end]), " ")
 	if m := reArticle.FindStringSubmatch(title); m != nil {
 		title = m[2] + " " + m[1]
 	}
@@ -429,7 +429,7 @@ func SameName(libName, want string) bool {
 }
 
 // NameForms are the clean forms a library name can show in release names:
-// as written, with apostrophes dropped, and with letters written apart by
+// as written, with apostrophes dropped, with "&" dropped, and with letters written apart by
 // dots or stars joined ("S.W.A.T." as "swat", "M*A*S*H" as "mash"). A
 // joined name of only one or two letters ("I.T.", "E.R.") is too short to
 // tell apart from a word and is left out.
@@ -437,6 +437,12 @@ func NameForms(libName string) []string {
 	forms := []string{CleanName(libName)}
 	if strings.ContainsAny(libName, "'’ʼ`‘") {
 		forms = append(forms, CleanName(reApostrophe.Replace(libName)))
+	}
+	// Indexers drop an "&" ("Law Order"): the name without it is a form too.
+	if strings.Contains(libName, "&") {
+		if c := CleanName(strings.ReplaceAll(libName, "&", " ")); c != forms[0] {
+			forms = append(forms, c)
+		}
 	}
 	if j := JoinLettersApart(libName, 2); j != libName {
 		if c := CleanName(reApostrophe.Replace(j)); strings.Contains(c, " ") || len([]rune(c)) > 2 {
