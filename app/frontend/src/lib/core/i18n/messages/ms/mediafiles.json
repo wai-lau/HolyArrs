@@ -430,6 +430,8 @@
 	"mediafiles.releaseSheet.recommended": "Disyorkan",
 	"mediafiles.releaseSheet.sent": "Dihantar",
 	"mediafiles.releaseSheet.pickAnyway": "Pilih juga",
+	"mediafiles.releaseSheet.forceDownload": "Paksa muat turun",
+	"mediafiles.releaseSheet.mayNotBe": "Ini mungkin bukan yang anda cari. Paksa muat turun tetap menghantarnya kepada yang anda cari.",
 	"mediafiles.releaseSheet.pick": "Pilih",
 	"mediafiles.releaseSheet.neverPick": "Jangan sekali memilih {name}",
 	"mediafiles.releaseSheet.neverPickThis": "Jangan sekali memilih yang ini",

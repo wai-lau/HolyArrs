@@ -430,6 +430,8 @@
 	"mediafiles.releaseSheet.recommended": "Đề xuất",
 	"mediafiles.releaseSheet.sent": "Đã gửi",
 	"mediafiles.releaseSheet.pickAnyway": "Vẫn chọn",
+	"mediafiles.releaseSheet.forceDownload": "Buộc tải xuống",
+	"mediafiles.releaseSheet.mayNotBe": "Đây có thể không phải thứ bạn tìm. Buộc tải xuống vẫn gửi nó đến thứ bạn đã tìm.",
 	"mediafiles.releaseSheet.pick": "Chọn",
 	"mediafiles.releaseSheet.neverPick": "Không bao giờ chọn {name}",
 	"mediafiles.releaseSheet.neverPickThis": "Không bao giờ chọn cái này",

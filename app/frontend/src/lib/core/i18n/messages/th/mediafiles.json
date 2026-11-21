@@ -430,6 +430,8 @@
 	"mediafiles.releaseSheet.recommended": "แนะนำ",
 	"mediafiles.releaseSheet.sent": "ส่งแล้ว",
 	"mediafiles.releaseSheet.pickAnyway": "เลือกอยู่ดี",
+	"mediafiles.releaseSheet.forceDownload": "บังคับดาวน์โหลด",
+	"mediafiles.releaseSheet.mayNotBe": "นี่อาจไม่ใช่สิ่งที่คุณค้นหา การบังคับดาวน์โหลดจะส่งไปยังสิ่งที่คุณค้นหาอยู่ดี",
 	"mediafiles.releaseSheet.pick": "เลือก",
 	"mediafiles.releaseSheet.neverPick": "ไม่เลือก {name} เลย",
 	"mediafiles.releaseSheet.neverPickThis": "ไม่เลือกอันนี้เลย",

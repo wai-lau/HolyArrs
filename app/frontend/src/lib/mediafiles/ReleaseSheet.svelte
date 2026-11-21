@@ -21,6 +21,8 @@
 	let loading = $state(false);
 	let busyId = $state(0);
 	let confirmId = $state(0);
+	// A forced pick that matched nothing turns its button into Force download.
+	let downloadId = $state(0);
 	let filter = $state<'good' | 'all'>('good');
 	// Time of the last search start, so an empty list is not read as done too early.
 	let startedAt = 0;
@@ -74,15 +76,18 @@
 		busyId = r.id;
 		try {
 			// Send the Slot the sheet was opened for; with none, the server picks the Version whose rules the Release fits.
-			const body: Record<string, unknown> = { force: r.needs_force };
-			if (typeof scope?.body.slot_id === 'number') body.slot_id = scope.body.slot_id;
+			// Force download sends it to what its search looked for, whatever its name says.
+			const body: Record<string, unknown> = downloadId === r.id ? { force_download: true } : { force: r.needs_force };
+			if (downloadId !== r.id && typeof scope?.body.slot_id === 'number') body.slot_id = scope.body.slot_id;
 			const ch = await api.post<Choice>(`/releases/${r.id}/choose`, body);
 			chosenToast(ch);
 			open = false;
 			onchosen?.();
 		} catch (e) {
 			// The server can demand force even when the row did not say so.
-			if (e instanceof ApiError && e.status === 409 && e.body.needs_force) {
+			if (e instanceof ApiError && e.status === 409 && e.body.needs_force_download) {
+				downloadId = r.id;
+			} else if (e instanceof ApiError && e.status === 409 && e.body.needs_force) {
 				r.needs_force = true;
 				confirmId = r.id;
 			} else toasts.push(t('mediafiles.releaseSheet.sendFailed'), 'fail', { body: message(e) });
@@ -193,12 +198,13 @@
 								{#if r.published_at}<span>{age(r.published_at)}</span>{/if}
 							</p>
 							{#each why as w, i (i)}<p class="rs-why {w.effect}">{serverWords(w.text)}</p>{/each}
+							{#if downloadId === r.id}<p class="rs-why fail" role="alert">{t('mediafiles.releaseSheet.mayNotBe')}</p>{/if}
 						</div>
 						<div class="rs-act">
 							{#if r.state === 'chosen'}
 								<span class="rs-sent"><Icon name="check" size={15} />{t('mediafiles.releaseSheet.sent')}</span>
 							{:else}
-								<button type="button" class="rs-choose" class:quiet={!best} class:warn={confirmId === r.id} disabled={busyId === r.id} onclick={() => choose(r)}>{confirmId === r.id ? t('mediafiles.releaseSheet.pickAnyway') : t('mediafiles.releaseSheet.pick')}</button>
+								<button type="button" class="rs-choose" class:quiet={!best} class:warn={confirmId === r.id && downloadId !== r.id} class:danger={downloadId === r.id} disabled={busyId === r.id} onclick={() => choose(r)}>{downloadId === r.id ? t('mediafiles.releaseSheet.forceDownload') : confirmId === r.id ? t('mediafiles.releaseSheet.pickAnyway') : t('mediafiles.releaseSheet.pick')}</button>
 								{#if r.state !== 'turned_down'}<button type="button" class="rs-x" aria-label={t('mediafiles.releaseSheet.neverPick', { name: r.name })} title={t('mediafiles.releaseSheet.neverPickThis')} disabled={busyId === r.id} onclick={() => turnDown(r)}><Icon name="x" size={14} /></button>{/if}
 							{/if}
 						</div>
@@ -250,6 +256,7 @@
 	.rs-choose { height: 34px; padding: 0 16px; border: 0; border-radius: 999px; background: var(--text); color: var(--bg); font: 600 13px/1 var(--font-ui); cursor: pointer; white-space: nowrap; }
 	.rs-choose.quiet { background: color-mix(in srgb, var(--text) 10%, transparent); color: var(--text); }
 	.rs-choose.warn { background: var(--wait); color: #111; }
+	.rs-choose.danger { background: var(--fail); color: #fff; }
 	.rs-x { display: grid; place-items: center; width: 32px; height: 32px; border: 0; border-radius: 999px; background: none; color: var(--text-muted); cursor: pointer; }
 	.rs-x:hover { background: color-mix(in srgb, var(--text) 8%, transparent); }
 	.rs-sent { display: inline-flex; align-items: center; gap: 5px; color: var(--ok-text); font: 600 13px/1 var(--font-ui); }

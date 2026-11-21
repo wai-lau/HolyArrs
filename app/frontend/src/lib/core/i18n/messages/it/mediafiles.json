@@ -431,6 +431,8 @@
 	"mediafiles.releaseSheet.recommended": "Consigliata",
 	"mediafiles.releaseSheet.sent": "Inviata",
 	"mediafiles.releaseSheet.pickAnyway": "Scegli comunque",
+	"mediafiles.releaseSheet.forceDownload": "Forza download",
+	"mediafiles.releaseSheet.mayNotBe": "Potrebbe non essere ciò che cercavi. Forza download lo invia comunque a ciò che hai cercato.",
 	"mediafiles.releaseSheet.pick": "Scegli",
 	"mediafiles.releaseSheet.neverPick": "Non scegliere mai {name}",
 	"mediafiles.releaseSheet.neverPickThis": "Non scegliere mai questa",

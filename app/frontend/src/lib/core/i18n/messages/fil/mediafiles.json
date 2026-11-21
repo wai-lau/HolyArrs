@@ -430,6 +430,8 @@
 	"mediafiles.releaseSheet.recommended": "Inirerekomenda",
 	"mediafiles.releaseSheet.sent": "Naipadala",
 	"mediafiles.releaseSheet.pickAnyway": "Piliin pa rin",
+	"mediafiles.releaseSheet.forceDownload": "Pilitin ang pag-download",
+	"mediafiles.releaseSheet.mayNotBe": "Maaaring hindi ito ang hinanap mo. Ipinapadala pa rin ito ng sapilitang pag-download sa hinanap mo.",
 	"mediafiles.releaseSheet.pick": "Piliin",
 	"mediafiles.releaseSheet.neverPick": "Huwag kailanman piliin ang {name}",
 	"mediafiles.releaseSheet.neverPickThis": "Huwag kailanman piliin ito",

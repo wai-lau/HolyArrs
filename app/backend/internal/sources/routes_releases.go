@@ -1,6 +1,7 @@
 package sources
 
 import (
+	"errors"
 	"net/http"
 	"strings"
 
@@ -9,21 +10,37 @@ import (
 	"github.com/HolyArrs/holyarrs/app/backend/internal/core/webserver"
 )
 
+// noMatchMayDiffer answers a forced pick that matched nothing but can be force downloaded.
+const noMatchMayDiffer = "This release does not match what you searched for, so it may not be what you are looking for. Force download sends it anyway."
+
 // chooseRelease sends a Release a person picked. Body (optional):
-// {"force": bool, "slot_id": int}.
+// {"force": bool, "slot_id": int, "force_download": bool}. force_download
+// sends it to what its search looked for, whatever its name says.
 func (h *Handlers) chooseRelease(w http.ResponseWriter, r *http.Request) {
 	id, ok := pathID(w, r)
 	if !ok {
 		return
 	}
 	var in struct {
-		Force  bool  `json:"force"`
-		SlotID int64 `json:"slot_id"`
+		Force         bool  `json:"force"`
+		SlotID        int64 `json:"slot_id"`
+		ForceDownload bool  `json:"force_download"`
 	}
-	if r.ContentLength != 0 && !webserver.Decode(w, r, &in, `body is {"force": bool, "slot_id": int}, both optional`) {
+	if r.ContentLength != 0 && !webserver.Decode(w, r, &in, `body is {"force": bool, "slot_id": int, "force_download": bool}, all optional`) {
 		return
 	}
-	ch, err := h.search().Choose(r.Context(), id, in.SlotID, in.Force, actorOf(r))
+	var ch Choice
+	var err error
+	if in.ForceDownload {
+		ch, err = h.search().ForceDownload(r.Context(), id, actorOf(r))
+	} else {
+		ch, err = h.search().Choose(r.Context(), id, in.SlotID, in.Force, actorOf(r))
+	}
+	// A forced pick that found no Slot can still be force downloaded to what its search looked for.
+	if errors.Is(err, ErrNoSlot) && in.Force && !in.ForceDownload && h.search().CanForceDownload(r.Context(), id) {
+		webserver.WriteJSON(w, http.StatusConflict, map[string]any{"error": noMatchMayDiffer, "needs_force_download": true})
+		return
+	}
 	if err != nil {
 		SearchError(w, err)
 		return

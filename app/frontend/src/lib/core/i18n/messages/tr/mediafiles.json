@@ -431,6 +431,8 @@
 	"mediafiles.releaseSheet.recommended": "Önerilen",
 	"mediafiles.releaseSheet.sent": "Gönderildi",
 	"mediafiles.releaseSheet.pickAnyway": "Yine de seç",
+	"mediafiles.releaseSheet.forceDownload": "İndirmeye zorla",
+	"mediafiles.releaseSheet.mayNotBe": "Bu, aradığınız şey olmayabilir. Zorla indirme yine de onu aradığınız öğeye gönderir.",
 	"mediafiles.releaseSheet.pick": "Seç",
 	"mediafiles.releaseSheet.neverPick": "{name} bir daha seçilmesin",
 	"mediafiles.releaseSheet.neverPickThis": "Bunu bir daha seçme",

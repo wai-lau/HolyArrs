@@ -431,6 +431,8 @@
 	"mediafiles.releaseSheet.recommended": "Aanbevolen",
 	"mediafiles.releaseSheet.sent": "Verstuurd",
 	"mediafiles.releaseSheet.pickAnyway": "Toch kiezen",
+	"mediafiles.releaseSheet.forceDownload": "Download forceren",
+	"mediafiles.releaseSheet.mayNotBe": "Dit is misschien niet wat je zocht. Download forceren stuurt het toch naar wat je zocht.",
 	"mediafiles.releaseSheet.pick": "Kiezen",
 	"mediafiles.releaseSheet.neverPick": "{name} nooit kiezen",
 	"mediafiles.releaseSheet.neverPickThis": "Deze nooit kiezen",

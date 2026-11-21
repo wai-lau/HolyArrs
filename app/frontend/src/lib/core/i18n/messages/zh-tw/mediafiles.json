@@ -430,6 +430,8 @@
 	"mediafiles.releaseSheet.recommended": "推薦",
 	"mediafiles.releaseSheet.sent": "已傳送",
 	"mediafiles.releaseSheet.pickAnyway": "仍然選用",
+	"mediafiles.releaseSheet.forceDownload": "強制下載",
+	"mediafiles.releaseSheet.mayNotBe": "這可能不是你要找的內容。強制下載仍會將它傳送到你搜尋的項目。",
 	"mediafiles.releaseSheet.pick": "選用",
 	"mediafiles.releaseSheet.neverPick": "永不選用 {name}",
 	"mediafiles.releaseSheet.neverPickThis": "永不選用這個",

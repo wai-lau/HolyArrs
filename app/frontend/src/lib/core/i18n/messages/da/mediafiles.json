@@ -430,6 +430,8 @@
 	"mediafiles.releaseSheet.recommended": "Anbefalet",
 	"mediafiles.releaseSheet.sent": "Sendt",
 	"mediafiles.releaseSheet.pickAnyway": "Vælg alligevel",
+	"mediafiles.releaseSheet.forceDownload": "Gennemtving download",
+	"mediafiles.releaseSheet.mayNotBe": "Det er måske ikke det, du søgte efter. Gennemtving download sender det alligevel til det, du søgte efter.",
 	"mediafiles.releaseSheet.pick": "Vælg",
 	"mediafiles.releaseSheet.neverPick": "Vælg aldrig {name}",
 	"mediafiles.releaseSheet.neverPickThis": "Vælg aldrig denne",

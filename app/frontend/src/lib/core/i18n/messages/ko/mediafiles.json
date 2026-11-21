@@ -431,6 +431,8 @@
 	"mediafiles.releaseSheet.recommended": "추천",
 	"mediafiles.releaseSheet.sent": "전송됨",
 	"mediafiles.releaseSheet.pickAnyway": "그래도 선택",
+	"mediafiles.releaseSheet.forceDownload": "강제 다운로드",
+	"mediafiles.releaseSheet.mayNotBe": "찾던 항목이 아닐 수 있습니다. 강제 다운로드는 그래도 검색한 항목으로 보냅니다.",
 	"mediafiles.releaseSheet.pick": "선택",
 	"mediafiles.releaseSheet.neverPick": "{name} 선택 안 함",
 	"mediafiles.releaseSheet.neverPickThis": "이 릴리스는 선택 안 함",

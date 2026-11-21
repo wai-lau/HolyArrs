@@ -431,6 +431,8 @@
 	"mediafiles.releaseSheet.recommended": "おすすめ",
 	"mediafiles.releaseSheet.sent": "送信済み",
 	"mediafiles.releaseSheet.pickAnyway": "それでも選ぶ",
+	"mediafiles.releaseSheet.forceDownload": "強制ダウンロード",
+	"mediafiles.releaseSheet.mayNotBe": "探しているものではない可能性があります。強制ダウンロードすると、それでも検索した対象に送ります。",
 	"mediafiles.releaseSheet.pick": "選ぶ",
 	"mediafiles.releaseSheet.neverPick": "{name} は選ばない",
 	"mediafiles.releaseSheet.neverPickThis": "これは選ばない",
