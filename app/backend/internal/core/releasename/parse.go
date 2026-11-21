@@ -362,7 +362,7 @@ func Parse(name string, h Hints) Result {
 	} else {
 		r.Year.Conf = Unknown
 	}
-	title := strings.Join(toks[:end], " ")
+	title := strings.Join(latinRun(toks[:end]), " ")
 	if m := reArticle.FindStringSubmatch(title); m != nil {
 		title = m[2] + " " + m[1]
 	}
