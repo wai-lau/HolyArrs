@@ -87,6 +87,16 @@ var ShowCases = []ShowCase{
 	{ID: "A14", Name: "[Hoshizora] Starfall Kitchen - 112 [480p]", Kind: KindAbsolute, Title: "Starfall Kitchen", Show: ShowNumbers{Absolute: []int{112}}, Resolution: 480, Source: "web_dl", SrcConf: Likely, Group: "Hoshizora"},
 	{ID: "A15", Name: "[Lab Fansub] Starfall Kitchen - 112 [1080p]", Kind: KindAbsolute, Title: "Starfall Kitchen", Show: ShowNumbers{Absolute: []int{112}}, Resolution: 1080, Source: "web_dl", SrcConf: Likely, Group: "Lab Fansub"},
 
+	// Fansub names whose title sits in its own bracket after the group:
+	// [Group][Title][01-12][tags]. The indexer turned the hyphen of the range
+	// into a space.
+	{ID: "A19", Name: "[DBD Raws][新吊带袜天使 New PANTY STOCKING with GARTERBELT][01 13TV全集 特典映像][1080P][BDRip][HEVC 10bit][简繁日双语外挂][FLAC AC3][MKV](新しいパンティ＆ストッキングwithガーターベルト)", Hints: Hints{Show: true}, Kind: KindAbsolute, Title: "New PANTY STOCKING with GARTERBELT", Show: ShowNumbers{Absolute: span(1, 13)}, Resolution: 1080, Source: "bluray", Codec: "h265", Audio: "flac", Group: "DBD Raws"},
+	{ID: "A20", Name: "[Hoshizora][Starfall Kitchen][01-12][1080P][WEB-DL]", Kind: KindAbsolute, Title: "Starfall Kitchen", Show: ShowNumbers{Absolute: span(1, 12)}, Resolution: 1080, Source: "web_dl", Group: "Hoshizora"},
+	{ID: "A21", Name: "[Hoshizora][Starfall Kitchen][01 12][1080P][WEB-DL]", Kind: KindAbsolute, Title: "Starfall Kitchen", Show: ShowNumbers{Absolute: span(1, 12)}, Resolution: 1080, Source: "web_dl", Group: "Hoshizora"},
+	{ID: "A22", Name: "[Hoshizora][Starfall Kitchen][05v2][1080P][HEVC]", Kind: KindAbsolute, Title: "Starfall Kitchen", Show: ShowNumbers{Absolute: []int{5}}, Resolution: 1080, Source: "web_dl", SrcConf: Likely, Codec: "h265", Group: "Hoshizora", Fix: 1},
+	{ID: "A23", Name: "[Kumomaru][風の翼 Kaze no Tsubasa][03][1080P]", Kind: KindAbsolute, Title: "Kaze no Tsubasa", Show: ShowNumbers{Absolute: []int{3}}, Resolution: 1080, Source: "web_dl", SrcConf: Likely, Group: "Kumomaru"},
+	{ID: "A24", Name: "[Kumomaru][風の翼][03][1080P]", Kind: KindAbsolute, Title: "風の翼", Show: ShowNumbers{Absolute: []int{3}}, Resolution: 1080, Source: "web_dl", SrcConf: Likely, Group: "Kumomaru"},
+
 	{ID: "T27", Name: "Unit 24 (2008) S01E01 1080p BluRay x264-OXBOW", Kind: KindEpisode, Title: "Unit 24", Year: 2008, Show: sn(s1(1), 1), Resolution: 1080, Source: "bluray", Codec: "h264", Group: "OXBOW"},
 }
 
@@ -230,5 +240,20 @@ func TestCrossNeedsSeparator(t *testing.T) {
 	}
 	if p := Parse("Copper.Valley.HDTV11x03.x264-OXBOW", Hints{}); p.Show != nil {
 		t.Errorf("glued 11x03 read as episode: %+v", p.Show)
+	}
+}
+
+// A bracket that holds only a resolution, a year or a codec is a tag, not
+// the episode numbers of a [Group][Title][01] name, so such names stay as
+// they were read before.
+func TestBracketTitleNeedsEpisodeBracket(t *testing.T) {
+	for _, n := range []string{
+		"[Kumomaru][Starfall Kitchen][1080P][WEB-DL]",
+		"[Kumomaru][Starfall Kitchen][2019][1080P]",
+		"[Kumomaru][Starfall Kitchen][1080 x264][WEB-DL]",
+	} {
+		if p := Parse(n, Hints{Show: true}); p.Show != nil && len(p.Show.Absolute) > 0 && p.Show.Absolute[0] != 0 && p.Title.Value == "Starfall Kitchen" {
+			t.Errorf("%s: read as episodes %+v", n, p.Show)
+		}
 	}
 }

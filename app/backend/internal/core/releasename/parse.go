@@ -314,11 +314,18 @@ func Parse(name string, h Hints) Result {
 	// Underscores are word characters to the patterns; read them as spaces
 	// (same length, so the places found stay right).
 	body = strings.ReplaceAll(body, "_", " ")
-	if sh, start, end, ok := findShow(body, lead != "", h.Show); ok {
+	sh, pre, post, isShow := bracketTitleShow(body, lead != "")
+	if !isShow {
+		var start, end int
+		if sh, start, end, isShow = findShow(body, lead != "", h.Show); isShow {
+			pre, post = body[:start], body[end:]
+		}
+	}
+	if isShow {
 		if lead != "" && r.Group.Conf == Unknown {
 			r.Group = sure(lead)
 		}
-		parseShow(&r, sh, body[:start], body[end:], trailing, lead != "", flags, h)
+		parseShow(&r, sh, pre, post, trailing, lead != "", flags, h)
 		for f := range flags {
 			r.Flags = append(r.Flags, f)
 		}
