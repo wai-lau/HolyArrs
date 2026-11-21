@@ -6,6 +6,7 @@ import (
 	"slices"
 	"strconv"
 	"strings"
+	"unicode"
 )
 
 // Show patterns, tried in this order; the first that fits wins. The order
@@ -211,7 +212,7 @@ func findShow(s string, anime, show bool) (showHit, int, int, bool) {
 		return h, m[0], end, true
 	}
 	if anime {
-		if m := reAnimeBrack.FindStringSubmatchIndex(s); m != nil && !isYearNum(s[m[2]:m[3]]) {
+		if m := reAnimeBrack.FindStringSubmatchIndex(s); m != nil && !isYearNum(s[m[2]:m[3]]) && !tagNumbers[atoi(s[m[2]:m[3]])] {
 			a, b := atoi(s[m[2]:m[3]]), atoi(s[m[2]:m[3]])
 			if m[4] >= 0 {
 				b = atoi(s[m[4]:m[5]])
@@ -223,7 +224,7 @@ func findShow(s string, anime, show bool) (showHit, int, int, bool) {
 		if m := reBareEp.FindStringSubmatchIndex(s); m != nil {
 			return showHit{kind: KindAbsolute, n: ShowNumbers{Absolute: []int{atoi(s[m[2]:m[3]])}}}, m[0], m[1], true
 		}
-		if m := reAnimeBare.FindStringSubmatchIndex(s); m != nil && !isYearNum(s[m[2]:m[3]]) && !reResWord.MatchString(s[m[2]:m[3]]+"p") {
+		if m := reAnimeBare.FindStringSubmatchIndex(s); m != nil && !isYearNum(s[m[2]:m[3]]) && !tagNumbers[atoi(s[m[2]:m[3]])] {
 			h := showHit{kind: KindAbsolute, n: ShowNumbers{Absolute: []int{atoi(s[m[2]:m[3]])}}}
 			if m[4] >= 0 {
 				h.fix = atoi(s[m[4]:m[5]]) - 1
@@ -285,6 +286,123 @@ func findShow(s string, anime, show bool) (showHit, int, int, bool) {
 		}
 	}
 	return showHit{}, 0, 0, false
+}
+
+// reBracketEpisodes reads the episode bracket of [Group][Title][01-12][tags]:
+// a first number, then an optional second one after a hyphen, a tilde or
+// spaces (the indexer turns the hyphen into a space), then anything.
+var reBracketEpisodes = regexp.MustCompile(`^(\d{1,4})(?:v(\d))?(?:$|[\s~-])\s*[~-]?\s*(\d{1,4})?`)
+
+// tagNumbers are numbers that name a resolution or a codec, never an episode.
+var tagNumbers = map[int]bool{480: true, 576: true, 720: true, 1080: true, 2160: true, 264: true, 265: true}
+
+// bracketTagOnly says a bracket holds nothing but tags, like "1080p" or "10bit".
+func bracketTagOnly(s string) bool {
+	f := strings.Fields(s)
+	return len(f) > 0 && !slices.ContainsFunc(f, func(w string) bool { return !isTag(w) })
+}
+
+// bracketTitleShow reads the layout some fansub groups use: the title in a
+// bracket of its own after the group, then a bracket with the episode
+// numbers, as in "[Group][Title][01-12][1080p][BDRip]". body starts after
+// the group. It is a running number or range, like "Title - 01-12", so the
+// numbers are absolute. The title bracket is returned as the title text;
+// the rest of the name, including text left in the episode bracket
+// ("[03 1080P]"), is the tags. Tag-only brackets between the title and the
+// episode bracket are skipped. A bracket that does not start with an episode
+// number (a resolution, a year, a codec) is no match, and backwards says the
+// brackets were a range that runs backwards, which no other reading may take.
+// A search that is not
+// for a show needs a zero-padded number or a range as proof.
+func bracketTitleShow(body string, anime, show bool) (h showHit, title, post string, ok, backwards bool) {
+	if !anime {
+		return h, "", "", false, false
+	}
+	t := reLeadBrack.FindStringSubmatchIndex(body)
+	if t == nil {
+		return h, "", "", false, false
+	}
+	rest := body[t[1]:]
+	skipped := ""
+	var e []int
+	for {
+		e = reLeadBrack.FindStringSubmatchIndex(rest)
+		if e == nil {
+			return h, "", "", false, false
+		}
+		if !bracketTagOnly(rest[e[2]:e[3]]) {
+			break
+		}
+		skipped += rest[:e[1]]
+		rest = rest[e[1]:]
+	}
+	inner := rest[e[2]:e[3]]
+	m := reBracketEpisodes.FindStringSubmatchIndex(inner)
+	if m == nil {
+		return h, "", "", false, false
+	}
+	first := atoi(inner[m[2]:m[3]])
+	if isYearNum(inner[m[2]:m[3]]) || tagNumbers[first] {
+		return h, "", "", false, false
+	}
+	titleText := body[t[2]:t[3]]
+	if slices.ContainsFunc(strings.Fields(titleText), isTag) {
+		return h, "", "", false, false
+	}
+	h = showHit{kind: KindAbsolute, n: ShowNumbers{Absolute: []int{first}}}
+	if m[4] >= 0 {
+		h.fix = atoi(inner[m[4]:m[5]]) - 1
+	}
+	end := m[1]
+	if m[6] >= 0 {
+		end = m[6] // the second number is a tag unless it proves a range
+		tok := inner[m[6]:]
+		if i := strings.IndexAny(tok, " \t"); i >= 0 {
+			tok = tok[:i]
+		}
+		digits := inner[m[6]:m[7]]
+		tail := strings.TrimPrefix(tok, digits)
+		last := atoi(digits)
+		tagLike := isTag(tok) || tagNumbers[last] && tail == "" || tail != "" && strings.ContainsAny(tail[:1], ".kKxXpPiI") || strings.HasPrefix(strings.ToLower(tail), "bit")
+		if !tagLike {
+			if last < first {
+				return h, "", "", false, true // a range that runs backwards
+			}
+			end = m[7]
+			if last > first {
+				if sp := span(first, last); sp != nil {
+					h.n.Absolute = sp
+				}
+			}
+		}
+	}
+	isRange := len(h.n.Absolute) > 1
+	zeroPadded := len(inner[m[2]:m[3]]) > 1 && inner[m[2]] == '0'
+	if !show && !isRange && !zeroPadded {
+		return h, "", "", false, false
+	}
+	post = skipped + " " + inner[end:] + " " + rest[e[1]:]
+	return h, latinTitle(titleText), post, true, false
+}
+
+// latinTitle is a bracket title without its CJK alt-titles: "新吊带袜天使 New
+// PANTY STOCKING" is the Latin title; a title with no Latin words stays whole.
+func latinTitle(s string) string {
+	words := strings.Fields(s)
+	hasLatin := slices.ContainsFunc(words, func(w string) bool { return strings.IndexFunc(w, isLatin) >= 0 })
+	if !hasLatin {
+		return s
+	}
+	return strings.Join(slices.DeleteFunc(words, func(w string) bool { return isCJK(w) && strings.IndexFunc(w, isLatin) < 0 }), " ")
+}
+
+func isLatin(c rune) bool { return unicode.Is(unicode.Latin, c) && unicode.IsLetter(c) }
+
+// isCJK says a word holds Han, kana or Hangul characters.
+func isCJK(w string) bool {
+	return strings.IndexFunc(w, func(c rune) bool {
+		return unicode.In(c, unicode.Han, unicode.Hiragana, unicode.Katakana, unicode.Hangul)
+	}) >= 0
 }
 
 // parseShow fills a Result for a show Release: the title is what comes
