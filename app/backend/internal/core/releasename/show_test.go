@@ -87,6 +87,8 @@ var ShowCases = []ShowCase{
 	{ID: "A14", Name: "[Hoshizora] Starfall Kitchen - 112 [480p]", Kind: KindAbsolute, Title: "Starfall Kitchen", Show: ShowNumbers{Absolute: []int{112}}, Resolution: 480, Source: "web_dl", SrcConf: Likely, Group: "Hoshizora"},
 	{ID: "A15", Name: "[Lab Fansub] Starfall Kitchen - 112 [1080p]", Kind: KindAbsolute, Title: "Starfall Kitchen", Show: ShowNumbers{Absolute: []int{112}}, Resolution: 1080, Source: "web_dl", SrcConf: Likely, Group: "Lab Fansub"},
 
+	{ID: "A30", Name: "[7³ACG  amp  343 Labs] New Panty  amp  Stocking S2 [BDRip 1080p AV1 OPUS]", Kind: KindSeasonPack, Title: "New Panty amp Stocking", Show: sn(s1(2)), Resolution: 1080, Source: "bluray", Codec: "av1", Audio: "opus", Group: "7³ACG  amp  343 Labs"},
+
 	{ID: "T27", Name: "Unit 24 (2008) S01E01 1080p BluRay x264-OXBOW", Kind: KindEpisode, Title: "Unit 24", Year: 2008, Show: sn(s1(1), 1), Resolution: 1080, Source: "bluray", Codec: "h264", Group: "OXBOW"},
 }
 
@@ -249,6 +251,27 @@ func TestCrossMultiEpisode(t *testing.T) {
 		}
 		if len(want) > 1 && p.Kind.Value != KindMultiEpisode {
 			t.Errorf("%s: kind %s", name, p.Kind)
+		}
+	}
+}
+
+// Parse keeps a stray "amp" as it is: it can be a real word ("Guitar Amp
+// Hero"), so matching reads it either way (see SameName).
+func TestAmpWordKept(t *testing.T) {
+	for _, c := range []struct{ id, in, title, group string }{
+		{"A31", "Law amp Order S01E01 1080p WEB h264-GRP", "Law amp Order", "GRP"},
+		{"A32", "Camp amp Rock S01E01 1080p WEB h264-GRP", "Camp amp Rock", "GRP"},
+		{"A33", "Law Amp Order S01E01 1080p WEB h264-GRP", "Law Amp Order", "GRP"},
+		{"A34", "Amp S01E01 1080p WEB h264-GRP", "Amp", "GRP"},
+		{"A35", "Tesla amp S01E01 1080p WEB h264-GRP", "Tesla amp", "GRP"},
+		{"A36", "Tube amp Rock S01E01 1080p WEB h264-GRP", "Tube amp Rock", "GRP"},
+		{"A37", "Law amp Order 1080p WEB h264-GRP", "Law amp Order", "GRP"},
+		{"A38", "Amp.2019.1080p.WEB.h264-GRP", "Amp", "GRP"},
+		{"A39", "[Fan amp Sub] Starfall Kitchen - 112 [1080p]", "Starfall Kitchen", "Fan amp Sub"},
+	} {
+		p := Parse(c.in, Hints{})
+		if p.Title.Value != c.title || p.Group.Value != c.group {
+			t.Errorf("%s %s: title %q group %q, want %q %q", c.id, c.in, p.Title.Value, p.Group.Value, c.title, c.group)
 		}
 	}
 }
