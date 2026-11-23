@@ -50,6 +50,9 @@ type Hosted struct {
 	// Direct reaches outside sources over public addresses while Your own
 	// keys is picked (a stand-in may be on this machine).
 	Direct *http.Client
+	// Backup is Direct for the fallback to the owner's own TMDB key while the
+	// metadata server is the mode (any mode but off).
+	Backup *http.Client
 	// stand is the TMDB stand-in (tests), "" for TMDB itself.
 	stand string
 }
@@ -96,6 +99,7 @@ func NewHosted(v *secrets.Vault) (*Hosted, error) {
 		webserver.ImageHosts += " " + fan
 	}
 	h.Direct = directClient(modes, stand != "")
+	h.Backup = modes.Client(stand != "", NotOff)
 	switch key, file := strings.TrimSpace(os.Getenv(EnvTMDBKey)), os.Getenv(EnvTokenFile); {
 	case key != "":
 		h.OwnKey, h.TMDBBase = true, stand
@@ -122,7 +126,7 @@ func NewHosted(v *secrets.Vault) (*Hosted, error) {
 // TMDB is a TMDB client for movies, shows, Explore, people and ratings. Each
 // request goes where the mode says (TMDBRoute).
 func (h *Hosted) TMDB() *TMDB {
-	return &TMDB{Route: h.TMDBRoute, Images: h.Images, Disk: h.Disk}
+	return &TMDB{Route: h.TMDBRoute, Fallback: h.TMDBFallback, Images: h.Images, Disk: h.Disk}
 }
 
 // installationAccess reads the install's credential: from the file named by
