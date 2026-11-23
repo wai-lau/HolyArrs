@@ -22,7 +22,7 @@ func SameName(libName, want string) bool {
 }
 
 // NameForms are the clean forms a library name can show in release names:
-// as written, with apostrophes dropped, and with letters written apart by
+// as written, with apostrophes dropped, with "&" dropped, and with letters written apart by
 // dots or stars joined ("S.W.A.T." as "swat", "M*A*S*H" as "mash"). A
 // joined name of only one or two letters ("I.T.", "E.R.") is too short to
 // tell apart from a word and is left out.
@@ -63,6 +63,12 @@ func nameForms(libName string) []string {
 	// ʼ counts as a letter, so cleaning keeps it; releases write it as a gap too.
 	if strings.Contains(libName, "ʼ") {
 		forms = append(forms, CleanName(strings.ReplaceAll(libName, "ʼ", " ")))
+	}
+	// Indexers drop an "&" ("Law Order"): the name without it is a form too.
+	if strings.Contains(libName, "&") {
+		if c := CleanName(strings.ReplaceAll(libName, "&", " ")); c != forms[0] {
+			forms = append(forms, c)
+		}
 	}
 	if j := JoinLettersApart(libName, 2); j != libName {
 		if c := CleanName(reApostrophe.Replace(j)); strings.Contains(c, " ") || len([]rune(c)) > 2 {

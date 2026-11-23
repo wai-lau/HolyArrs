@@ -103,6 +103,7 @@ var ShowCases = []ShowCase{
 	{ID: "A27", Name: "[Hoshizora][Starfall Kitchen][05v2][1080P][HEVC]", Kind: KindAbsolute, Title: "Starfall Kitchen", Show: ShowNumbers{Absolute: []int{5}}, Resolution: 1080, Source: "web_dl", SrcConf: Likely, Codec: "h265", Group: "Hoshizora", Fix: 1},
 	{ID: "A28", Name: "[Kumomaru][風の翼 Kaze no Tsubasa][03][1080P]", Kind: KindAbsolute, Title: "Kaze no Tsubasa", Show: ShowNumbers{Absolute: []int{3}}, Resolution: 1080, Source: "web_dl", SrcConf: Likely, Group: "Kumomaru"},
 	{ID: "A29", Name: "[Kumomaru][風の翼][03][1080P]", Kind: KindAbsolute, Title: "風の翼", Show: ShowNumbers{Absolute: []int{3}}, Resolution: 1080, Source: "web_dl", SrcConf: Likely, Group: "Kumomaru"},
+	{ID: "A30", Name: "[7³ACG  amp  343 Labs] New Panty  amp  Stocking S2 [BDRip 1080p AV1 OPUS]", Kind: KindSeasonPack, Title: "New Panty & Stocking", Show: sn(s1(2)), Resolution: 1080, Source: "bluray", Codec: "av1", Audio: "opus", Group: "7³ACG & 343 Labs"},
 
 	{ID: "T27", Name: "Unit 24 (2008) S01E01 1080p BluRay x264-OXBOW", Kind: KindEpisode, Title: "Unit 24", Year: 2008, Show: sn(s1(1), 1), Resolution: 1080, Source: "bluray", Codec: "h264", Group: "OXBOW"},
 }

@@ -307,7 +307,7 @@ func parseShow(r *Result, h showHit, pre, post string, trailing []string, anime 
 		r.Year = sure(atoi(toks[k-1]))
 		toks = toks[:k-1]
 	}
-	title := strings.Join(latinRun(toks), " ")
+	title := strings.Join(ampToAnd(latinRun(toks)), " ")
 	if m := reArticle.FindStringSubmatch(title); m != nil {
 		title = m[2] + " " + m[1]
 	}

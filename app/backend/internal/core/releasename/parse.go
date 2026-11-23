@@ -314,7 +314,7 @@ func Parse(name string, h Hints) Result {
 	// (WEB-DL, DTS-HD) or the text after it is not a group.
 	var trailing []string
 	if leadGroup != "" {
-		r.Group = sure(leadGroup)
+		r.Group = sure(strings.Join(ampToAnd(strings.Fields(leadGroup)), " "))
 	} else if i := strings.LastIndexByte(s, '-'); i > 0 && i < len(s)-1 && s[i-1] != ' ' && s[i+1] != ' ' {
 		after := reSeparators.Split(strings.Trim(s[i+1:], " ._"), -1)
 		before := s[:i]
@@ -391,7 +391,7 @@ func Parse(name string, h Hints) Result {
 		// An anime name puts its group first; a last bracket such as
 		// "[Batch]" or "[Multi-Sub]" is then not the group.
 		if lead != "" && (r.Group.Conf == Unknown || bracketGroup) {
-			r.Group = sure(lead)
+			r.Group = sure(strings.Join(ampToAnd(strings.Fields(lead)), " "))
 		}
 		parseShow(&r, sh, pre, post, trailing, lead != "", flags, h)
 		for f := range flags {
@@ -443,7 +443,7 @@ func Parse(name string, h Hints) Result {
 	} else {
 		r.Year.Conf = Unknown
 	}
-	title := strings.Join(latinRun(toks[:end]), " ")
+	title := strings.Join(ampToAnd(latinRun(toks[:end])), " ")
 	if m := reArticle.FindStringSubmatch(title); m != nil {
 		title = m[2] + " " + m[1]
 	}
