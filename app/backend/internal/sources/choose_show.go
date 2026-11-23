@@ -2,7 +2,9 @@ package sources
 
 import (
 	"context"
+	"fmt"
 	"slices"
+	"strings"
 	"time"
 
 	"github.com/HolyArrs/holyarrs/app/backend/internal/core/database"
@@ -43,22 +45,24 @@ func (s *Searcher) heldShowMiss(ctx context.Context, sl mediafiles.Slot, rel dom
 }
 
 // showSearchSlots returns the episodes a Release that matched none can
-// still be forced onto, and the show's name. It applies only to a year
-// miss: the Release was found by a season search of a show, its name is
-// one of that show's and only its year kept it from matching. The Slots
-// are those of the episodes its numbers cover, in the season and Version
-// searched; a Release naming another season gets none. skipped says which
-// episodes were left out for a protected copy or a copy as good; wider is
-// set when the Release holds the season searched and another one. Anything
-// unclear returns none.
-func (s *Searcher) showSearchSlots(ctx context.Context, rel domain.Release) (out []int64, skipped []string, show string, wider bool) {
+// still be forced onto, and why it needs force. It applies to a Release
+// found by a season search of a show whose name is one of that show's but
+// only its year kept it from matching, or whose name holds one of the
+// show's names as whole words in a row among other words (a group or an
+// alternate title the parser kept in the title). The Slots are those of the
+// episodes its numbers cover, or every episode of the season searched when
+// the name gives no numbers, in the season and Version searched; a Release
+// naming another season gets none. skipped says which episodes were left
+// out for a protected copy or a copy as good; wider is set when the Release
+// holds the season searched and another one. Anything unclear returns none.
+func (s *Searcher) showSearchSlots(ctx context.Context, rel domain.Release) (out []int64, skipped, why []string, wider bool) {
 	if rel.JobID == nil {
-		return nil, nil, "", false
+		return nil, nil, nil, false
 	}
 	db := s.Store.Read()
 	var job domain.Job
 	if err := database.Get(ctx, db, "jobs", *rel.JobID, &job); err != nil || job.Kind != jobs.KindSearchSeason || job.Subject == nil || job.Subject.Type != "part" {
-		return nil, nil, "", false
+		return nil, nil, nil, false
 	}
 	vid, _ := job.Params["version_id"].(float64)
 	var part mediafiles.Part
@@ -66,16 +70,23 @@ func (s *Searcher) showSearchSlots(ctx context.Context, rel domain.Release) (out
 	var ver mediafiles.Version
 	if mediafiles.LoadPart(ctx, db, job.Subject.ID, &part) != nil || part.Number == nil || mediafiles.LoadTitle(ctx, db, part.TitleID, &ti) != nil ||
 		mediafiles.LoadVersion(ctx, db, int64(vid), &ver) != nil || ver.TitleID != ti.ID {
-		return nil, nil, "", false
+		return nil, nil, nil, false
 	}
 	set, err := s.loadShow(ctx, ti, ver)
 	if err != nil {
-		return nil, nil, "", false
+		return nil, nil, nil, false
 	}
 	p := releasename.Parse(rel.Name, releasename.Hints{Size: rel.Size, Show: true})
 	lib := []mediafiles.TitleRef{set.ref()}
-	if mediafiles.MatchRelease(p, lib).Title != nil || mediafiles.MatchTitle(p, lib).Title == nil {
-		return nil, nil, "", false
+	if mediafiles.MatchRelease(p, lib).Title != nil {
+		return nil, nil, nil, false
+	}
+	if mediafiles.MatchTitle(p, lib).Title != nil {
+		why = append(why, "its year did not match "+ti.Name+"; it was found searching for it")
+	} else if looseShowName(p.Title.Value, lib[0]) {
+		why = append(why, "its name only loosely matched "+ti.Name+"; it was found searching for it")
+	} else {
+		return nil, nil, nil, false
 	}
 	refs := make([]mediafiles.EpisodeRef, len(set.eps))
 	slots := map[int64]*mediafiles.Slot{}
@@ -83,13 +94,23 @@ func (s *Searcher) showSearchSlots(ctx context.Context, rel domain.Release) (out
 		refs[i] = e.ref
 		slots[e.it.ID] = e.sl
 	}
-	held, why := mediafiles.MatchEpisodes(p, set.order(), refs)
-	if why != "" {
-		return nil, nil, "", false
+	var held []mediafiles.EpisodeRef
+	if p.Show == nil {
+		for _, e := range refs {
+			if e.Season == *part.Number {
+				held = append(held, e)
+			}
+		}
+		why = append(why, fmt.Sprintf("its name gives no episode numbers; it goes to all of season %d", *part.Number))
+	} else {
+		var miss string
+		if held, miss = mediafiles.MatchEpisodes(p, set.order(), refs); miss != "" {
+			return nil, nil, nil, false
+		}
 	}
 	jr := mediafiles.ReleaseFacts{Name: rel.Name, Parse: p, Size: rel.Size, Protocol: rel.Protocol}
 	if slices.ContainsFunc(held, func(e mediafiles.EpisodeRef) bool { return e.Season != *part.Number }) {
-		return nil, nil, "", slices.ContainsFunc(held, func(e mediafiles.EpisodeRef) bool { return e.Season == *part.Number })
+		return nil, nil, nil, slices.ContainsFunc(held, func(e mediafiles.EpisodeRef) bool { return e.Season == *part.Number })
 	}
 	for _, e := range held {
 		sl := slots[e.ItemID]
@@ -106,5 +127,36 @@ func (s *Searcher) showSearchSlots(ctx context.Context, rel domain.Release) (out
 		}
 		out = append(out, sl.ID)
 	}
-	return out, skipped, ti.Name, false
+	return out, skipped, why, false
+}
+
+// looseShowName says whether one of the show's names shows in a release
+// title as whole words in a row. "&", "and" and a stray "amp" (left by an
+// escaped "&amp;") are left out on both sides, since release names drop
+// or spell them in any of these ways.
+func looseShowName(title string, t mediafiles.TitleRef) bool {
+	have := looseWords(title)
+	for _, n := range append([]string{t.Name}, t.Aliases...) {
+		for _, form := range releasename.NameForms(n) {
+			if want := looseWords(form); len(want) > 0 && containsRun(have, want) {
+				return true
+			}
+		}
+	}
+	return false
+}
+
+// looseWords are the clean words of a name with "and" and "amp" left out.
+func looseWords(name string) []string {
+	return slices.DeleteFunc(strings.Fields(releasename.CleanName(name)), func(w string) bool { return w == "and" || w == "amp" })
+}
+
+// containsRun says whether want shows in have as words in a row.
+func containsRun(have, want []string) bool {
+	for i := 0; i+len(want) <= len(have); i++ {
+		if slices.Equal(have[i:i+len(want)], want) {
+			return true
+		}
+	}
+	return false
 }
