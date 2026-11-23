@@ -183,19 +183,6 @@ func findShow(s string, anime, show bool) (showHit, int, int, bool) {
 	return showHit{}, 0, 0, false
 }
 
-// ampToAnd reads a lower-case "amp" between two words as "&": it is what an
-// HTML "&amp;" leaves once the punctuation is gone. A first or last "amp",
-// or one in capitals, stays a word.
-func ampToAnd(toks []string) []string {
-	out := slices.Clone(toks)
-	for i := 1; i+1 < len(out); i++ {
-		if out[i] == "amp" {
-			out[i] = "&"
-		}
-	}
-	return out
-}
-
 // parseShow fills a Result for a show Release: the title is what comes
 // before the numbers (with a year at its end, if any), the tags what comes
 // after. anime says the name began with a [group].
