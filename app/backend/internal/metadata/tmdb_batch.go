@@ -66,8 +66,19 @@ func (t *TMDB) batchOff(now time.Time) bool {
 // own key, an older server) are left alone: get asks for them one by one.
 func (t *TMDB) Prefetch(ctx context.Context, reads []TMDBRead) int {
 	r := t.route(ctx)
-	base := r.base()
-	server, ok := strings.CutSuffix(base, TMDBPath)
+	base := r.base() // answers are kept under the first route's address, where get looks
+	if t.Fallback != nil {
+		if fb, has := t.Fallback(ctx, r); has {
+			// The saved own key goes first, and a batch is the server's route:
+			// batch only while the own key is resting, when the server is
+			// answering in its place.
+			if !t.cooling(base) {
+				return 0
+			}
+			r = fb
+		}
+	}
+	server, ok := strings.CutSuffix(r.base(), TMDBPath)
 	if r.Off || !ok || r.Access == nil || noCache(ctx) || t.batchOff(time.Now()) {
 		return 0
 	}

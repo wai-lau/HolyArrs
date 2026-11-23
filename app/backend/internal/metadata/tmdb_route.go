@@ -16,6 +16,9 @@ type TMDBRoute struct {
 	Off    bool
 	// Direct: the request goes to TMDB itself, not through the metadata server.
 	Direct bool
+	// OwnFirst: the owner's saved key goes first and the metadata server is
+	// the backup (see Hosted.TMDBFallback).
+	OwnFirst bool
 }
 
 func (r TMDBRoute) base() string {

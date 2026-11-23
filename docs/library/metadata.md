@@ -66,6 +66,8 @@ With the Trakt key saved, HolyArrs reads each Library movie's and show's Trakt r
 
 Your install sends only what it looks up, plus your language and region. Your files, library, users and keys never leave your server. **Settings > Metadata** lists both.
 
+If you save a TMDB key in **Settings > Metadata** while the HolyArrs server is selected, movie and show lookups go to TMDB with your key first, so TMDB sees them directly. The HolyArrs server is the backup.
+
 To leave your install out of the install count, turn off **Count this install** in **Settings > This app**.
 
 Every outside address HolyArrs contacts, and how your own TMDB key changes what goes where, is in [Outside addresses](../run/outside-hosts.md).
