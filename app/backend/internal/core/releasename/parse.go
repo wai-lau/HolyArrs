@@ -380,13 +380,20 @@ func Parse(name string, h Hints) Result {
 	if lead != "" && !strings.Contains(strings.TrimSpace(body), " ") {
 		body = strings.ReplaceAll(body, ".", " ")
 	}
-	if sh, start, end, ok := findShow(body, lead != "", h.Show); ok {
+	sh, pre, post, isShow := bracketTitleShow(body, lead != "")
+	if !isShow {
+		var start, end int
+		if sh, start, end, isShow = findShow(body, lead != "", h.Show); isShow {
+			pre, post = body[:start], body[end:]
+		}
+	}
+	if isShow {
 		// An anime name puts its group first; a last bracket such as
 		// "[Batch]" or "[Multi-Sub]" is then not the group.
 		if lead != "" && (r.Group.Conf == Unknown || bracketGroup) {
 			r.Group = sure(lead)
 		}
-		parseShow(&r, sh, body[:start], body[end:], trailing, lead != "", flags, h)
+		parseShow(&r, sh, pre, post, trailing, lead != "", flags, h)
 		for f := range flags {
 			r.Flags = append(r.Flags, f)
 		}

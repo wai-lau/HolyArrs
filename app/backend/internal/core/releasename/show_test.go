@@ -94,6 +94,16 @@ var ShowCases = []ShowCase{
 	{ID: "A22", Name: "Kaze no Tsubasa 風の翼 S01E02 1080p WEB-DL-GRP", Kind: KindEpisode, Title: "Kaze no Tsubasa", Show: sn(s1(1), 2), Resolution: 1080, Source: "web_dl", Group: "GRP"},
 	{ID: "A23", Name: "[Kumomaru] 風の翼 ストッキングwith - 04 [1080p]", Kind: KindAbsolute, Title: "風の翼 ストッキングwith", Show: ShowNumbers{Absolute: []int{4}}, Resolution: 1080, Source: "web_dl", SrcConf: Likely, Group: "Kumomaru"},
 
+	// Fansub names whose title sits in its own bracket after the group:
+	// [Group][Title][01-12][tags]. The indexer turned the hyphen of the range
+	// into a space.
+	{ID: "A24", Name: "[DBD Raws][新吊带袜天使 New PANTY STOCKING with GARTERBELT][01 13TV全集 特典映像][1080P][BDRip][HEVC 10bit][简繁日双语外挂][FLAC AC3][MKV](新しいパンティ＆ストッキングwithガーターベルト)", Hints: Hints{Show: true}, Kind: KindAbsolute, Title: "New PANTY STOCKING with GARTERBELT", Show: ShowNumbers{Absolute: span(1, 13)}, Resolution: 1080, Source: "bluray", Codec: "h265", Audio: "flac", Group: "DBD Raws"},
+	{ID: "A25", Name: "[Hoshizora][Starfall Kitchen][01-12][1080P][WEB-DL]", Kind: KindAbsolute, Title: "Starfall Kitchen", Show: ShowNumbers{Absolute: span(1, 12)}, Resolution: 1080, Source: "web_dl", Group: "Hoshizora"},
+	{ID: "A26", Name: "[Hoshizora][Starfall Kitchen][01 12][1080P][WEB-DL]", Kind: KindAbsolute, Title: "Starfall Kitchen", Show: ShowNumbers{Absolute: span(1, 12)}, Resolution: 1080, Source: "web_dl", Group: "Hoshizora"},
+	{ID: "A27", Name: "[Hoshizora][Starfall Kitchen][05v2][1080P][HEVC]", Kind: KindAbsolute, Title: "Starfall Kitchen", Show: ShowNumbers{Absolute: []int{5}}, Resolution: 1080, Source: "web_dl", SrcConf: Likely, Codec: "h265", Group: "Hoshizora", Fix: 1},
+	{ID: "A28", Name: "[Kumomaru][風の翼 Kaze no Tsubasa][03][1080P]", Kind: KindAbsolute, Title: "Kaze no Tsubasa", Show: ShowNumbers{Absolute: []int{3}}, Resolution: 1080, Source: "web_dl", SrcConf: Likely, Group: "Kumomaru"},
+	{ID: "A29", Name: "[Kumomaru][風の翼][03][1080P]", Kind: KindAbsolute, Title: "風の翼", Show: ShowNumbers{Absolute: []int{3}}, Resolution: 1080, Source: "web_dl", SrcConf: Likely, Group: "Kumomaru"},
+
 	{ID: "T27", Name: "Unit 24 (2008) S01E01 1080p BluRay x264-OXBOW", Kind: KindEpisode, Title: "Unit 24", Year: 2008, Show: sn(s1(1), 1), Resolution: 1080, Source: "bluray", Codec: "h264", Group: "OXBOW"},
 }
 
