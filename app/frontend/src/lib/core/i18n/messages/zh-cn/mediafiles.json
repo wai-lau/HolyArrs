@@ -443,6 +443,8 @@
 	"mediafiles.releaseSheet.recommended": "推荐",
 	"mediafiles.releaseSheet.sent": "已发送",
 	"mediafiles.releaseSheet.pickAnyway": "仍然选用",
+	"mediafiles.releaseSheet.forceDownload": "强制下载",
+	"mediafiles.releaseSheet.mayNotBe": "这可能不是你要找的内容。强制下载仍会将它发送到你搜索的项目。",
 	"mediafiles.releaseSheet.pick": "选用",
 	"mediafiles.releaseSheet.neverPick": "永不选用 {name}",
 	"mediafiles.releaseSheet.neverPickThis": "永不选用这个",

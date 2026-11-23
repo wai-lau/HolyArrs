@@ -442,6 +442,8 @@
 	"mediafiles.releaseSheet.recommended": "Soovitatud",
 	"mediafiles.releaseSheet.sent": "Saadetud",
 	"mediafiles.releaseSheet.pickAnyway": "Vali siiski",
+	"mediafiles.releaseSheet.forceDownload": "Sunni allalaadimine",
+	"mediafiles.releaseSheet.mayNotBe": "See ei pruugi olla see, mida otsisid. Sunnitud allalaadimine saadab selle siiski otsitule.",
 	"mediafiles.releaseSheet.pick": "Vali",
 	"mediafiles.releaseSheet.neverPick": "Ära vali kunagi: {name}",
 	"mediafiles.releaseSheet.neverPickThis": "Ära vali seda kunagi",

@@ -442,6 +442,8 @@
   "mediafiles.releaseSheet.recommended": "Mælt með",
   "mediafiles.releaseSheet.sent": "Sent",
   "mediafiles.releaseSheet.pickAnyway": "Velja samt",
+  "mediafiles.releaseSheet.forceDownload": "Þvinga niðurhal",
+  "mediafiles.releaseSheet.mayNotBe": "Þetta er kannski ekki það sem þú leitaðir að. Þvingað niðurhal sendir það samt á það sem þú leitaðir að.",
   "mediafiles.releaseSheet.pick": "Velja",
   "mediafiles.releaseSheet.neverPick": "Aldrei velja {name}",
   "mediafiles.releaseSheet.neverPickThis": "Aldrei velja þessa",

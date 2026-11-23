@@ -443,6 +443,8 @@
 	"mediafiles.releaseSheet.recommended": "Рекомендовано",
 	"mediafiles.releaseSheet.sent": "Надіслано",
 	"mediafiles.releaseSheet.pickAnyway": "Обрати попри все",
+	"mediafiles.releaseSheet.forceDownload": "Завантажити примусово",
+	"mediafiles.releaseSheet.mayNotBe": "Можливо, це не те, що ви шукали. Примусове завантаження все одно надішле це до шуканого.",
 	"mediafiles.releaseSheet.pick": "Обрати",
 	"mediafiles.releaseSheet.neverPick": "Ніколи не вибирати {name}",
 	"mediafiles.releaseSheet.neverPickThis": "Ніколи не вибирати цей",

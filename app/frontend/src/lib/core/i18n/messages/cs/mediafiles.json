@@ -442,6 +442,8 @@
 	"mediafiles.releaseSheet.recommended": "Doporučeno",
 	"mediafiles.releaseSheet.sent": "Odesláno",
 	"mediafiles.releaseSheet.pickAnyway": "Přesto vybrat",
+	"mediafiles.releaseSheet.forceDownload": "Vynutit stažení",
+	"mediafiles.releaseSheet.mayNotBe": "Nemusí to být to, co jste hledali. Vynucené stažení to přesto pošle k hledané položce.",
 	"mediafiles.releaseSheet.pick": "Vybrat",
 	"mediafiles.releaseSheet.neverPick": "Nikdy nevybírat {name}",
 	"mediafiles.releaseSheet.neverPickThis": "Nikdy nevybírat toto",

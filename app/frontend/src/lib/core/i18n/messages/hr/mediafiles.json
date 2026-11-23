@@ -442,6 +442,8 @@
 	"mediafiles.releaseSheet.recommended": "Preporučeno",
 	"mediafiles.releaseSheet.sent": "Poslano",
 	"mediafiles.releaseSheet.pickAnyway": "Ipak odaberi",
+	"mediafiles.releaseSheet.forceDownload": "Prisilno preuzmi",
+	"mediafiles.releaseSheet.mayNotBe": "Ovo možda nije ono što ste tražili. Prisilno preuzimanje svejedno ga šalje traženom.",
 	"mediafiles.releaseSheet.pick": "Odaberi",
 	"mediafiles.releaseSheet.neverPick": "Nikad ne biraj: {name}",
 	"mediafiles.releaseSheet.neverPickThis": "Nikad ne biraj ovo",

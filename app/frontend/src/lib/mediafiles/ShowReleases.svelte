@@ -36,6 +36,8 @@
 	let turnDialog: HTMLDialogElement | undefined = $state();
 	let target = $state<ReleaseView | null>(null);
 	let forceReasons = $state<string[]>([]);
+	// A forced pick that matched nothing can still be force downloaded to what its search looked for.
+	let forceDownload = $state(false);
 	let chooseError = $state('');
 	let choosing = $state(false);
 	let turnReason = $state('');
@@ -96,6 +98,7 @@
 	function askChoose(r: ReleaseView) {
 		target = r;
 		forceReasons = [];
+		forceDownload = false;
 		chooseError = '';
 		chooseDialog?.showModal();
 	}
@@ -105,8 +108,8 @@
 		choosing = true;
 		chooseError = '';
 		try {
-			const body: Record<string, unknown> = { force: needsForce };
-			if (scope.slotId) body.slot_id = scope.slotId;
+			const body: Record<string, unknown> = forceDownload ? { force_download: true } : { force: needsForce };
+			if (!forceDownload && scope.slotId) body.slot_id = scope.slotId;
 			const ch = await api.post<Choice>(`/releases/${target.id}/choose`, body);
 			chooseDialog?.close();
 			const n = ch.slot_ids?.length ?? 1;
@@ -115,7 +118,9 @@
 			await load();
 		} catch (e) {
 			// The server asks for a forced pick when the release did not pass.
-			if (e instanceof ApiError && e.status === 409 && e.body.needs_force) {
+			if (e instanceof ApiError && e.status === 409 && e.body.needs_force_download) {
+				forceDownload = true;
+			} else if (e instanceof ApiError && e.status === 409 && e.body.needs_force) {
 				forceReasons = (e.body.reasons as string[] | undefined) ?? [t('mediafiles.title.didNotPass')];
 			} else {
 				chooseError = message(e);
@@ -220,10 +225,15 @@
 				{#each forceReasons as w (w)}<li>{t('mediafiles.showReleases.didNotPass', { why: serverWords(w) })}</li>{/each}
 			</ul>
 		{/if}
+		{#if forceDownload}<p class="form-error" role="alert">{t('mediafiles.releaseSheet.mayNotBe')}</p>{/if}
 		{#if chooseError}<p class="form-error" role="alert">{chooseError}</p>{/if}
 		<div class="row modal-actions">
 			<Button variant="plain" onclick={() => chooseDialog?.close()}>{t('mediafiles.dialogs.cancel')}</Button>
-			<Button variant="primary" onclick={choose} disabled={choosing} busy={choosing}>{needsForce ? t('mediafiles.showReleases.chooseAnyway') : t('mediafiles.showReleases.choose')}</Button>
+			{#if forceDownload}
+				<Button variant="destructive" onclick={choose} disabled={choosing} busy={choosing}>{t('mediafiles.releaseSheet.forceDownload')}</Button>
+			{:else}
+				<Button variant="primary" onclick={choose} disabled={choosing} busy={choosing}>{needsForce ? t('mediafiles.showReleases.chooseAnyway') : t('mediafiles.showReleases.choose')}</Button>
+			{/if}
 		</div>
 	{/if}
 </dialog>

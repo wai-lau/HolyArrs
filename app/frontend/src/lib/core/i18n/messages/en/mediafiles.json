@@ -443,6 +443,8 @@
 	"mediafiles.releaseSheet.recommended": "Recommended",
 	"mediafiles.releaseSheet.sent": "Sent",
 	"mediafiles.releaseSheet.pickAnyway": "Pick anyway",
+	"mediafiles.releaseSheet.forceDownload": "Force download",
+	"mediafiles.releaseSheet.mayNotBe": "This may not be what you searched for. Force download sends it to what you searched anyway.",
 	"mediafiles.releaseSheet.pick": "Pick",
 	"mediafiles.releaseSheet.neverPick": "Never pick {name}",
 	"mediafiles.releaseSheet.neverPickThis": "Never pick this one",

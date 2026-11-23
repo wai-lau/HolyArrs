@@ -442,6 +442,8 @@
 	"mediafiles.releaseSheet.recommended": "Recomandat",
 	"mediafiles.releaseSheet.sent": "Trimis",
 	"mediafiles.releaseSheet.pickAnyway": "Alege oricum",
+	"mediafiles.releaseSheet.forceDownload": "Forțează descărcarea",
+	"mediafiles.releaseSheet.mayNotBe": "S-ar putea să nu fie ce ai căutat. Descărcarea forțată îl trimite oricum către ce ai căutat.",
 	"mediafiles.releaseSheet.pick": "Alege",
 	"mediafiles.releaseSheet.neverPick": "Nu alege niciodată {name}",
 	"mediafiles.releaseSheet.neverPickThis": "Nu alege niciodată acesta",

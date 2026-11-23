@@ -442,6 +442,8 @@
 	"mediafiles.releaseSheet.recommended": "Anbefalt",
 	"mediafiles.releaseSheet.sent": "Sendt",
 	"mediafiles.releaseSheet.pickAnyway": "Velg likevel",
+	"mediafiles.releaseSheet.forceDownload": "Tving nedlasting",
+	"mediafiles.releaseSheet.mayNotBe": "Dette er kanskje ikke det du søkte etter. Tving nedlasting sender det likevel til det du søkte etter.",
 	"mediafiles.releaseSheet.pick": "Velg",
 	"mediafiles.releaseSheet.neverPick": "Velg aldri {name}",
 	"mediafiles.releaseSheet.neverPickThis": "Velg aldri denne",

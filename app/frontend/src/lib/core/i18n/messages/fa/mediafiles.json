@@ -442,6 +442,8 @@
 	"mediafiles.releaseSheet.recommended": "پیشنهادی",
 	"mediafiles.releaseSheet.sent": "فرستاده شد",
 	"mediafiles.releaseSheet.pickAnyway": "در هر صورت انتخاب کن",
+	"mediafiles.releaseSheet.forceDownload": "دانلود اجباری",
+	"mediafiles.releaseSheet.mayNotBe": "ممکن است این همان چیزی نباشد که جست‌وجو کردید. دانلود اجباری آن را به هر حال به مورد جست‌وجوشده می‌فرستد.",
 	"mediafiles.releaseSheet.pick": "انتخاب",
 	"mediafiles.releaseSheet.neverPick": "هرگز {name} را انتخاب نکن",
 	"mediafiles.releaseSheet.neverPickThis": "هرگز این را انتخاب نکن",

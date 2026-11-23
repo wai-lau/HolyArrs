@@ -442,6 +442,8 @@
 	"mediafiles.releaseSheet.recommended": "Suositeltu",
 	"mediafiles.releaseSheet.sent": "Lähetetty",
 	"mediafiles.releaseSheet.pickAnyway": "Valitse silti",
+	"mediafiles.releaseSheet.forceDownload": "Pakota lataus",
+	"mediafiles.releaseSheet.mayNotBe": "Tämä ei ehkä ole sitä, mitä hait. Pakotettu lataus lähettää sen silti haettuun kohteeseen.",
 	"mediafiles.releaseSheet.pick": "Valitse",
 	"mediafiles.releaseSheet.neverPick": "Älä koskaan valitse: {name}",
 	"mediafiles.releaseSheet.neverPickThis": "Älä koskaan valitse tätä",

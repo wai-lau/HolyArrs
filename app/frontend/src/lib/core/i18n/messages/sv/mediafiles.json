@@ -442,6 +442,8 @@
 	"mediafiles.releaseSheet.recommended": "Rekommenderad",
 	"mediafiles.releaseSheet.sent": "Skickad",
 	"mediafiles.releaseSheet.pickAnyway": "Välj ändå",
+	"mediafiles.releaseSheet.forceDownload": "Tvinga nedladdning",
+	"mediafiles.releaseSheet.mayNotBe": "Det här är kanske inte det du sökte. Tvinga nedladdning skickar det ändå till det du sökte.",
 	"mediafiles.releaseSheet.pick": "Välj",
 	"mediafiles.releaseSheet.neverPick": "Välj aldrig {name}",
 	"mediafiles.releaseSheet.neverPickThis": "Välj aldrig den här",
