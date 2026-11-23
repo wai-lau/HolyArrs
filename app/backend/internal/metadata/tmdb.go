@@ -59,6 +59,10 @@ type TMDB struct {
 	// Route, when set, picks where each request goes (the metadata mode)
 	// in place of BaseURL, Access and HTTP.
 	Route func(ctx context.Context) TMDBRoute
+	// Fallback, when set and ok, is a second route a request tries once when
+	// the metadata server could not answer it (down, slow, 5xx). While it is
+	// ok the server attempt is also cut to serverAttemptWithFallback.
+	Fallback func(ctx context.Context) (TMDBRoute, bool)
 
 	mu         sync.Mutex
 	last       time.Time
@@ -288,13 +292,46 @@ func (t *TMDB) get(ctx context.Context, path string, q url.Values) ([]byte, erro
 // turn upstream, then keeps the answer for the next ask.
 const tmdbAttempt = 25 * time.Second
 
-// fetch makes one request (one retry after a 429).
+// serverAttemptWithFallback is how long the metadata server gets when an own
+// key could answer instead: long enough for a kept answer, short enough that
+// the fallback still helps while the server hangs.
+const serverAttemptWithFallback = 8 * time.Second
+
+// fetch makes one request (one retry after a 429). When the metadata server
+// cannot answer and an own TMDB key is saved (Fallback), the request is sent
+// once more straight to TMDB with that key.
 func (t *TMDB) fetch(ctx context.Context, u string) ([]byte, error) {
+	r := t.route(ctx)
+	var fb TMDBRoute
+	hasFB := false
+	if t.Fallback != nil && !r.Direct && !r.Off {
+		fb, hasFB = t.Fallback(ctx)
+	}
+	attempt := time.Duration(0)
+	if hasFB && t.Timeout <= 0 {
+		attempt = serverAttemptWithFallback
+	}
+	body, err := t.fetchVia(ctx, u, r, attempt)
+	if !hasFB || err == nil || ctx.Err() != nil || !errors.Is(err, ErrServiceUnavailable) {
+		return body, err
+	}
+	rest, ok := strings.CutPrefix(u, r.base())
+	if !ok {
+		return body, err
+	}
+	b2, err2 := t.fetchVia(ctx, fb.base()+rest, fb, 0)
+	if err2 != nil && !errors.Is(err2, ErrNotFound) {
+		return nil, err // the server's error is the one to show
+	}
+	return b2, err2
+}
+
+// fetchVia is fetch on one route; attempt 0 means the default time.
+func (t *TMDB) fetchVia(ctx context.Context, u string, r TMDBRoute, attempt time.Duration) ([]byte, error) {
 	ahead := IsAhead(ctx)
 	if ahead && t.hold.held(time.Now()) {
 		return nil, ErrRateLimited
 	}
-	r := t.route(ctx)
 	if r.Off {
 		return nil, ErrSourceOff
 	}
@@ -334,6 +371,9 @@ func (t *TMDB) fetch(ctx context.Context, u string) ([]byte, error) {
 	timeout := t.Timeout
 	if timeout <= 0 {
 		timeout = tmdbAttempt
+		if attempt > 0 {
+			timeout = attempt
+		}
 	}
 	for try := 0; ; try++ {
 		if err := t.wait(ctx); err != nil {

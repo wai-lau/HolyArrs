@@ -119,6 +119,21 @@ func (h *Hosted) TMDBRoute(ctx context.Context) TMDBRoute {
 	return server
 }
 
+// TMDBFallback is the own-key route a request tries when the metadata server
+// cannot answer it: only in the server mode, and only when the owner saved a
+// TMDB key in Settings. The environment key already goes direct, so it needs
+// none.
+func (h *Hosted) TMDBFallback(ctx context.Context) (TMDBRoute, bool) {
+	if h.OwnKey || h.Modes.Current() != ModeServer {
+		return TMDBRoute{}, false
+	}
+	read := h.KeyReader(KeyTMDB)
+	if tok, err := read(ctx); err != nil || tok == "" {
+		return TMDBRoute{}, false
+	}
+	return TMDBRoute{Base: h.stand, Access: read, HTTP: h.Backup, Direct: true}, true
+}
+
 // ListRoute is TMDBRoute for the Outside lists sync, or ErrSourceOff.
 func (h *Hosted) ListRoute(ctx context.Context) (TMDBRoute, error) {
 	r := h.TMDBRoute(ctx)
