@@ -125,7 +125,7 @@
 	// With the HolyArrs server, TheTVDB is an extra: its fields wait behind a button unless a key is saved. OMDb is always asked.
 	let tvdbOpen = $state(false);
 	const tvdbClosed = $derived(mode === 'full' && !answer?.keys.tvdb_key && !tvdbOpen);
-	const shownKeys = $derived<KeyName[]>(mode === 'own' ? ['tmdb_token', 'tvdb_key', 'mdblist_key', 'fanart_key', 'omdb_key'] : mode === 'full' ? (tvdbClosed ? ['omdb_key'] : ['tvdb_key', 'omdb_key']) : []);
+	const shownKeys = $derived<KeyName[]>(mode === 'own' ? ['tmdb_token', 'tvdb_key', 'mdblist_key', 'fanart_key', 'omdb_key'] : mode === 'full' ? (tvdbClosed ? ['tmdb_token', 'omdb_key'] : ['tmdb_token', 'tvdb_key', 'omdb_key']) : []);
 	const keyLabel: Record<KeyName, () => string> = {
 		tmdb_token: () => t('settings.tmdb.keyTmdb'),
 		tvdb_key: () => t('settings.tmdb.keyTvdb'),

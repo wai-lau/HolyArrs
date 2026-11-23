@@ -40,7 +40,7 @@
 	"settings.tmdb.tvdbTitle": "TheTVDB",
 	"settings.tmdb.tvdbDesc": "Optional, for shows that use TheTVDB for details",
 	"settings.tmdb.keyTmdb": "TMDB read token",
-	"settings.tmdb.keyTmdbHint": "Needed for Your own keys. The read access token from your TMDB account settings, under API.",
+	"settings.tmdb.keyTmdbHint": "Needed for Your own keys. With the HolyArrs server it is used first, and the server is the backup. The read access token from your TMDB account settings, under API.",
 	"settings.tmdb.tmdbFromDocker": "Set by your Docker settings.",
 	"settings.tmdb.keyTvdb": "TheTVDB key",
 	"settings.tmdb.keyTvdbHint": "Optional. Adds TheTVDB details for shows. Use a v4 API key, not the Unique User Key.",
