@@ -87,6 +87,13 @@ var ShowCases = []ShowCase{
 	{ID: "A14", Name: "[Hoshizora] Starfall Kitchen - 112 [480p]", Kind: KindAbsolute, Title: "Starfall Kitchen", Show: ShowNumbers{Absolute: []int{112}}, Resolution: 480, Source: "web_dl", SrcConf: Likely, Group: "Hoshizora"},
 	{ID: "A15", Name: "[Lab Fansub] Starfall Kitchen - 112 [1080p]", Kind: KindAbsolute, Title: "Starfall Kitchen", Show: ShowNumbers{Absolute: []int{112}}, Resolution: 1080, Source: "web_dl", SrcConf: Likely, Group: "Lab Fansub"},
 
+	// A CJK alt-title in the title text itself, after or before the Latin one.
+	{ID: "A19", Name: "[7³ACG] New Panty & Stocking with Garterbelt パンティ & ストッキングwithガーターベルト S2 [BDRip 1080p AV1 OPUS]", Kind: KindSeasonPack, Title: "New Panty & Stocking with Garterbelt", Show: sn(s1(2)), Resolution: 1080, Source: "bluray", Codec: "av1", Audio: "opus", Group: "7³ACG"},
+	{ID: "A20", Name: "[Kumomaru] 新吊带袜天使 New Panty & Stocking S2 [1080p]", Kind: KindSeasonPack, Title: "New Panty & Stocking", Show: sn(s1(2)), Resolution: 1080, Source: "web_dl", SrcConf: Likely, Group: "Kumomaru"},
+	{ID: "A21", Name: "[Kumomaru] Kaze no Tsubasa 風の翼 - 04 [1080p]", Kind: KindAbsolute, Title: "Kaze no Tsubasa", Show: ShowNumbers{Absolute: []int{4}}, Resolution: 1080, Source: "web_dl", SrcConf: Likely, Group: "Kumomaru"},
+	{ID: "A22", Name: "Kaze no Tsubasa 風の翼 S01E02 1080p WEB-DL-GRP", Kind: KindEpisode, Title: "Kaze no Tsubasa", Show: sn(s1(1), 2), Resolution: 1080, Source: "web_dl", Group: "GRP"},
+	{ID: "A23", Name: "[Kumomaru] 風の翼 ストッキングwith - 04 [1080p]", Kind: KindAbsolute, Title: "風の翼 ストッキングwith", Show: ShowNumbers{Absolute: []int{4}}, Resolution: 1080, Source: "web_dl", SrcConf: Likely, Group: "Kumomaru"},
+
 	{ID: "T27", Name: "Unit 24 (2008) S01E01 1080p BluRay x264-OXBOW", Kind: KindEpisode, Title: "Unit 24", Year: 2008, Show: sn(s1(1), 1), Resolution: 1080, Source: "bluray", Codec: "h264", Group: "OXBOW"},
 }
 
