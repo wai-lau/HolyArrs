@@ -138,5 +138,9 @@
 	"settings.signIn.forgotOn": "Pokazuj Nie pamiętasz hasła? na stronie logowania",
 	"settings.signIn.forgotNote": "Właściciel dostaje jednorazowy kod z logu serwera. Wyłącz to, jeśli wszyscy logują się przez logowanie jednokrotne. Polecenie reset-owner nadal działa.",
 	"settings.signIn.forgotShown": "Nie pamiętasz hasła? jest włączone",
-	"settings.signIn.forgotHidden": "Nie pamiętasz hasła? jest wyłączone"
+	"settings.signIn.forgotHidden": "Nie pamiętasz hasła? jest wyłączone",
+	"settings.signIn.joinAutoTitle": "Nowe osoby",
+	"settings.signIn.joinAutoOn": "Zatwierdzaj prośby nowych osób bez czekania",
+	"settings.signIn.joinAutoNote": "Osoby, które dołączają przez zewnętrzne logowanie (Plex, Jellyfin, Emby, logowanie jednokrotne), zaczynają z uprawnieniem Prośby zatwierdzane bez czekania. Dzieci i osoby, które już tu są, zachowują to, co mają.",
+	"settings.signIn.joinAutoSaved": "Ustawienie dla nowych osób zapisane"
 }

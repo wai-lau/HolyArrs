@@ -138,5 +138,9 @@
 	"settings.signIn.forgotOn": "Ipakita ang Nakalimutan ang password? sa sign-in page",
 	"settings.signIn.forgotNote": "Kumukuha ang owner ng one-time code mula sa log ng server. I-off kung lahat ay nagsa-sign in sa single sign-on. Gumagana pa rin ang command na reset-owner.",
 	"settings.signIn.forgotShown": "Naka-on ang Nakalimutan ang password?",
-	"settings.signIn.forgotHidden": "Naka-off ang Nakalimutan ang password?"
+	"settings.signIn.forgotHidden": "Naka-off ang Nakalimutan ang password?",
+	"settings.signIn.joinAutoTitle": "Mga bagong tao",
+	"settings.signIn.joinAutoOn": "Aprubahan agad ang mga request ng mga bagong tao",
+	"settings.signIn.joinAutoNote": "Ang mga sumasali sa pamamagitan ng panlabas na sign-in (Plex, Jellyfin, Emby, single sign-on) ay magsisimula sa Requests approved without waiting. Hindi nagbabago ang mga Kid at ang mga nandito na.",
+	"settings.signIn.joinAutoSaved": "Nai-save ang setting ng mga bagong tao"
 }

@@ -138,5 +138,9 @@
 	"settings.signIn.forgotOn": "Rodyti Pamiršote slaptažodį? prisijungimo puslapyje",
 	"settings.signIn.forgotNote": "Savininkas gauna vienkartinį kodą iš serverio žurnalo. Išjunkite, jei visi jungiasi per bendrą prisijungimą. Komanda reset-owner vis tiek veikia.",
 	"settings.signIn.forgotShown": "Pamiršote slaptažodį? įjungta",
-	"settings.signIn.forgotHidden": "Pamiršote slaptažodį? išjungta"
+	"settings.signIn.forgotHidden": "Pamiršote slaptažodį? išjungta",
+	"settings.signIn.joinAutoTitle": "Nauji žmonės",
+	"settings.signIn.joinAutoOn": "Tvirtinti naujų žmonių užklausas be laukimo",
+	"settings.signIn.joinAutoNote": "Žmonės, prisijungiantys per išorinį prisijungimą (Plex, Jellyfin, Emby, vieningas prisijungimas), pradeda su teise Užklausos tvirtinamos be laukimo. Vaikai ir jau esantys žmonės išsaugo tai, ką turi.",
+	"settings.signIn.joinAutoSaved": "Naujų žmonių nustatymas išsaugotas"
 }

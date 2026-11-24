@@ -48,6 +48,7 @@
 		allowed_hosts?: string[];
 		require_two_factor_admins: boolean;
 		owner_reset_link?: boolean;
+		join_auto_approve?: boolean;
 		min_password_length: number;
 		plex: Way;
 		jellyfin: Way;
@@ -59,6 +60,8 @@
 	let requireAdmins = $state(false);
 	let resetLink = $state(true);
 	let savingReset = $state(false);
+	let joinAuto = $state(false);
+	let savingJoinAuto = $state(false);
 	let minLength = $state(4);
 	let savingMinLength = $state(false);
 	let savingWay = $state<WayName | ''>('');
@@ -214,6 +217,7 @@
 		hostNames = (r.allowed_hosts ?? []).join('\n');
 		requireAdmins = r.require_two_factor_admins;
 		resetLink = r.owner_reset_link ?? true;
+		joinAuto = r.join_auto_approve ?? false;
 		minLength = r.min_password_length ?? 8;
 		ways = { plex: { ...blank(), ...r.plex }, jellyfin: { ...blank(), ...r.jellyfin }, emby: { ...blank(), ...r.emby } };
 		savedJoin = { plex: ways.plex.join, jellyfin: ways.jellyfin.join, emby: ways.emby.join };
@@ -276,6 +280,22 @@
 			toasts.push(t('settings.signIn.couldntSave'), 'fail', { body: strongNote(err) });
 		} finally {
 			savingReset = false;
+		}
+	}
+
+	async function setJoinAuto(v: boolean) {
+		if (savingJoinAuto) return;
+		const before = joinAuto;
+		joinAuto = v;
+		savingJoinAuto = true;
+		try {
+			took(await api.put<SignInSettings>('/auth/settings', { join_auto_approve: v }));
+			toasts.push(t('settings.signIn.joinAutoSaved'), 'ok');
+		} catch (err) {
+			joinAuto = before;
+			toasts.push(t('settings.signIn.couldntSave'), 'fail', { body: strongNote(err) });
+		} finally {
+			savingJoinAuto = false;
 		}
 	}
 
@@ -378,6 +398,17 @@
 		</label>
 		<p class="hint">
 			{t('settings.signIn.forgotNote')}{#if !isOwner}{' '}{t('settings.signIn.onlyOwnerChange')}{/if}
+		</p>
+	</SettingsCard>
+
+	<SettingsCard id="join-auto-card" title={t('settings.signIn.joinAutoTitle')}>
+		<label class="switch">
+			<input type="checkbox" checked={joinAuto} disabled={!isOwner || savingJoinAuto} aria-busy={savingJoinAuto} onchange={(e) => setJoinAuto(e.currentTarget.checked)} data-testid="join-auto-approve" />
+			<span class="sw" aria-hidden="true"></span>
+			<span>{t('settings.signIn.joinAutoOn')}</span>
+		</label>
+		<p class="hint">
+			{t('settings.signIn.joinAutoNote')}{#if !isOwner}{' '}{t('settings.signIn.onlyOwnerChange')}{/if}
 		</p>
 	</SettingsCard>
 

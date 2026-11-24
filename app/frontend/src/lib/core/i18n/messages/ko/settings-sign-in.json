@@ -138,5 +138,9 @@
 	"settings.signIn.forgotOn": "로그인 페이지에 비밀번호를 잊으셨나요? 표시",
 	"settings.signIn.forgotNote": "소유자는 서버 로그에서 일회용 코드를 받습니다. 모두 싱글 사인온으로 로그인한다면 끄세요. reset-owner 명령은 계속 작동합니다.",
 	"settings.signIn.forgotShown": "비밀번호를 잊으셨나요? 켜짐",
-	"settings.signIn.forgotHidden": "비밀번호를 잊으셨나요? 꺼짐"
+	"settings.signIn.forgotHidden": "비밀번호를 잊으셨나요? 꺼짐",
+	"settings.signIn.joinAutoTitle": "새 사용자",
+	"settings.signIn.joinAutoOn": "새 사용자의 요청을 기다리지 않고 승인",
+	"settings.signIn.joinAutoNote": "외부 로그인(Plex, Jellyfin, Emby, 싱글 사인온)으로 가입한 사람은 기다리지 않고 승인되는 요청 권한으로 시작합니다. 어린이와 이미 있는 사람은 바뀌지 않습니다.",
+	"settings.signIn.joinAutoSaved": "새 사용자 설정을 저장했습니다"
 }

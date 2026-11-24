@@ -138,5 +138,9 @@
 	"settings.signIn.forgotOn": "サインインページに「パスワードをお忘れですか?」を表示",
 	"settings.signIn.forgotNote": "オーナーはサーバーログからワンタイムコードを受け取ります。全員がシングルサインオンでサインインするならオフにしてください。reset-owner コマンドは引き続き使えます。",
 	"settings.signIn.forgotShown": "「パスワードをお忘れですか?」はオン",
-	"settings.signIn.forgotHidden": "「パスワードをお忘れですか?」はオフ"
+	"settings.signIn.forgotHidden": "「パスワードをお忘れですか?」はオフ",
+	"settings.signIn.joinAutoTitle": "新しいメンバー",
+	"settings.signIn.joinAutoOn": "新しいメンバーのリクエストを待たずに承認する",
+	"settings.signIn.joinAutoNote": "外部サインイン（Plex、Jellyfin、Emby、シングルサインオン）で参加した人は、待たずに承認されるリクエストの権限で始まります。子どもと、すでにいる人は変わりません。",
+	"settings.signIn.joinAutoSaved": "新しいメンバーの設定を保存しました"
 }

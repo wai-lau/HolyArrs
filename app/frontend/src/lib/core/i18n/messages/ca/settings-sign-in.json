@@ -138,5 +138,9 @@
 	"settings.signIn.forgotOn": "Mostra Has oblidat la contrasenya? a la pàgina d'inici de sessió",
 	"settings.signIn.forgotNote": "El propietari rep un codi d'un sol ús del registre del servidor. Apaga-ho si tothom entra amb inici de sessió únic. L'ordre reset-owner continua funcionant.",
 	"settings.signIn.forgotShown": "Has oblidat la contrasenya? està activat",
-	"settings.signIn.forgotHidden": "Has oblidat la contrasenya? està desactivat"
+	"settings.signIn.forgotHidden": "Has oblidat la contrasenya? està desactivat",
+	"settings.signIn.joinAutoTitle": "Gent nova",
+	"settings.signIn.joinAutoOn": "Aprova les sol·licituds de la gent nova sense esperar",
+	"settings.signIn.joinAutoNote": "Qui s'uneix amb un inici de sessió extern (Plex, Jellyfin, Emby, inici de sessió únic) comença amb Sol·licituds aprovades sense esperar. Els nens i qui ja hi és mantenen el que tenen.",
+	"settings.signIn.joinAutoSaved": "Configuració de la gent nova desada"
 }

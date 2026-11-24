@@ -138,5 +138,9 @@
 	"settings.signIn.forgotOn": "在登录页显示“忘记密码?”",
 	"settings.signIn.forgotNote": "所有者从服务器日志获取一次性代码。如果大家都通过单点登录登录,请关闭。reset-owner 命令仍然可用。",
 	"settings.signIn.forgotShown": "“忘记密码?”已开启",
-	"settings.signIn.forgotHidden": "“忘记密码?”已关闭"
+	"settings.signIn.forgotHidden": "“忘记密码?”已关闭",
+	"settings.signIn.joinAutoTitle": "新成员",
+	"settings.signIn.joinAutoOn": "无需等待即批准新成员的请求",
+	"settings.signIn.joinAutoNote": "通过外部登录（Plex、Jellyfin、Emby、单点登录）加入的人，起步就拥有“请求无需等待即获批准”的权限。儿童和已有成员不受影响。",
+	"settings.signIn.joinAutoSaved": "已保存新成员设置"
 }

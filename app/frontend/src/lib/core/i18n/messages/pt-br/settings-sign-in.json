@@ -138,5 +138,9 @@
 	"settings.signIn.forgotOn": "Mostrar Esqueceu a senha? na página de entrada",
 	"settings.signIn.forgotNote": "O dono recebe um código de uso único no log do servidor. Desligue se as pessoas entram por login único. O comando reset-owner continua funcionando.",
 	"settings.signIn.forgotShown": "Esqueceu a senha? está ligado",
-	"settings.signIn.forgotHidden": "Esqueceu a senha? está desligado"
+	"settings.signIn.forgotHidden": "Esqueceu a senha? está desligado",
+	"settings.signIn.joinAutoTitle": "Pessoas novas",
+	"settings.signIn.joinAutoOn": "Aprovar sem espera os pedidos de pessoas novas",
+	"settings.signIn.joinAutoNote": "Quem entra por um login externo (Plex, Jellyfin, Emby, login único) começa com Pedidos aprovados sem espera. Crianças e quem já está aqui mantêm o que têm.",
+	"settings.signIn.joinAutoSaved": "Configuração de pessoas novas salva"
 }

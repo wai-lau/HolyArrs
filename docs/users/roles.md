@@ -48,7 +48,7 @@ For a child with an age limit, see [Kid accounts](kids.md).
 | Permission | What it allows | New admin | New member |
 | --- | --- | --- | --- |
 | Request titles | Make requests | Yes | Yes |
-| Requests approved without waiting | Requests skip approval | Yes | No |
+| Requests approved without waiting | Requests skip approval | Yes | No, unless [new people are approved without waiting](sign-in.md#approve-new-peoples-requests-without-waiting) |
 | Approve or turn down requests | Decide other people's requests | Yes | No |
 | Run the Library | Search, organise and manage Library work | Yes | No |
 | Change settings | Open and change ordinary settings | No | No |

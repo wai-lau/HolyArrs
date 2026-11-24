@@ -138,5 +138,9 @@
 	"settings.signIn.forgotOn": "Näytä Unohtuiko salasana? kirjautumissivulla",
 	"settings.signIn.forgotNote": "Omistaja saa kertakäyttökoodin palvelimen lokista. Poista se käytöstä, jos kaikki kirjautuvat kertakirjautumisella. Komento reset-owner toimii silti.",
 	"settings.signIn.forgotShown": "Unohtuiko salasana? on päällä",
-	"settings.signIn.forgotHidden": "Unohtuiko salasana? on pois"
+	"settings.signIn.forgotHidden": "Unohtuiko salasana? on pois",
+	"settings.signIn.joinAutoTitle": "Uudet ihmiset",
+	"settings.signIn.joinAutoOn": "Hyväksy uusien ihmisten pyynnöt odottamatta",
+	"settings.signIn.joinAutoNote": "Ulkoisella kirjautumisella (Plex, Jellyfin, Emby, kertakirjautuminen) liittyvät aloittavat oikeudella Pyynnöt hyväksytään odottamatta. Lapset ja jo mukana olevat pitävät nykyiset oikeutensa.",
+	"settings.signIn.joinAutoSaved": "Uusien ihmisten asetus tallennettu"
 }

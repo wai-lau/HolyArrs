@@ -138,5 +138,9 @@
 	"settings.signIn.forgotOn": "نمایش رمز را فراموش کرده‌اید؟ در صفحهٔ ورود",
 	"settings.signIn.forgotNote": "مالک یک کد یک‌بارمصرف از گزارش سرور می‌گیرد. اگر همه با ورود یکپارچه وارد می‌شوند، خاموشش کنید. فرمان reset-owner همچنان کار می‌کند.",
 	"settings.signIn.forgotShown": "رمز را فراموش کرده‌اید؟ روشن است",
-	"settings.signIn.forgotHidden": "رمز را فراموش کرده‌اید؟ خاموش است"
+	"settings.signIn.forgotHidden": "رمز را فراموش کرده‌اید؟ خاموش است",
+	"settings.signIn.joinAutoTitle": "افراد جدید",
+	"settings.signIn.joinAutoOn": "تأیید درخواست‌های افراد جدید بدون انتظار",
+	"settings.signIn.joinAutoNote": "افرادی که با ورود بیرونی (Plex، Jellyfin، Emby، ورود یکپارچه) می‌پیوندند، با «درخواست‌های تأییدشده بدون انتظار» شروع می‌کنند. کودکان و کسانی که از قبل هستند تغییری نمی‌کنند.",
+	"settings.signIn.joinAutoSaved": "تنظیم افراد جدید ذخیره شد"
 }

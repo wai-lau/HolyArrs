@@ -64,6 +64,15 @@ Keep a working owner password. If the provider is down, password sign-in still w
 
 Off by default. On, anyone the provider signs in gets an account, so HolyArrs asks you to confirm. Newcomers join as members who can only ask, unless roles from groups say admin. Single sign-on never makes an owner.
 
+### Approve new people's requests without waiting
+
+Off by default. New people who join through Plex, Jellyfin, Emby, single sign-on or trusted proxy sign-in start as members who can only ask, and someone approves each request. Turn on **Settings > Sign-in and security > New people** and they start with **Requests approved without waiting** as well.
+
+- It applies only when the account is made. People already here keep what they have, and turning the switch off later does not take it back from anyone.
+- Kids who join (Plex managed users, Jellyfin or Emby users the server limits) stay ask-only.
+- It never adds 4K approval, approving others or any admin power. Grant those per person under **Settings > Users and roles**.
+- It covers joining that you set up with environment variables too, since the switch is a Settings choice with no environment variable.
+
 ### Roles from groups
 
 Set roles in your sign-in service instead of in HolyArrs. In **Groups claim**, type the claim your provider puts groups in, often `groups`. In **Roles from groups**, write each group and its role, like `admins=admin, family=member`.

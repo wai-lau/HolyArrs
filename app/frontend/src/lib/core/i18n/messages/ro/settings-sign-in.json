@@ -138,5 +138,9 @@
 	"settings.signIn.forgotOn": "Arată Ai uitat parola? pe pagina de conectare",
 	"settings.signIn.forgotNote": "Proprietarul primește un cod de unică folosință din jurnalul serverului. Oprește-l dacă toți se conectează prin autentificare unică. Comanda reset-owner merge în continuare.",
 	"settings.signIn.forgotShown": "Ai uitat parola? e pornit",
-	"settings.signIn.forgotHidden": "Ai uitat parola? e oprit"
+	"settings.signIn.forgotHidden": "Ai uitat parola? e oprit",
+	"settings.signIn.joinAutoTitle": "Oameni noi",
+	"settings.signIn.joinAutoOn": "Aprobă fără așteptare cererile oamenilor noi",
+	"settings.signIn.joinAutoNote": "Cei care se alătură printr-o autentificare externă (Plex, Jellyfin, Emby, autentificare unică) încep cu Cereri aprobate fără așteptare. Copiii și cei care sunt deja aici păstrează ce au.",
+	"settings.signIn.joinAutoSaved": "Setarea pentru oamenii noi a fost salvată"
 }
