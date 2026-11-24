@@ -21,6 +21,7 @@ import (
 
 	"github.com/HolyArrs/holyarrs/app/backend/internal/core/database"
 	domain "github.com/HolyArrs/holyarrs/app/backend/internal/core/model"
+	"github.com/HolyArrs/holyarrs/app/backend/internal/core/webserver"
 )
 
 // "Forgot password?" on the sign-in page: the owner proves access to the
@@ -38,18 +39,19 @@ const EnvResetOwner = "HOLYARRS_RESET_OWNER"
 
 // Code rules.
 const (
-	ResetCodeLife    = 15 * time.Minute
-	ResetCodeEnvLife = 30 * time.Minute
-	resetCodeTries   = 5  // wrong tries end a sign-in page code
-	resetHostTries   = 25 // a host code takes more, so strangers cannot easily end it
-	resetPerIP       = time.Minute
-	resetPerHour     = 5
-	resetTryPerMin   = 10                      // check/finish requests per address a minute
-	resetWrongPerIP  = 5                       // wrong codes per address per window
-	resetWrongWindow = 15 * time.Minute        // window for wrong codes
-	keyResetCode     = "owner_reset_code"      // {hash, expires, tries}, from the sign-in page
-	keyResetHostCode = "owner_reset_code_host" // same, from reset-owner --code or the env var
-	keyResetLink     = "owner_reset_link"      // "false" hides the link
+	ResetCodeLife      = 15 * time.Minute
+	ResetCodeEnvLife   = 30 * time.Minute
+	resetCodeTries     = 5  // wrong tries end a sign-in page code
+	resetHostTries     = 25 // a host code takes more, so strangers cannot easily end it
+	resetPerIP         = time.Minute
+	resetPerHour       = 5
+	resetTryPerMin     = 10                      // check/finish requests per address a minute
+	resetWrongPerIP    = 5                       // wrong codes per address per window
+	resetWrongWindow   = 15 * time.Minute        // window for wrong codes
+	keyResetCode       = "owner_reset_code"      // {hash, expires, tries}, from the sign-in page
+	keyResetHostCode   = "owner_reset_code_host" // same, from reset-owner --code or the env var
+	keyResetLink       = "owner_reset_link"      // "false" hides the link
+	keyJoinAutoApprove = "join_auto_approve"     // "true": new outside joiners skip request approval
 )
 
 // codeAlphabet has no look-alike characters (0/O, 1/I/L).
@@ -362,6 +364,23 @@ func (a *Auth) expireResetCode(ctx context.Context) {
 // resetLinkOn says whether the sign-in page shows "Forgot password?".
 func (a *Auth) resetLinkOn(ctx context.Context) bool {
 	return a.signInSetting(ctx, keyResetLink) != "false"
+}
+
+// joinAutoApprove says whether new people from an outside sign-in start with
+// requests approved without waiting. Off unless the owner turned it on.
+func (a *Auth) joinAutoApprove(ctx context.Context) bool {
+	return a.signInSetting(ctx, keyJoinAutoApprove) == "true"
+}
+
+// joinPerms are the permissions a new outside-sign-in member starts with:
+// ask, plus auto-approve when the owner said so. Never 4K auto-approve: the
+// owner grants that person by person. Kids never get it (see linkedUser).
+func (a *Auth) joinPerms(ctx context.Context) []webserver.Perm {
+	perms := webserver.DefaultPerms(webserver.RoleMember)
+	if a.joinAutoApprove(ctx) {
+		perms = append(perms, webserver.PermAutoApprove)
+	}
+	return perms
 }
 
 // startResetFromEnv prints a code at start-up when EnvResetOwner is 1.

@@ -41,7 +41,7 @@ These decide where approved titles go and which Pick rules they get.
 
 ### Approvals
 
-**Approve requests automatically** has one switch per person, the owner included. Off means that person's requests wait for an approver. Titles from a Plex watchlist follow the switch of the account they came in through, so with the owner's switch off, the owner's watchlist titles wait too. The owner starts on; everyone else keeps their own setting from **Users**.
+**Approve requests automatically** has one switch per person, the owner included. Off means that person's requests wait for an approver. Titles from a Plex watchlist follow the switch of the account they came in through, so with the owner's switch off, the owner's watchlist titles wait too. The owner starts on; everyone else keeps their own setting from **Users**. To start new people who join through an outside sign-in with it on, see [Approve new people's requests without waiting](../users/sign-in.md#approve-new-peoples-requests-without-waiting).
 
 ### What people can ask for
 

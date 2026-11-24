@@ -138,5 +138,9 @@
 	"settings.signIn.forgotOn": "Afficher Mot de passe oublié ? sur la page de connexion",
 	"settings.signIn.forgotNote": "Le propriétaire reçoit un code à usage unique dans le journal du serveur. Désactivez-le si la connexion passe par l'authentification unique. La commande reset-owner fonctionne toujours.",
 	"settings.signIn.forgotShown": "Mot de passe oublié ? est activé",
-	"settings.signIn.forgotHidden": "Mot de passe oublié ? est désactivé"
+	"settings.signIn.forgotHidden": "Mot de passe oublié ? est désactivé",
+	"settings.signIn.joinAutoTitle": "Nouvelles personnes",
+	"settings.signIn.joinAutoOn": "Approuver sans attendre les demandes des nouvelles personnes",
+	"settings.signIn.joinAutoNote": "Les personnes qui rejoignent via une connexion externe (Plex, Jellyfin, Emby, connexion unique) commencent avec Demandes approuvées sans attendre. Les enfants et les personnes déjà là gardent ce qu'ils ont.",
+	"settings.signIn.joinAutoSaved": "Réglage des nouvelles personnes enregistré"
 }

@@ -138,5 +138,9 @@
 	"settings.signIn.forgotOn": "Elfelejtett jelszó? megjelenítése a belépési oldalon",
 	"settings.signIn.forgotNote": "A tulajdonos egyszer használatos kódot kap a szerver naplójából. Kapcsold ki, ha mindenki egyszeri bejelentkezéssel lép be. A reset-owner parancs továbbra is működik.",
 	"settings.signIn.forgotShown": "Elfelejtett jelszó? bekapcsolva",
-	"settings.signIn.forgotHidden": "Elfelejtett jelszó? kikapcsolva"
+	"settings.signIn.forgotHidden": "Elfelejtett jelszó? kikapcsolva",
+	"settings.signIn.joinAutoTitle": "Új emberek",
+	"settings.signIn.joinAutoOn": "Az új emberek kéréseinek jóváhagyása várakozás nélkül",
+	"settings.signIn.joinAutoNote": "Akik külső bejelentkezéssel (Plex, Jellyfin, Emby, egyszeri bejelentkezés) csatlakoznak, a várakozás nélkül jóváhagyott kérések jogával indulnak. A gyerekek és a már itt lévők megtartják, amijük van.",
+	"settings.signIn.joinAutoSaved": "Az új emberek beállítása mentve"
 }

@@ -138,5 +138,9 @@
 	"settings.signIn.forgotOn": "Hiện Quên mật khẩu? trên trang đăng nhập",
 	"settings.signIn.forgotNote": "Chủ sở hữu nhận mã dùng một lần từ nhật ký máy chủ. Tắt nếu mọi người đăng nhập bằng đăng nhập một lần. Lệnh reset-owner vẫn hoạt động.",
 	"settings.signIn.forgotShown": "Quên mật khẩu? đang bật",
-	"settings.signIn.forgotHidden": "Quên mật khẩu? đang tắt"
+	"settings.signIn.forgotHidden": "Quên mật khẩu? đang tắt",
+	"settings.signIn.joinAutoTitle": "Người mới",
+	"settings.signIn.joinAutoOn": "Duyệt yêu cầu của người mới mà không cần chờ",
+	"settings.signIn.joinAutoNote": "Người tham gia qua đăng nhập bên ngoài (Plex, Jellyfin, Emby, đăng nhập một lần) bắt đầu với quyền Yêu cầu được duyệt mà không cần chờ. Trẻ em và người đã có sẵn không thay đổi.",
+	"settings.signIn.joinAutoSaved": "Đã lưu cài đặt người mới"
 }

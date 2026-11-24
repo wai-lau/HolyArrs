@@ -138,5 +138,9 @@
 	"settings.signIn.forgotOn": "הצגת שכחת סיסמה? בדף הכניסה",
 	"settings.signIn.forgotNote": "הבעלים מקבל קוד חד־פעמי מיומן השרת. כבה אם כולם נכנסים בכניסה אחודה. הפקודה reset-owner עדיין עובדת.",
 	"settings.signIn.forgotShown": "שכחת סיסמה? פעיל",
-	"settings.signIn.forgotHidden": "שכחת סיסמה? כבוי"
+	"settings.signIn.forgotHidden": "שכחת סיסמה? כבוי",
+	"settings.signIn.joinAutoTitle": "אנשים חדשים",
+	"settings.signIn.joinAutoOn": "אישור בקשות של אנשים חדשים ללא המתנה",
+	"settings.signIn.joinAutoNote": "אנשים שמצטרפים דרך כניסה חיצונית (Plex, Jellyfin, Emby, כניסה אחת) מתחילים עם בקשות שמאושרות ללא המתנה. ילדים ואנשים שכבר כאן שומרים על מה שיש להם.",
+	"settings.signIn.joinAutoSaved": "ההגדרה לאנשים חדשים נשמרה"
 }

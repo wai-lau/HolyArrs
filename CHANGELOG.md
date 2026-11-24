@@ -2,6 +2,10 @@
 
 All notable changes to HolyArrs are listed here. The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and versions follow [Semantic Versioning](https://semver.org/).
 
+## [Unreleased]
+### Added
+- A switch to approve new people's requests without waiting, for people who join through Plex, Jellyfin, Emby, single sign-on or a trusted proxy. Off by default.
+
 ## [1.3.1] - 2026-11-24
 ### Added
 - Plugins can be told when titles are added, downloaded or requested. ([#707](https://github.com/HolyArrs/HolyArrs/issues/707))

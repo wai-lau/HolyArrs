@@ -138,5 +138,9 @@
 	"settings.signIn.forgotOn": "Visa Glömt lösenordet? på inloggningssidan",
 	"settings.signIn.forgotNote": "Ägaren får en engångskod från serverloggen. Stäng av det om alla loggar in med enkel inloggning. Kommandot reset-owner fungerar ändå.",
 	"settings.signIn.forgotShown": "Glömt lösenordet? är på",
-	"settings.signIn.forgotHidden": "Glömt lösenordet? är av"
+	"settings.signIn.forgotHidden": "Glömt lösenordet? är av",
+	"settings.signIn.joinAutoTitle": "Nya personer",
+	"settings.signIn.joinAutoOn": "Godkänn nya personers förfrågningar utan väntan",
+	"settings.signIn.joinAutoNote": "Personer som ansluter via en extern inloggning (Plex, Jellyfin, Emby, enkel inloggning) börjar med Förfrågningar godkänns utan väntan. Barn och de som redan finns här behåller det de har.",
+	"settings.signIn.joinAutoSaved": "Inställningen för nya personer sparad"
 }

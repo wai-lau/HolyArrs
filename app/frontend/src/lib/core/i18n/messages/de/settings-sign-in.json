@@ -138,5 +138,9 @@
 	"settings.signIn.forgotOn": "Passwort vergessen? auf der Anmeldeseite zeigen",
 	"settings.signIn.forgotNote": "Der Besitzer bekommt einen Einmalcode aus dem Server-Log. Schalte es aus, wenn sich alle per Single Sign-on anmelden. Der Befehl reset-owner funktioniert weiter.",
 	"settings.signIn.forgotShown": "Passwort vergessen? ist an",
-	"settings.signIn.forgotHidden": "Passwort vergessen? ist aus"
+	"settings.signIn.forgotHidden": "Passwort vergessen? ist aus",
+	"settings.signIn.joinAutoTitle": "Neue Leute",
+	"settings.signIn.joinAutoOn": "Anfragen neuer Leute ohne Warten genehmigen",
+	"settings.signIn.joinAutoNote": "Wer über eine externe Anmeldung (Plex, Jellyfin, Emby, Single Sign-on) beitritt, startet mit „Anfragen ohne Warten genehmigt“. Kinder und wer schon da ist, behalten, was sie haben.",
+	"settings.signIn.joinAutoSaved": "Einstellung für neue Leute gespeichert"
 }

@@ -138,5 +138,9 @@
 	"settings.signIn.forgotOn": "在登入頁顯示「忘記密碼?」",
 	"settings.signIn.forgotNote": "擁有者從伺服器記錄檔取得一次性代碼。如果大家都透過單一登入登入,請關閉。reset-owner 指令仍然可用。",
 	"settings.signIn.forgotShown": "「忘記密碼?」已開啟",
-	"settings.signIn.forgotHidden": "「忘記密碼?」已關閉"
+	"settings.signIn.forgotHidden": "「忘記密碼?」已關閉",
+	"settings.signIn.joinAutoTitle": "新成員",
+	"settings.signIn.joinAutoOn": "無需等待即核准新成員的請求",
+	"settings.signIn.joinAutoNote": "透過外部登入（Plex、Jellyfin、Emby、單一登入）加入的人，一開始就擁有「請求無需等待即核准」的權限。兒童和既有成員不受影響。",
+	"settings.signIn.joinAutoSaved": "已儲存新成員設定"
 }

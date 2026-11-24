@@ -138,5 +138,9 @@
 	"settings.signIn.forgotOn": "Prikaži Zaboravljena lozinka? na stranici za prijavu",
 	"settings.signIn.forgotNote": "Vlasnik dobiva jednokratni kôd iz zapisnika poslužitelja. Isključi ako se svi prijavljuju jedinstvenom prijavom. Naredba reset-owner i dalje radi.",
 	"settings.signIn.forgotShown": "Zaboravljena lozinka? je uključeno",
-	"settings.signIn.forgotHidden": "Zaboravljena lozinka? je isključeno"
+	"settings.signIn.forgotHidden": "Zaboravljena lozinka? je isključeno",
+	"settings.signIn.joinAutoTitle": "Novi ljudi",
+	"settings.signIn.joinAutoOn": "Odobri zahtjeve novih ljudi bez čekanja",
+	"settings.signIn.joinAutoNote": "Ljudi koji se pridruže putem vanjske prijave (Plex, Jellyfin, Emby, jedinstvena prijava) počinju sa zahtjevima odobrenima bez čekanja. Djeca i oni koji su već ovdje zadržavaju što imaju.",
+	"settings.signIn.joinAutoSaved": "Postavka za nove ljude spremljena"
 }

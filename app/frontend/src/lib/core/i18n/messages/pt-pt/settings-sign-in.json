@@ -138,5 +138,9 @@
 	"settings.signIn.forgotOn": "Mostrar Esqueceu a palavra-passe? na página de início de sessão",
 	"settings.signIn.forgotNote": "O proprietário recebe um código de utilização única no registo do servidor. Desligue-o se as pessoas entram por início de sessão único. O comando reset-owner continua a funcionar.",
 	"settings.signIn.forgotShown": "Esqueceu a palavra-passe? está ligado",
-	"settings.signIn.forgotHidden": "Esqueceu a palavra-passe? está desligado"
+	"settings.signIn.forgotHidden": "Esqueceu a palavra-passe? está desligado",
+	"settings.signIn.joinAutoTitle": "Pessoas novas",
+	"settings.signIn.joinAutoOn": "Aprovar sem espera os pedidos de pessoas novas",
+	"settings.signIn.joinAutoNote": "Quem entra por um início de sessão externo (Plex, Jellyfin, Emby, início de sessão único) começa com Pedidos aprovados sem espera. As crianças e quem já cá está mantêm o que têm.",
+	"settings.signIn.joinAutoSaved": "Definição de pessoas novas guardada"
 }

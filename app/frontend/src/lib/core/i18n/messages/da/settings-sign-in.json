@@ -138,5 +138,9 @@
 	"settings.signIn.forgotOn": "Vis Glemt adgangskode? på loginsiden",
 	"settings.signIn.forgotNote": "Ejeren får en engangskode fra serverloggen. Slå det fra, hvis alle logger ind med single sign-on. Kommandoen reset-owner virker stadig.",
 	"settings.signIn.forgotShown": "Glemt adgangskode? er slået til",
-	"settings.signIn.forgotHidden": "Glemt adgangskode? er slået fra"
+	"settings.signIn.forgotHidden": "Glemt adgangskode? er slået fra",
+	"settings.signIn.joinAutoTitle": "Nye personer",
+	"settings.signIn.joinAutoOn": "Godkend nye personers anmodninger uden ventetid",
+	"settings.signIn.joinAutoNote": "Personer, der tilmelder sig via en ekstern login (Plex, Jellyfin, Emby, single sign-on), starter med Anmodninger godkendt uden ventetid. Børn og dem, der allerede er her, beholder det, de har.",
+	"settings.signIn.joinAutoSaved": "Indstilling for nye personer gemt"
 }
