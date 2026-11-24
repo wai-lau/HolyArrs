@@ -442,6 +442,8 @@
 	"mediafiles.releaseSheet.recommended": "பரிந்துரைக்கப்பட்டது",
 	"mediafiles.releaseSheet.sent": "அனுப்பப்பட்டது",
 	"mediafiles.releaseSheet.pickAnyway": "இருந்தாலும் தேர்ந்தெடு",
+	"mediafiles.releaseSheet.forceDownload": "கட்டாயப் பதிவிறக்கம்",
+	"mediafiles.releaseSheet.mayNotBe": "இது நீங்கள் தேடியது இல்லாமல் இருக்கலாம். கட்டாயப் பதிவிறக்கம் இதை எப்படியும் அனுப்பும், நீங்கள் தேடிய பருவத்தின் ஒவ்வொரு எபிசோடுக்கும் அல்லது ஆல்பத்தின் ஒவ்வொரு டிராக்குக்கும்.",
 	"mediafiles.releaseSheet.pick": "தேர்ந்தெடு",
 	"mediafiles.releaseSheet.neverPick": "{name} ஐ ஒருபோதும் தேர்ந்தெடுக்காதே",
 	"mediafiles.releaseSheet.neverPickThis": "இதை ஒருபோதும் தேர்ந்தெடுக்காதே",

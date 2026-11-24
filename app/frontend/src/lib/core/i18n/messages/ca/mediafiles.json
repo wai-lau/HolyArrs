@@ -442,6 +442,8 @@
 	"mediafiles.releaseSheet.recommended": "Recomanat",
 	"mediafiles.releaseSheet.sent": "Enviat",
 	"mediafiles.releaseSheet.pickAnyway": "Tria'l igualment",
+	"mediafiles.releaseSheet.forceDownload": "Força la baixada",
+	"mediafiles.releaseSheet.mayNotBe": "Potser no és el que buscaves. Força la baixada ho envia igualment, a tots els episodis de la temporada o a totes les pistes de l'àlbum que has cercat.",
 	"mediafiles.releaseSheet.pick": "Tria",
 	"mediafiles.releaseSheet.neverPick": "No triïs mai {name}",
 	"mediafiles.releaseSheet.neverPickThis": "No triïs mai aquest",

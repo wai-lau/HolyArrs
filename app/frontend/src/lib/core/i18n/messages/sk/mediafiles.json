@@ -442,6 +442,8 @@
 	"mediafiles.releaseSheet.recommended": "Odporúčané",
 	"mediafiles.releaseSheet.sent": "Odoslané",
 	"mediafiles.releaseSheet.pickAnyway": "Vybrať aj tak",
+	"mediafiles.releaseSheet.forceDownload": "Vynútiť stiahnutie",
+	"mediafiles.releaseSheet.mayNotBe": "Nemusí to byť to, čo ste hľadali. Vynútené stiahnutie to aj tak pošle ku každej epizóde hľadanej série alebo ku každej skladbe hľadaného albumu.",
 	"mediafiles.releaseSheet.pick": "Vybrať",
 	"mediafiles.releaseSheet.neverPick": "Nikdy nevyberať {name}",
 	"mediafiles.releaseSheet.neverPickThis": "Nikdy nevyberať toto",

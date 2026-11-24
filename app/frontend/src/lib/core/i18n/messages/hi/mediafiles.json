@@ -443,6 +443,8 @@
 	"mediafiles.releaseSheet.recommended": "सुझाई गई",
 	"mediafiles.releaseSheet.sent": "भेजी गई",
 	"mediafiles.releaseSheet.pickAnyway": "फिर भी चुनें",
+	"mediafiles.releaseSheet.forceDownload": "ज़बरदस्ती डाउनलोड",
+	"mediafiles.releaseSheet.mayNotBe": "यह शायद वह नहीं है जो आपने खोजा था। ज़बरदस्ती डाउनलोड इसे फिर भी भेज देता है, आपके खोजे सीज़न के हर एपिसोड पर या एल्बम के हर ट्रैक पर।",
 	"mediafiles.releaseSheet.pick": "चुनें",
 	"mediafiles.releaseSheet.neverPick": "{name} कभी न चुनें",
 	"mediafiles.releaseSheet.neverPickThis": "इसे कभी न चुनें",

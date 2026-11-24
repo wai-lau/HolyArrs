@@ -442,6 +442,8 @@
 	"mediafiles.releaseSheet.recommended": "Ieteicams",
 	"mediafiles.releaseSheet.sent": "Nosūtīts",
 	"mediafiles.releaseSheet.pickAnyway": "Tomēr izvēlēties",
+	"mediafiles.releaseSheet.forceDownload": "Piespiedu lejupielāde",
+	"mediafiles.releaseSheet.mayNotBe": "Tas var nebūt tas, ko meklējāt. Piespiedu lejupielāde to tomēr nosūta katrai meklētās sezonas epizodei vai katram meklētā albuma ierakstam.",
 	"mediafiles.releaseSheet.pick": "Izvēlēties",
 	"mediafiles.releaseSheet.neverPick": "Nekad neizvēlēties: {name}",
 	"mediafiles.releaseSheet.neverPickThis": "Nekad neizvēlēties šo",

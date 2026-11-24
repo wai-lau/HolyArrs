@@ -442,6 +442,8 @@
 	"mediafiles.releaseSheet.recommended": "Disarankan",
 	"mediafiles.releaseSheet.sent": "Terkirim",
 	"mediafiles.releaseSheet.pickAnyway": "Tetap pilih",
+	"mediafiles.releaseSheet.forceDownload": "Paksa unduh",
+	"mediafiles.releaseSheet.mayNotBe": "Ini mungkin bukan yang Anda cari. Paksa unduh tetap mengirimnya, ke setiap episode musim atau setiap trek album yang Anda cari.",
 	"mediafiles.releaseSheet.pick": "Pilih",
 	"mediafiles.releaseSheet.neverPick": "Jangan pernah pilih {name}",
 	"mediafiles.releaseSheet.neverPickThis": "Jangan pernah pilih yang ini",

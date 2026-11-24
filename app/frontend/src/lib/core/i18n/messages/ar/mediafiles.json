@@ -443,6 +443,8 @@
 	"mediafiles.releaseSheet.recommended": "موصى به",
 	"mediafiles.releaseSheet.sent": "أُرسل",
 	"mediafiles.releaseSheet.pickAnyway": "اختره على أي حال",
+	"mediafiles.releaseSheet.forceDownload": "فرض التنزيل",
+	"mediafiles.releaseSheet.mayNotBe": "قد لا يكون هذا ما بحثت عنه. يرسله فرض التنزيل على أي حال، إلى كل حلقة من الموسم أو كل مقطع من الألبوم الذي بحثت عنه.",
 	"mediafiles.releaseSheet.pick": "اختر",
 	"mediafiles.releaseSheet.neverPick": "لا تختر {name} أبدًا",
 	"mediafiles.releaseSheet.neverPickThis": "لا تختر هذا أبدًا",

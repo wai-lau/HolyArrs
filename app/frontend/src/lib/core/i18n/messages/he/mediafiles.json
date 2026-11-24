@@ -442,6 +442,8 @@
 	"mediafiles.releaseSheet.recommended": "מומלץ",
 	"mediafiles.releaseSheet.sent": "נשלח",
 	"mediafiles.releaseSheet.pickAnyway": "בחירה בכל זאת",
+	"mediafiles.releaseSheet.forceDownload": "כפה הורדה",
+	"mediafiles.releaseSheet.mayNotBe": "ייתכן שזה לא מה שחיפשת. כפיית הורדה שולחת את זה בכל זאת, לכל פרק בעונה או לכל רצועה באלבום שחיפשת.",
 	"mediafiles.releaseSheet.pick": "בחירה",
 	"mediafiles.releaseSheet.neverPick": "לעולם לא לבחור את {name}",
 	"mediafiles.releaseSheet.neverPickThis": "לעולם לא לבחור בזה",

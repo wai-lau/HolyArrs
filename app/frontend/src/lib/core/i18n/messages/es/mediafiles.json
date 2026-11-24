@@ -443,6 +443,8 @@
 	"mediafiles.releaseSheet.recommended": "Recomendado",
 	"mediafiles.releaseSheet.sent": "Enviado",
 	"mediafiles.releaseSheet.pickAnyway": "Elegir de todos modos",
+	"mediafiles.releaseSheet.forceDownload": "Forzar descarga",
+	"mediafiles.releaseSheet.mayNotBe": "Puede que no sea lo que buscabas. Forzar descarga lo envía igualmente, a todos los episodios de la temporada o a todas las pistas del álbum que buscaste.",
 	"mediafiles.releaseSheet.pick": "Elegir",
 	"mediafiles.releaseSheet.neverPick": "No elegir nunca {name}",
 	"mediafiles.releaseSheet.neverPickThis": "No elegir nunca este",

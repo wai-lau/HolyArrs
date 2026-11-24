@@ -443,6 +443,8 @@
 	"mediafiles.releaseSheet.recommended": "Рекомендуется",
 	"mediafiles.releaseSheet.sent": "Отправлено",
 	"mediafiles.releaseSheet.pickAnyway": "Всё равно выбрать",
+	"mediafiles.releaseSheet.forceDownload": "Скачать принудительно",
+	"mediafiles.releaseSheet.mayNotBe": "Возможно, это не то, что вы искали. Принудительное скачивание всё равно отправит это, в каждую серию искомого сезона или каждый трек искомого альбома.",
 	"mediafiles.releaseSheet.pick": "Выбрать",
 	"mediafiles.releaseSheet.neverPick": "Больше не выбирать {name}",
 	"mediafiles.releaseSheet.neverPickThis": "Больше не выбирать этот",
