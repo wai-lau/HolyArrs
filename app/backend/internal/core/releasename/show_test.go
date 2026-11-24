@@ -29,7 +29,7 @@ type ShowCase struct {
 func sn(seasons []int, eps ...int) ShowNumbers { return ShowNumbers{Seasons: seasons, Episodes: eps} }
 func s1(s int) []int                           { return []int{s} }
 
-// ShowCases holds S01 to S36, A01 to A18 and T27.
+// ShowCases holds S01 to S36, A01 to A18, A19 to A24, A50 to A58 and T27.
 var ShowCases = []ShowCase{
 	{ID: "S01", Name: "Copper.Valley.S01E01.1080p.WEB-DL.DDP5.1.H.264-QUILL", Kind: KindEpisode, Title: "Copper Valley", Show: sn(s1(1), 1), Resolution: 1080, Source: "web_dl", Codec: "h264", Audio: "eac3 5.1", Group: "QUILL"},
 	{ID: "S02", Name: "Copper.Valley.S01E02.720p.HDTV.x264-OXBOW", Kind: KindEpisode, Title: "Copper Valley", Show: sn(s1(1), 2), Resolution: 720, Source: "tv", Codec: "h264", Group: "OXBOW"},
@@ -102,6 +102,29 @@ var ShowCases = []ShowCase{
 	{ID: "A44", Name: "[Grp] 86 Eighty-Six 86-エイティシックス - 05 [1080p]", Kind: KindAbsolute, Title: "86 Eighty-Six", Show: ShowNumbers{Absolute: []int{5}}, Resolution: 1080, Source: "web_dl", SrcConf: Likely, Group: "Grp"},
 	{ID: "A45", Name: "[Grp] Mob Psycho 100 モブサイコ100 - 05 [1080p]", Kind: KindAbsolute, Title: "Mob Psycho 100", Show: ShowNumbers{Absolute: []int{5}}, Resolution: 1080, Source: "web_dl", SrcConf: Likely, Group: "Grp"},
 	{ID: "A46", Name: "[Grp] Fate/ゼロ Fate Zero - 05 [1080p]", Kind: KindAbsolute, Title: "Fate Zero", Show: ShowNumbers{Absolute: []int{5}}, Resolution: 1080, Source: "web_dl", SrcConf: Likely, Group: "Grp"},
+
+	// Fansub names whose title sits in its own bracket after the group:
+	// [Group][Title][01-12][tags]. The indexer turned the hyphen of the range
+	// into a space.
+	{ID: "A60", Name: "[DBD Raws][新吊带袜天使 New PANTY STOCKING with GARTERBELT][01 13TV全集 特典映像][1080P][BDRip][HEVC 10bit][简繁日双语外挂][FLAC AC3][MKV](新しいパンティ＆ストッキングwithガーターベルト)", Hints: Hints{Show: true}, Kind: KindAbsolute, Title: "New PANTY STOCKING with GARTERBELT", Show: ShowNumbers{Absolute: span(1, 13)}, Resolution: 1080, Source: "bluray", Codec: "h265", Audio: "flac", Group: "DBD Raws"},
+	{ID: "A61", Name: "[Hoshizora][Starfall Kitchen][01-12][1080P][WEB-DL]", Kind: KindAbsolute, Title: "Starfall Kitchen", Show: ShowNumbers{Absolute: span(1, 12)}, Resolution: 1080, Source: "web_dl", Group: "Hoshizora"},
+	{ID: "A62", Name: "[Hoshizora][Starfall Kitchen][01 12][1080P][WEB-DL]", Kind: KindAbsolute, Title: "Starfall Kitchen", Show: ShowNumbers{Absolute: span(1, 12)}, Resolution: 1080, Source: "web_dl", Group: "Hoshizora"},
+	{ID: "A63", Name: "[Hoshizora][Starfall Kitchen][05v2][1080P][HEVC]", Kind: KindAbsolute, Title: "Starfall Kitchen", Show: ShowNumbers{Absolute: []int{5}}, Resolution: 1080, Source: "web_dl", SrcConf: Likely, Codec: "h265", Group: "Hoshizora", Fix: 1},
+	{ID: "A64", Name: "[Kumomaru][風の翼 Kaze no Tsubasa][03][1080P]", Kind: KindAbsolute, Title: "Kaze no Tsubasa", Show: ShowNumbers{Absolute: []int{3}}, Resolution: 1080, Source: "web_dl", SrcConf: Likely, Group: "Kumomaru"},
+	{ID: "A65", Name: "[Kumomaru][風の翼][03][1080P]", Kind: KindAbsolute, Title: "風の翼", Show: ShowNumbers{Absolute: []int{3}}, Resolution: 1080, Source: "web_dl", SrcConf: Likely, Group: "Kumomaru"},
+
+	// The episode bracket may carry tags after the number, and a second number
+	// there is a range end only when it is not a tag. Tag-only brackets before
+	// the episode bracket are skipped.
+	{ID: "A50", Name: "[Hoshizora][Starfall Kitchen][03 1080P][WEB-DL]", Kind: KindAbsolute, Title: "Starfall Kitchen", Show: ShowNumbers{Absolute: []int{3}}, Resolution: 1080, Source: "web_dl", Group: "Hoshizora"},
+	{ID: "A51", Name: "[Hoshizora][Starfall Kitchen][03 2160p][WEB-DL]", Kind: KindAbsolute, Title: "Starfall Kitchen", Show: ShowNumbers{Absolute: []int{3}}, Resolution: 2160, Source: "web_dl", Group: "Hoshizora"},
+	{ID: "A52", Name: "[Hoshizora][Starfall Kitchen][3 1280x720][WEB-DL]", Hints: Hints{Show: true}, Kind: KindAbsolute, Title: "Starfall Kitchen", Show: ShowNumbers{Absolute: []int{3}}, Resolution: 720, Source: "web_dl", Group: "Hoshizora"},
+	{ID: "A53", Name: "[Hoshizora][Starfall Kitchen][3 1920x1080][WEB-DL]", Hints: Hints{Show: true}, Kind: KindAbsolute, Title: "Starfall Kitchen", Show: ShowNumbers{Absolute: []int{3}}, Resolution: 1080, Source: "web_dl", Group: "Hoshizora"},
+	{ID: "A54", Name: "[Hoshizora][Starfall Kitchen][03 BD][1080P]", Kind: KindAbsolute, Title: "Starfall Kitchen", Show: ShowNumbers{Absolute: []int{3}}, Resolution: 1080, Source: "bluray", Group: "Hoshizora"},
+	{ID: "A55", Name: "[Hoshizora][Starfall Kitchen][03 5.1][1080P]", Kind: KindAbsolute, Title: "Starfall Kitchen", Show: ShowNumbers{Absolute: []int{3}}, Resolution: 1080, Source: "web_dl", SrcConf: Likely, Audio: "5.1", Group: "Hoshizora"},
+	{ID: "A56", Name: "[Hoshizora][Starfall Kitchen][03 4K][WEB-DL]", Kind: KindAbsolute, Title: "Starfall Kitchen", Show: ShowNumbers{Absolute: []int{3}}, Resolution: 2160, Source: "web_dl", Group: "Hoshizora"},
+	{ID: "A57", Name: "[Hoshizora][Starfall Kitchen][1080p][01][WEB-DL]", Kind: KindAbsolute, Title: "Starfall Kitchen", Show: ShowNumbers{Absolute: []int{1}}, Resolution: 1080, Source: "web_dl", Group: "Hoshizora"},
+	{ID: "A58", Name: "[Hoshizora][Starfall Kitchen][10bit][01][1080p]", Kind: KindAbsolute, Title: "Starfall Kitchen", Show: ShowNumbers{Absolute: []int{1}}, Resolution: 1080, Source: "web_dl", SrcConf: Likely, Group: "Hoshizora"},
 
 	{ID: "T27", Name: "Unit 24 (2008) S01E01 1080p BluRay x264-OXBOW", Kind: KindEpisode, Title: "Unit 24", Year: 2008, Show: sn(s1(1), 1), Resolution: 1080, Source: "bluray", Codec: "h264", Group: "OXBOW"},
 }
@@ -287,5 +310,44 @@ func TestAmpWordKept(t *testing.T) {
 		if p.Title.Value != c.title || p.Group.Value != c.group {
 			t.Errorf("%s %s: title %q group %q, want %q %q", c.id, c.in, p.Title.Value, p.Group.Value, c.title, c.group)
 		}
+	}
+}
+
+// A bracket that holds only a resolution, a year or a codec is a tag, not
+// the episode numbers of a [Group][Title][01] name, so such names stay as
+// they were read before. A number that is a resolution or codec name, a
+// range that runs backwards, and a bare number on a movie search are no
+// episodes either.
+func TestBracketTitleNeedsEpisodeBracket(t *testing.T) {
+	for _, c := range []struct {
+		name string
+		h    Hints
+	}{
+		{"[Kumomaru][Starfall Kitchen][1080P][WEB-DL]", Hints{Show: true}},
+		{"[Kumomaru][Starfall Kitchen][2019][1080P]", Hints{Show: true}},
+		{"[Kumomaru][Starfall Kitchen][1080 x264][WEB-DL]", Hints{Show: true}},
+		{"[Kumomaru][Starfall Kitchen][720][1080p]", Hints{Show: true}},
+		{"[Kumomaru][Starfall Kitchen][264][1080p]", Hints{Show: true}},
+		{"[Kumomaru][Starfall Kitchen][265][1080p]", Hints{Show: true}},
+		{"[Kumomaru][Starfall Kitchen][12-01][1080p]", Hints{Show: true}},
+		{"[Kumomaru][Starfall Kitchen][2][1080p]", Hints{}},
+	} {
+		if p := Parse(c.name, c.h); p.Show != nil && len(p.Show.Absolute) > 0 && p.Title.Value == "Starfall Kitchen" {
+			t.Errorf("%s: read as episodes %+v", c.name, p.Show)
+		}
+	}
+}
+
+// [Group][Title][2][1080p] is a show only when the search is for a show or the
+// number is zero-padded or a range.
+func TestBracketTitleShowHint(t *testing.T) {
+	if p := Parse("[Kumomaru][Starfall Kitchen][2][1080p]", Hints{Show: true}); p.Show == nil || !slices.Equal(p.Show.Absolute, []int{2}) {
+		t.Errorf("show search: %+v", p.Show)
+	}
+	if p := Parse("[Kumomaru][Starfall Kitchen][02][1080p]", Hints{}); p.Show == nil || !slices.Equal(p.Show.Absolute, []int{2}) {
+		t.Errorf("zero-padded: %+v", p.Show)
+	}
+	if p := Parse("[Kumomaru][Starfall Kitchen][05 12][1080p]", Hints{}); p.Show == nil || !slices.Equal(p.Show.Absolute, span(5, 12)) {
+		t.Errorf("range: %+v", p.Show)
 	}
 }
