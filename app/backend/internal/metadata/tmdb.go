@@ -351,7 +351,11 @@ func (t *TMDB) fetch(ctx context.Context, u string) ([]byte, error) {
 		if err != nil {
 			outcome = outbound.HTTPOutcome(0, err, ctx)
 			why := ErrServiceUnavailable
-			if timedOut(ctx, rctx) {
+			// The attempt's own clock, or the client's (its Timeout may be
+			// shorter than the attempt: 20 s against 25 s): either way the
+			// server was slow, not down. A connect timeout is not this: it
+			// is not a DeadlineExceeded.
+			if timedOut(ctx, rctx) || (ctx.Err() == nil && errors.Is(err, context.DeadlineExceeded)) {
 				outcome, why = outbound.Canceled, ErrServiceSlow // slow, or our own Gate's wait: not down
 			}
 			cancel()
