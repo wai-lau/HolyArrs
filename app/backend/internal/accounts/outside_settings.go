@@ -108,6 +108,7 @@ func (a *Auth) getSettings(w http.ResponseWriter, r *http.Request) {
 		"trusted_proxies_fixed": a.fixedProxyList(),
 		keyRequireAdmin2FA:      a.requireAdmin2FA.Load(),
 		keyResetLink:            a.resetLinkOn(ctx),
+		keyJoinAutoApprove:      a.joinAutoApprove(ctx),
 		keyMinLength:            MinPasswordLength(ctx, a.s.Read()),
 		ProviderPlex:            a.way(ctx, ProviderPlex),
 		ProviderJellyfin:        a.way(ctx, ProviderJellyfin),
@@ -142,10 +143,13 @@ func (a *Auth) putSettings(w http.ResponseWriter, r *http.Request) {
 		Proxies       *[]string `json:"trusted_proxies"`
 		RequireAdmin  *bool     `json:"require_two_factor_admins"`
 		ResetLink     *bool     `json:"owner_reset_link"`
-		MinPassword   *int      `json:"min_password_length"`
-		Plex          *WayView  `json:"plex"`
-		Jellyfin      *WayView  `json:"jellyfin"`
-		Emby          *WayView  `json:"emby"`
+		// JoinAutoApprove: new people from outside sign-in start with
+		// requests approved without waiting.
+		JoinAutoApprove *bool    `json:"join_auto_approve"`
+		MinPassword     *int     `json:"min_password_length"`
+		Plex            *WayView `json:"plex"`
+		Jellyfin        *WayView `json:"jellyfin"`
+		Emby            *WayView `json:"emby"`
 		// AllowedHosts are the host names saved in Settings; names from
 		// HOLYARRS_ALLOWED_HOSTS are not listed and stay.
 		AllowedHosts *[]string `json:"allowed_hosts"`
@@ -155,7 +159,7 @@ func (a *Auth) putSettings(w http.ResponseWriter, r *http.Request) {
 	}
 	if err := json.NewDecoder(http.MaxBytesReader(w, r.Body, 16<<10)).Decode(&body); err != nil ||
 		(body.SkipLocal == nil && body.LocalNets == nil && body.LocalPerson == nil && !body.AddHomeRanges && !body.AddCGNAT && body.Proxies == nil &&
-			body.RequireAdmin == nil && body.ResetLink == nil && body.MinPassword == nil && body.Plex == nil && body.Jellyfin == nil && body.Emby == nil && body.AllowedHosts == nil) {
+			body.RequireAdmin == nil && body.ResetLink == nil && body.JoinAutoApprove == nil && body.MinPassword == nil && body.Plex == nil && body.Jellyfin == nil && body.Emby == nil && body.AllowedHosts == nil) {
 		fail(w, http.StatusBadRequest, `send {"skip_login_local_network": true|false, "local_networks": ["192.168.1.0/24"], "local_person": 0, "add_home_ranges": true, "add_cgnat": true, "trusted_proxies": ["172.18.0.2"], "require_two_factor_admins": true|false, "min_password_length": 4..64, "plex": {...}, "jellyfin": {...}, "emby": {...}}`)
 		return
 	}
@@ -240,6 +244,9 @@ func (a *Auth) putSettings(w http.ResponseWriter, r *http.Request) {
 	}
 	if body.ResetLink != nil {
 		set[settingsGroup+"/"+signInPrefix+keyResetLink] = strconv.FormatBool(*body.ResetLink)
+	}
+	if body.JoinAutoApprove != nil {
+		set[settingsGroup+"/"+signInPrefix+keyJoinAutoApprove] = strconv.FormatBool(*body.JoinAutoApprove)
 	}
 	if body.MinPassword != nil {
 		if *body.MinPassword < MinPassword || *body.MinPassword > MaxMinPassword {

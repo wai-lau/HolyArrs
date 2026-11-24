@@ -138,5 +138,9 @@
 	"settings.signIn.forgotOn": "Näita sisselogimislehel Unustasid parooli?",
 	"settings.signIn.forgotNote": "Omanik saab serveri logist ühekordse koodi. Lülita välja, kui kõik logivad sisse ühekordse sisselogimisega. Käsk reset-owner töötab edasi.",
 	"settings.signIn.forgotShown": "Unustasid parooli? on sees",
-	"settings.signIn.forgotHidden": "Unustasid parooli? on väljas"
+	"settings.signIn.forgotHidden": "Unustasid parooli? on väljas",
+	"settings.signIn.joinAutoTitle": "Uued inimesed",
+	"settings.signIn.joinAutoOn": "Kiida uute inimeste taotlused heaks ootamata",
+	"settings.signIn.joinAutoNote": "Inimesed, kes liituvad välise sisselogimisega (Plex, Jellyfin, Emby, ühekordne sisselogimine), alustavad õigusega Taotlused kiidetakse heaks ootamata. Lapsed ja juba olemasolevad inimesed jätavad oma õigused.",
+	"settings.signIn.joinAutoSaved": "Uute inimeste säte salvestatud"
 }

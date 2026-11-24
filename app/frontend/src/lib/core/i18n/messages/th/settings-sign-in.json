@@ -138,5 +138,9 @@
 	"settings.signIn.forgotOn": "แสดง ลืมรหัสผ่าน? ในหน้าเข้าสู่ระบบ",
 	"settings.signIn.forgotNote": "เจ้าของจะได้รหัสใช้ครั้งเดียวจากล็อกของเซิร์ฟเวอร์ ปิดไว้ถ้าทุกคนเข้าสู่ระบบผ่าน single sign-on คำสั่ง reset-owner ยังใช้ได้",
 	"settings.signIn.forgotShown": "ลืมรหัสผ่าน? เปิดอยู่",
-	"settings.signIn.forgotHidden": "ลืมรหัสผ่าน? ปิดอยู่"
+	"settings.signIn.forgotHidden": "ลืมรหัสผ่าน? ปิดอยู่",
+	"settings.signIn.joinAutoTitle": "คนใหม่",
+	"settings.signIn.joinAutoOn": "อนุมัติคำขอของคนใหม่โดยไม่ต้องรอ",
+	"settings.signIn.joinAutoNote": "คนที่เข้าร่วมผ่านการลงชื่อเข้าใช้ภายนอก (Plex, Jellyfin, Emby, Single Sign-On) จะเริ่มด้วยสิทธิ์คำขอที่อนุมัติโดยไม่ต้องรอ เด็กและคนที่อยู่แล้วจะไม่เปลี่ยนแปลง",
+	"settings.signIn.joinAutoSaved": "บันทึกการตั้งค่าคนใหม่แล้ว"
 }

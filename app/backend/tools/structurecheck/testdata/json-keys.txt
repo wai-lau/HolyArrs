@@ -950,6 +950,7 @@ job_ids
 job_servers
 jobs
 join
+join_auto_approve
 joined
 jsonrpc
 jwks_uri

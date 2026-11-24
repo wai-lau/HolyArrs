@@ -138,5 +138,9 @@
 	"settings.signIn.forgotOn": "Показывать Забыли пароль? на странице входа",
 	"settings.signIn.forgotNote": "Владелец получает одноразовый код из журнала сервера. Отключите, если все входят через единый вход. Команда reset-owner продолжит работать.",
 	"settings.signIn.forgotShown": "Забыли пароль? включено",
-	"settings.signIn.forgotHidden": "Забыли пароль? выключено"
+	"settings.signIn.forgotHidden": "Забыли пароль? выключено",
+	"settings.signIn.joinAutoTitle": "Новые люди",
+	"settings.signIn.joinAutoOn": "Одобрять запросы новых людей без ожидания",
+	"settings.signIn.joinAutoNote": "Люди, которые присоединяются через внешний вход (Plex, Jellyfin, Emby, единый вход), начинают с правом «Запросы одобряются без ожидания». Дети и те, кто уже здесь, ничего не меняют.",
+	"settings.signIn.joinAutoSaved": "Настройка для новых людей сохранена"
 }

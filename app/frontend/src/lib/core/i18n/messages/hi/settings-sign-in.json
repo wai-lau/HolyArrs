@@ -138,5 +138,9 @@
 	"settings.signIn.forgotOn": "साइन-इन पेज पर पासवर्ड भूल गए? दिखाएँ",
 	"settings.signIn.forgotNote": "मालिक को सर्वर लॉग से एक बार चलने वाला कोड मिलता है। अगर सब सिंगल साइन-ऑन से साइन इन करते हैं तो इसे बंद करें। reset-owner कमांड फिर भी चलता है।",
 	"settings.signIn.forgotShown": "पासवर्ड भूल गए? चालू है",
-	"settings.signIn.forgotHidden": "पासवर्ड भूल गए? बंद है"
+	"settings.signIn.forgotHidden": "पासवर्ड भूल गए? बंद है",
+	"settings.signIn.joinAutoTitle": "नए लोग",
+	"settings.signIn.joinAutoOn": "नए लोगों के अनुरोध बिना इंतज़ार मंज़ूर करें",
+	"settings.signIn.joinAutoNote": "बाहरी साइन-इन (Plex, Jellyfin, Emby, सिंगल साइन-ऑन) से जुड़ने वाले लोग बिना इंतज़ार मंज़ूर होने वाले अनुरोधों के साथ शुरू होते हैं। बच्चों और पहले से मौजूद लोगों में कोई बदलाव नहीं होता।",
+	"settings.signIn.joinAutoSaved": "नए लोगों की सेटिंग सहेजी गई"
 }

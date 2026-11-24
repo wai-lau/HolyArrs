@@ -138,5 +138,9 @@
 	"settings.signIn.forgotOn": "Vis Glemt passordet? på innloggingssiden",
 	"settings.signIn.forgotNote": "Eieren får en engangskode fra serverloggen. Slå det av hvis alle logger inn med enkel pålogging. Kommandoen reset-owner virker fortsatt.",
 	"settings.signIn.forgotShown": "Glemt passordet? er på",
-	"settings.signIn.forgotHidden": "Glemt passordet? er av"
+	"settings.signIn.forgotHidden": "Glemt passordet? er av",
+	"settings.signIn.joinAutoTitle": "Nye personer",
+	"settings.signIn.joinAutoOn": "Godkjenn nye personers forespørsler uten venting",
+	"settings.signIn.joinAutoNote": "Personer som blir med via en ekstern pålogging (Plex, Jellyfin, Emby, enkel pålogging) starter med Forespørsler godkjent uten venting. Barn og de som allerede er her beholder det de har.",
+	"settings.signIn.joinAutoSaved": "Innstilling for nye personer lagret"
 }

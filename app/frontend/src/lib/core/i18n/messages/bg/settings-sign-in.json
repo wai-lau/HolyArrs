@@ -138,5 +138,9 @@
 	"settings.signIn.forgotOn": "Показвай Забравена парола? на страницата за вход",
 	"settings.signIn.forgotNote": "Собственикът получава еднократен код от дневника на сървъра. Изключи го, ако всички влизат с единен вход. Командата reset-owner продължава да работи.",
 	"settings.signIn.forgotShown": "Забравена парола? е включено",
-	"settings.signIn.forgotHidden": "Забравена парола? е изключено"
+	"settings.signIn.forgotHidden": "Забравена парола? е изключено",
+	"settings.signIn.joinAutoTitle": "Нови хора",
+	"settings.signIn.joinAutoOn": "Одобряване на заявките на новите хора без изчакване",
+	"settings.signIn.joinAutoNote": "Хората, които се присъединяват чрез външен вход (Plex, Jellyfin, Emby, единствен вход), започват със заявки, одобрявани без изчакване. Децата и вече присъстващите запазват правата си.",
+	"settings.signIn.joinAutoSaved": "Настройката за новите хора е запазена"
 }

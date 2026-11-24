@@ -138,5 +138,9 @@
 	"settings.signIn.forgotOn": "Mostrar ¿Olvidaste la contraseña? en la página de inicio de sesión",
 	"settings.signIn.forgotNote": "El propietario recibe un código de un solo uso del registro del servidor. Apágalo si se entra con inicio de sesión único. El comando reset-owner sigue funcionando.",
 	"settings.signIn.forgotShown": "¿Olvidaste la contraseña? está activado",
-	"settings.signIn.forgotHidden": "¿Olvidaste la contraseña? está desactivado"
+	"settings.signIn.forgotHidden": "¿Olvidaste la contraseña? está desactivado",
+	"settings.signIn.joinAutoTitle": "Gente nueva",
+	"settings.signIn.joinAutoOn": "Aprobar las solicitudes de la gente nueva sin esperar",
+	"settings.signIn.joinAutoNote": "Quien se une con un inicio de sesión externo (Plex, Jellyfin, Emby, inicio de sesión único) empieza con Solicitudes aprobadas sin esperar. Los niños y quienes ya están conservan lo que tienen.",
+	"settings.signIn.joinAutoSaved": "Ajuste de gente nueva guardado"
 }

@@ -138,5 +138,9 @@
 	"settings.signIn.forgotOn": "Zobraziť Zabudnuté heslo? na prihlasovacej stránke",
 	"settings.signIn.forgotNote": "Vlastník dostane jednorazový kód z logu servera. Vypnite to, ak sa všetci prihlasujú cez jednotné prihlásenie. Príkaz reset-owner funguje ďalej.",
 	"settings.signIn.forgotShown": "Zabudnuté heslo? je zapnuté",
-	"settings.signIn.forgotHidden": "Zabudnuté heslo? je vypnuté"
+	"settings.signIn.forgotHidden": "Zabudnuté heslo? je vypnuté",
+	"settings.signIn.joinAutoTitle": "Noví ľudia",
+	"settings.signIn.joinAutoOn": "Schvaľovať žiadosti nových ľudí bez čakania",
+	"settings.signIn.joinAutoNote": "Ľudia, ktorí sa pripoja cez externé prihlásenie (Plex, Jellyfin, Emby, jednotné prihlásenie), začínajú s oprávnením Žiadosti schválené bez čakania. Deti a ľudia, ktorí tu už sú, si nechajú, čo majú.",
+	"settings.signIn.joinAutoSaved": "Nastavenie nových ľudí uložené"
 }

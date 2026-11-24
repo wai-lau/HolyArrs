@@ -138,5 +138,9 @@
 	"settings.signIn.forgotOn": "Wachtwoord vergeten? tonen op de aanmeldpagina",
 	"settings.signIn.forgotNote": "De eigenaar krijgt een eenmalige code uit het serverlog. Zet het uit als mensen via single sign-on aanmelden. Het commando reset-owner blijft werken.",
 	"settings.signIn.forgotShown": "Wachtwoord vergeten? staat aan",
-	"settings.signIn.forgotHidden": "Wachtwoord vergeten? staat uit"
+	"settings.signIn.forgotHidden": "Wachtwoord vergeten? staat uit",
+	"settings.signIn.joinAutoTitle": "Nieuwe mensen",
+	"settings.signIn.joinAutoOn": "Verzoeken van nieuwe mensen zonder wachten goedkeuren",
+	"settings.signIn.joinAutoNote": "Mensen die meedoen via een externe aanmelding (Plex, Jellyfin, Emby, single sign-on) beginnen met Verzoeken zonder wachten goedgekeurd. Kinderen en mensen die er al zijn houden wat ze hebben.",
+	"settings.signIn.joinAutoSaved": "Instelling voor nieuwe mensen opgeslagen"
 }

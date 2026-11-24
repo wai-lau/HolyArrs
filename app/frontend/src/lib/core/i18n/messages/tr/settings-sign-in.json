@@ -138,5 +138,9 @@
 	"settings.signIn.forgotOn": "Giriş sayfasında Şifreni mi unuttun? göster",
 	"settings.signIn.forgotNote": "Sahip, sunucu günlüğünden tek kullanımlık bir kod alır. Herkes tek oturum açma ile giriyorsa kapat. reset-owner komutu yine çalışır.",
 	"settings.signIn.forgotShown": "Şifreni mi unuttun? açık",
-	"settings.signIn.forgotHidden": "Şifreni mi unuttun? kapalı"
+	"settings.signIn.forgotHidden": "Şifreni mi unuttun? kapalı",
+	"settings.signIn.joinAutoTitle": "Yeni kişiler",
+	"settings.signIn.joinAutoOn": "Yeni kişilerin isteklerini beklemeden onayla",
+	"settings.signIn.joinAutoNote": "Harici bir girişle (Plex, Jellyfin, Emby, tek oturum açma) katılanlar, beklemeden onaylanan isteklerle başlar. Çocuklar ve zaten burada olanlar sahip olduklarını korur.",
+	"settings.signIn.joinAutoSaved": "Yeni kişiler ayarı kaydedildi"
 }

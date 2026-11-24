@@ -138,5 +138,9 @@
 	"settings.signIn.forgotOn": "Tunjuk Lupa kata laluan? di halaman log masuk",
 	"settings.signIn.forgotNote": "Pemilik mendapat kod sekali guna daripada log pelayan. Matikan jika semua orang log masuk melalui log masuk tunggal. Arahan reset-owner masih berfungsi.",
 	"settings.signIn.forgotShown": "Lupa kata laluan? dihidupkan",
-	"settings.signIn.forgotHidden": "Lupa kata laluan? dimatikan"
+	"settings.signIn.forgotHidden": "Lupa kata laluan? dimatikan",
+	"settings.signIn.joinAutoTitle": "Orang baharu",
+	"settings.signIn.joinAutoOn": "Luluskan permintaan orang baharu tanpa menunggu",
+	"settings.signIn.joinAutoNote": "Orang yang menyertai melalui log masuk luar (Plex, Jellyfin, Emby, log masuk tunggal) bermula dengan Permintaan diluluskan tanpa menunggu. Kanak-kanak dan orang yang sudah ada tidak berubah.",
+	"settings.signIn.joinAutoSaved": "Tetapan orang baharu disimpan"
 }

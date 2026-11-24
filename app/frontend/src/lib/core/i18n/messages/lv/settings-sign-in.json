@@ -138,5 +138,9 @@
 	"settings.signIn.forgotOn": "Rādīt Aizmirsi paroli? pieteikšanās lapā",
 	"settings.signIn.forgotNote": "Īpašnieks saņem vienreizēju kodu no servera žurnāla. Izslēdz, ja visi piesakās ar vienoto pieteikšanos. Komanda reset-owner joprojām darbojas.",
 	"settings.signIn.forgotShown": "Aizmirsi paroli? ir ieslēgts",
-	"settings.signIn.forgotHidden": "Aizmirsi paroli? ir izslēgts"
+	"settings.signIn.forgotHidden": "Aizmirsi paroli? ir izslēgts",
+	"settings.signIn.joinAutoTitle": "Jauni cilvēki",
+	"settings.signIn.joinAutoOn": "Apstiprināt jauno cilvēku pieprasījumus bez gaidīšanas",
+	"settings.signIn.joinAutoNote": "Cilvēki, kas pievienojas ar ārēju pieteikšanos (Plex, Jellyfin, Emby, vienotā pieteikšanās), sāk ar tiesībām Pieprasījumi tiek apstiprināti bez gaidīšanas. Bērni un jau esošie cilvēki saglabā to, kas viņiem ir.",
+	"settings.signIn.joinAutoSaved": "Jauno cilvēku iestatījums saglabāts"
 }

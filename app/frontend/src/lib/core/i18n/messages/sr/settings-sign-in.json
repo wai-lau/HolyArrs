@@ -138,5 +138,9 @@
 	"settings.signIn.forgotOn": "Прикажи Заборављена лозинка? на страници за пријаву",
 	"settings.signIn.forgotNote": "Власник добија једнократни код из дневника сервера. Искључи ако се сви пријављују јединственом пријавом. Наредба reset-owner и даље ради.",
 	"settings.signIn.forgotShown": "Заборављена лозинка? је укључено",
-	"settings.signIn.forgotHidden": "Заборављена лозинка? је искључено"
+	"settings.signIn.forgotHidden": "Заборављена лозинка? је искључено",
+	"settings.signIn.joinAutoTitle": "Нови људи",
+	"settings.signIn.joinAutoOn": "Одобравај захтеве нових људи без чекања",
+	"settings.signIn.joinAutoNote": "Људи који се придруже преко спољне пријаве (Plex, Jellyfin, Emby, јединствена пријава) почињу са захтевима одобреним без чекања. Деца и они који су већ ту задржавају шта имају.",
+	"settings.signIn.joinAutoSaved": "Подешавање за нове људе је сачувано"
 }

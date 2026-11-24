@@ -138,5 +138,9 @@
 	"settings.signIn.forgotOn": "Show Forgot password? on the sign-in page",
 	"settings.signIn.forgotNote": "The owner gets a one-time code from the server log. Turn it off if people sign in through single sign-on. The reset-owner command still works.",
 	"settings.signIn.forgotShown": "Forgot password? is on",
-	"settings.signIn.forgotHidden": "Forgot password? is off"
+	"settings.signIn.forgotHidden": "Forgot password? is off",
+	"settings.signIn.joinAutoTitle": "New people",
+	"settings.signIn.joinAutoOn": "Approve new people's requests without waiting",
+	"settings.signIn.joinAutoNote": "People who join through an outside sign-in (Plex, Jellyfin, Emby, single sign-on) start with Requests approved without waiting. Kids and people already here keep what they have.",
+	"settings.signIn.joinAutoSaved": "New-people setting saved"
 }
