@@ -110,10 +110,21 @@ func (h *Hosted) TestKey(ctx context.Context, key, value, pin string) error {
 // TMDBRoute is where a TMDB request goes now:
 //   - a key from the environment (HOLYARRS_TMDB_KEY or the token file):
 //     TMDB directly, in every mode but off;
-//   - the metadata server: through it, with this install's credential;
+//   - the metadata server mode with a TMDB key saved in Settings: TMDB
+//     directly with that key first (TMDBFallback holds the server as backup);
+//   - the metadata server mode without one: through the server, with this
+//     install's credential;
 //   - Your own keys: TMDB directly with the key from Settings;
 //   - off: nowhere; answers kept from the server still answer.
 func (h *Hosted) TMDBRoute(ctx context.Context) TMDBRoute {
+	if r, ok := h.ownFirst(ctx); ok {
+		return r
+	}
+	return h.modeRoute()
+}
+
+// modeRoute is TMDBRoute without the saved-key preference of the server mode.
+func (h *Hosted) modeRoute() TMDBRoute {
 	mode := h.Modes.Current()
 	server := TMDBRoute{Base: h.Service.Base() + TMDBPath, Access: h.TMDBAccess, HTTP: h.HTTP}
 	switch {
@@ -128,9 +139,35 @@ func (h *Hosted) TMDBRoute(ctx context.Context) TMDBRoute {
 	return server
 }
 
-// ListRoute is TMDBRoute for the Outside lists sync, or ErrSourceOff.
+// ownFirst is the route to TMDB with the key saved in Settings, when the
+// metadata server is the mode and a key is saved. The environment key already
+// goes direct, and Your own keys never uses the server, so neither has it.
+func (h *Hosted) ownFirst(ctx context.Context) (TMDBRoute, bool) {
+	if h.OwnKey || h.Modes.Current() != ModeServer {
+		return TMDBRoute{}, false
+	}
+	read := h.KeyReader(KeyTMDB)
+	if tok, err := read(ctx); err != nil || tok == "" {
+		return TMDBRoute{}, false
+	}
+	return TMDBRoute{Base: h.stand, Access: read, HTTP: h.OwnFirst, Direct: true, OwnFirst: true}, true
+}
+
+// TMDBFallback is the route a request tries when TMDB could not answer it
+// with the saved own key: the HolyArrs metadata server, with this install's
+// credential (the owner's key is never sent to it). It exists only where
+// TMDBRoute went to TMDB with a saved key.
+func (h *Hosted) TMDBFallback(ctx context.Context, first TMDBRoute) (TMDBRoute, bool) {
+	if !first.OwnFirst {
+		return TMDBRoute{}, false
+	}
+	return h.modeRoute(), true
+}
+
+// ListRoute is TMDBRoute for the Outside lists sync, or ErrSourceOff. The
+// sync has no backup route, so the saved key does not move it off the mode.
 func (h *Hosted) ListRoute(ctx context.Context) (TMDBRoute, error) {
-	r := h.TMDBRoute(ctx)
+	r := h.modeRoute()
 	if r.Off {
 		return TMDBRoute{}, ErrSourceOff
 	}

@@ -6,6 +6,7 @@ import (
 	"errors"
 	"fmt"
 	"io"
+	"log"
 	"net/http"
 	"net/url"
 	"os"
@@ -59,13 +60,29 @@ type TMDB struct {
 	// Route, when set, picks where each request goes (the metadata mode)
 	// in place of BaseURL, Access and HTTP.
 	Route func(ctx context.Context) TMDBRoute
+	// Fallback, when set and ok, is a second route a request tries once when
+	// the first could not answer it (down, slow, 5xx, rate limit, or a
+	// refused own key). It is given the first route, so it need not read the
+	// vault again. While it is ok the first attempt is also cut to
+	// FirstAttempt, and a first route that failed is skipped for ownCoolOff.
+	Fallback func(ctx context.Context, first TMDBRoute) (TMDBRoute, bool)
+	// FirstAttempt is how long the first route gets when a Fallback exists;
+	// default firstAttemptWithFallback.
+	FirstAttempt time.Duration
+	// CoolOff is how long a first route that failed is skipped; default ownCoolOff.
+	CoolOff time.Duration
 
 	mu         sync.Mutex
 	last       time.Time
 	lastAhead  time.Time
 	cache      map[string]cached
 	refreshing map[string]bool
-	hold       serviceHold
+	hold       serviceHold // the metadata server's Retry-After
+	directHold serviceHold // TMDB's own, for a direct route: apart, so one route's 429 never blocks the other
+	// coolUntil: first routes (by address) skipped until then; keyWarned: a
+	// refused key already logged, until that route answers again.
+	coolUntil map[string]time.Time
+	keyWarned map[string]bool
 	// batchOffUntil: the server lacked the batch route; reads go one by one until then.
 	batchOffUntil time.Time
 	// texts are titles' texts per app language, by "kind|id" (title_text.go).
@@ -271,7 +288,7 @@ func (t *TMDB) get(ctx context.Context, path string, q url.Values) ([]byte, erro
 		t.refresh(u, disk)
 		return stale.body, nil
 	}
-	body, err := t.fetch(ctx, u)
+	body, err := t.fetchOn(ctx, u, r)
 	switch {
 	case err == nil:
 		t.keep(ctx, u, cached{body: body, at: time.Now()}, disk)
@@ -291,13 +308,132 @@ var errBadQuery = errors.New("query refused")
 // turn upstream, then keeps the answer for the next ask.
 const tmdbAttempt = 25 * time.Second
 
-// fetch makes one request (one retry after a 429).
+// firstAttemptWithFallback is how long the first route gets when a second
+// could answer instead: long enough for a normal answer, short enough that
+// the backup still helps while TMDB hangs.
+const firstAttemptWithFallback = 5 * time.Second
+
+// ownCoolOff is how long the first route is skipped after it failed to
+// answer (slow, down, 5xx, rate limit, or a refused key). A timeout never
+// opens the breaker, so without this every request would wait again.
+const ownCoolOff = 60 * time.Second
+
+// keyRefused is a 401 or 403 from TMDB for the key sent: the key is revoked
+// or wrong. It is an ErrNoAccess too.
+type keyRefused struct{}
+
+func (keyRefused) Error() string { return ErrNoAccess.Error() }
+func (keyRefused) Unwrap() error { return ErrNoAccess }
+
+// shouldFallBack says whether err from route r is TMDB (or the server) not
+// answering, as opposed to answering "no". Down, slow, 5xx and the rate limit
+// fall back. So does a refused own key (401 or 403): a revoked key must not
+// take every lookup down while the server can answer. A not-found is an
+// answer and never falls back; a refusal by the metadata server itself, or a
+// missing credential (a setup error), is left alone.
+func shouldFallBack(err error, r TMDBRoute) bool {
+	switch {
+	case errors.Is(err, ErrServiceUnavailable), errors.Is(err, ErrRateLimited):
+		return true
+	case r.Direct && errors.As(err, new(keyRefused)):
+		return true
+	}
+	return false
+}
+
+func (t *TMDB) coolOff() time.Duration {
+	if t.CoolOff > 0 {
+		return t.CoolOff
+	}
+	return ownCoolOff
+}
+
+func (t *TMDB) cooling(base string) bool {
+	t.mu.Lock()
+	defer t.mu.Unlock()
+	return time.Now().Before(t.coolUntil[base])
+}
+
+// cool skips the route at base for CoolOff; a refused key is logged once.
+func (t *TMDB) cool(base string, err error) {
+	t.mu.Lock()
+	defer t.mu.Unlock()
+	if t.coolUntil == nil {
+		t.coolUntil = map[string]time.Time{}
+	}
+	t.coolUntil[base] = time.Now().Add(t.coolOff())
+	if errors.As(err, new(keyRefused)) && !t.keyWarned[base] {
+		if t.keyWarned == nil {
+			t.keyWarned = map[string]bool{}
+		}
+		t.keyWarned[base] = true
+		log.Printf("warn: metadata: TMDB refused the saved TMDB key; using the HolyArrs server until it works again. Check the key in Settings > Metadata")
+	}
+}
+
+func (t *TMDB) answered(base string) {
+	t.mu.Lock()
+	delete(t.keyWarned, base)
+	t.mu.Unlock()
+}
+
+// fetch makes one request (one retry after a 429) on the route now.
 func (t *TMDB) fetch(ctx context.Context, u string) ([]byte, error) {
+	return t.fetchOn(ctx, u, t.route(ctx))
+}
+
+// fetchOn is fetch with the route already read (one vault read per request).
+// When the first route cannot answer and a Fallback route exists (the owner's
+// saved TMDB key went first, the metadata server is next), the request is
+// sent once more there, and the first route rests for CoolOff.
+func (t *TMDB) fetchOn(ctx context.Context, u string, r TMDBRoute) ([]byte, error) {
+	var fb TMDBRoute
+	hasFB := false
+	if t.Fallback != nil && !r.Off {
+		fb, hasFB = t.Fallback(ctx, r)
+	}
+	rest, ok := strings.CutPrefix(u, r.base())
+	if hasFB && !ok {
+		hasFB = false
+	}
+	if !hasFB {
+		return t.fetchVia(ctx, u, r, 0)
+	}
+	if t.cooling(r.base()) {
+		return t.fetchVia(ctx, fb.base()+rest, fb, 0)
+	}
+	attempt := t.FirstAttempt
+	if attempt <= 0 {
+		attempt = firstAttemptWithFallback
+	}
+	body, err := t.fetchVia(ctx, u, r, attempt)
+	if err == nil {
+		t.answered(r.base())
+	}
+	if err == nil || ctx.Err() != nil || !shouldFallBack(err, r) {
+		return body, err
+	}
+	t.cool(r.base(), err)
+	b2, err2 := t.fetchVia(ctx, fb.base()+rest, fb, 0)
+	if err2 != nil && !errors.Is(err2, ErrNotFound) {
+		if errors.Is(err2, ErrInstallRefused) {
+			return nil, err2 // the server's own sign-in problem: the install must register again
+		}
+		return nil, err // the first route's error is the one to show
+	}
+	return b2, err2
+}
+
+// fetchVia is fetch on one route; attempt 0 means the default time.
+func (t *TMDB) fetchVia(ctx context.Context, u string, r TMDBRoute, attempt time.Duration) ([]byte, error) {
 	ahead := IsAhead(ctx)
-	if ahead && t.hold.held(time.Now()) {
+	hold := &t.hold
+	if r.Direct {
+		hold = &t.directHold
+	}
+	if ahead && hold.held(time.Now()) {
 		return nil, ErrRateLimited
 	}
-	r := t.route(ctx)
 	if r.Off {
 		return nil, ErrSourceOff
 	}
@@ -335,7 +471,10 @@ func (t *TMDB) fetch(ctx context.Context, u string) ([]byte, error) {
 		cl = http.DefaultClient
 	}
 	timeout := t.Timeout
-	if timeout <= 0 {
+	switch {
+	case attempt > 0:
+		timeout = attempt
+	case timeout <= 0:
 		timeout = tmdbAttempt
 	}
 	for try := 0; ; try++ {
@@ -384,7 +523,7 @@ func (t *TMDB) fetch(ctx context.Context, u string) ([]byte, error) {
 			return nil, InstallRefused(ErrNoAccess)
 		case resp.StatusCode == http.StatusUnauthorized || resp.StatusCode == http.StatusForbidden:
 			outcome = outbound.TerminalFailure
-			return nil, ErrNoAccess
+			return nil, keyRefused{}
 		case resp.StatusCode == http.StatusTooManyRequests && try == 0 && !ahead:
 			d, _ := strconv.Atoi(resp.Header.Get("Retry-After"))
 			select {
@@ -394,7 +533,7 @@ func (t *TMDB) fetch(ctx context.Context, u string) ([]byte, error) {
 			}
 		case resp.StatusCode == http.StatusTooManyRequests:
 			// Fetch-ahead does not wait inside the call: it holds back instead.
-			t.hold.set(resp.Header.Get("Retry-After"), body, time.Now())
+			hold.set(resp.Header.Get("Retry-After"), body, time.Now())
 			outcome = outbound.TransientFailure
 			if resp.Header.Get(GateHeld) != "" {
 				outcome = outbound.Canceled // held by our own Gate, never sent
@@ -403,7 +542,7 @@ func (t *TMDB) fetch(ctx context.Context, u string) ([]byte, error) {
 		default:
 			outcome = outbound.HTTPOutcome(resp.StatusCode, nil, ctx)
 			if resp.StatusCode == http.StatusServiceUnavailable {
-				t.hold.set(resp.Header.Get("Retry-After"), body, time.Now())
+				hold.set(resp.Header.Get("Retry-After"), body, time.Now())
 			}
 			if resp.StatusCode >= 500 {
 				return nil, fmt.Errorf("TMDB answered %d: %w", resp.StatusCode, ErrServiceUnavailable)

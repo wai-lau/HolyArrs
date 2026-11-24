@@ -71,7 +71,24 @@ Set `HOLYARRS_TMDB_KEY` to your own TMDB read access token. The log then says `m
 | | Trailer lists, ratings, Wikipedia details, anime maps and extra artwork |
 | | TMDB pictures when `image.tmdb.org` cannot be reached |
 
-So with a TMDB key set, the install still registers with the metadata server and still needs it. There is no fallback between the two: with a key set, TMDB lookups never go to the server, and without one they never go to TMDB.
+So with a TMDB key set, the install still registers with the metadata server and still needs it. With the environment key, TMDB lookups never go to the server, and without a key they never go to TMDB.
+
+### A TMDB key saved in Settings
+
+The TMDB key field in **Settings > Metadata** shows in every mode except Off. While **Where details come from** is the HolyArrs metadata server, a saved key changes where movie and show lookups go: they go to TMDB with your key first. TMDB then sees those lookups, including search words, directly from your server's address, and the metadata server does not see them while your key answers.
+
+If TMDB cannot answer (it is unreachable, takes longer than 5 seconds, returns a server error or "too many requests", or refuses the key), HolyArrs asks the metadata server once instead, and then skips TMDB for about a minute so a hung TMDB does not slow every page. A refused key is logged once as a warning. Your key is never sent to the metadata server. A plain "not found" from TMDB is an answer and is not retried.
+
+Batch prefetching goes through the metadata server, so with a saved key it runs only while TMDB is being skipped; otherwise lookups are made one by one.
+
+| Mode | Saved TMDB key | What happens |
+|---|---|---|
+| HolyArrs metadata server | Saved | TMDB with your key first, the metadata server as backup |
+| HolyArrs metadata server | None | The metadata server only |
+| Your own keys | Saved | TMDB only; the metadata server is never used |
+| Off | Any | Nothing is sent |
+
+TMDB lists you follow under **Settings > Outside lists** are not retried this way; they keep using the mode's own route.
 
 `HOLYARRS_METADATA_URL` moves everything in the right-hand column to another server. The other server must answer the same way as `api.holyarrs.com`. A server on your local network also needs `HOLYARRS_METADATA_SERVICE_ALLOW_LOCAL=true`.
 
