@@ -284,3 +284,33 @@ func TestHDRWordsHolyArrsWrites(t *testing.T) {
 		}
 	}
 }
+
+// A library name with "&" also shows in release names with the "&" left out
+// ("Law Order"), as indexers drop it; the word "and" is not dropped from a
+// name that never had an "&".
+func TestSameNameAmpersandDropped(t *testing.T) {
+	for _, c := range []struct {
+		lib, rel string
+		want     bool
+	}{
+		{"New PANTY & STOCKING with GARTERBELT", "New Panty Stocking with Garterbelt", true},
+		{"New PANTY & STOCKING with GARTERBELT", "New PANTY & STOCKING with GARTERBELT", true},
+		{"Law & Order", "Law and Order", true},
+		{"Law & Order", "Law Order", true},
+		{"Law and Order", "Law Order", false},
+		{"Law & Order", "Law", false},
+		// Tom & Jerry also matches "Tom.Jerry" on purpose: indexers drop the "&".
+		{"Tom & Jerry", "Tom Jerry", true},
+		// A release's "amp" is the "&" or the word, so both libraries match.
+		{"Law & Order", "Law amp Order", true},
+		{"Guitar Amp Hero", "Guitar amp Hero", true},
+		{"Tube Amp Rock", "Tube amp Rock", true},
+		{"Camp & Rock", "Camp amp Rock", true},
+		{"Camp Rock", "Camp Rock amp", false},
+		{"Amp", "Amp", true},
+	} {
+		if got := SameName(c.lib, CleanName(c.rel)); got != c.want {
+			t.Errorf("SameName(%q, %q) = %v, want %v", c.lib, c.rel, got, c.want)
+		}
+	}
+}
