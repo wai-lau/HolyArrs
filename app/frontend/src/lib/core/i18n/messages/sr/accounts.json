@@ -425,5 +425,18 @@
 	"accounts.language.offerKeep": "Задржи енглески",
 	"accounts.language.failed": "Ваш језик није могао да се преузме, па је HolyArrs на енглеском. Покушаће поново аутоматски.",
 	"accounts.language.retry": "Покушај поново",
-	"accounts.language.dismiss": "Затвори"
+	"accounts.language.dismiss": "Затвори",
+	"accounts.sso.applyToCurrent": "Примени на тренутне чланове ({n})",
+	"accounts.sso.giveCurrent.few": "Дати {n} тренутним члановима: {perms}?",
+	"accounts.sso.giveCurrent.many": "Дати {n} тренутних чланова: {perms}?",
+	"accounts.sso.giveCurrent.one": "Дати {n} тренутном члану: {perms}?",
+	"accounts.sso.giveCurrent.other": "Дати {n} тренутних чланова: {perms}?",
+	"accounts.sso.giveCurrent.two": "Дати {n} тренутних чланова: {perms}?",
+	"accounts.sso.giveCurrent.zero": "Дати {n} тренутних чланова: {perms}?",
+	"accounts.sso.membersUpdated.few": "Ажурирана {n} члана",
+	"accounts.sso.membersUpdated.many": "Ажурирано {n} чланова",
+	"accounts.sso.membersUpdated.one": "Ажуриран {n} члан",
+	"accounts.sso.membersUpdated.other": "Ажурирано {n} чланова",
+	"accounts.sso.membersUpdated.two": "Ажурирано {n} чланова",
+	"accounts.sso.membersUpdated.zero": "Ажурирано {n} чланова"
 }

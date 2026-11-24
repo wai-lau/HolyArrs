@@ -425,5 +425,18 @@
 	"accounts.language.offerKeep": "영어 유지",
 	"accounts.language.failed": "언어를 다운로드하지 못해 HolyArrs가 영어로 표시됩니다. 자동으로 다시 시도합니다.",
 	"accounts.language.retry": "다시 시도",
-	"accounts.language.dismiss": "닫기"
+	"accounts.language.dismiss": "닫기",
+	"accounts.sso.applyToCurrent": "현재 멤버에게 적용 ({n})",
+	"accounts.sso.giveCurrent.few": "현재 멤버 {n}명에게 부여할까요? {perms}",
+	"accounts.sso.giveCurrent.many": "현재 멤버 {n}명에게 부여할까요? {perms}",
+	"accounts.sso.giveCurrent.one": "현재 멤버 {n}명에게 부여할까요? {perms}",
+	"accounts.sso.giveCurrent.other": "현재 멤버 {n}명에게 부여할까요? {perms}",
+	"accounts.sso.giveCurrent.two": "현재 멤버 {n}명에게 부여할까요? {perms}",
+	"accounts.sso.giveCurrent.zero": "현재 멤버 {n}명에게 부여할까요? {perms}",
+	"accounts.sso.membersUpdated.few": "멤버 {n}명 업데이트됨",
+	"accounts.sso.membersUpdated.many": "멤버 {n}명 업데이트됨",
+	"accounts.sso.membersUpdated.one": "멤버 {n}명 업데이트됨",
+	"accounts.sso.membersUpdated.other": "멤버 {n}명 업데이트됨",
+	"accounts.sso.membersUpdated.two": "멤버 {n}명 업데이트됨",
+	"accounts.sso.membersUpdated.zero": "멤버 {n}명 업데이트됨"
 }

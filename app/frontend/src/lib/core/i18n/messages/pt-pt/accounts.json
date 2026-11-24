@@ -425,5 +425,18 @@
 	"accounts.language.offerKeep": "Manter inglês",
 	"accounts.language.failed": "Não foi possível transferir o seu idioma, por isso o HolyArrs está em inglês. Vai tentar de novo automaticamente.",
 	"accounts.language.retry": "Tentar de novo",
-	"accounts.language.dismiss": "Ignorar"
+	"accounts.language.dismiss": "Ignorar",
+	"accounts.sso.applyToCurrent": "Aplicar aos membros atuais ({n})",
+	"accounts.sso.giveCurrent.few": "Dar a {n} membros atuais: {perms}?",
+	"accounts.sso.giveCurrent.many": "Dar a {n} membros atuais: {perms}?",
+	"accounts.sso.giveCurrent.one": "Dar a {n} membro atual: {perms}?",
+	"accounts.sso.giveCurrent.other": "Dar a {n} membros atuais: {perms}?",
+	"accounts.sso.giveCurrent.two": "Dar a {n} membros atuais: {perms}?",
+	"accounts.sso.giveCurrent.zero": "Dar a {n} membros atuais: {perms}?",
+	"accounts.sso.membersUpdated.few": "{n} membros atualizados",
+	"accounts.sso.membersUpdated.many": "{n} membros atualizados",
+	"accounts.sso.membersUpdated.one": "{n} membro atualizado",
+	"accounts.sso.membersUpdated.other": "{n} membros atualizados",
+	"accounts.sso.membersUpdated.two": "{n} membros atualizados",
+	"accounts.sso.membersUpdated.zero": "{n} membros atualizados"
 }

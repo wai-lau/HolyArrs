@@ -425,5 +425,18 @@
 	"accounts.language.offerKeep": "Paturēt angļu",
 	"accounts.language.failed": "Jūsu valodu neizdevās lejupielādēt, tāpēc HolyArrs rāda angliski. Tas mēģinās vēlreiz automātiski.",
 	"accounts.language.retry": "Mēģināt vēlreiz",
-	"accounts.language.dismiss": "Aizvērt"
+	"accounts.language.dismiss": "Aizvērt",
+	"accounts.sso.applyToCurrent": "Piemērot pašreizējiem dalībniekiem ({n})",
+	"accounts.sso.giveCurrent.few": "Piešķirt {n} pašreizējiem dalībniekiem: {perms}?",
+	"accounts.sso.giveCurrent.many": "Piešķirt {n} pašreizējiem dalībniekiem: {perms}?",
+	"accounts.sso.giveCurrent.one": "Piešķirt {n} pašreizējam dalībniekam: {perms}?",
+	"accounts.sso.giveCurrent.other": "Piešķirt {n} pašreizējiem dalībniekiem: {perms}?",
+	"accounts.sso.giveCurrent.two": "Piešķirt {n} pašreizējiem dalībniekiem: {perms}?",
+	"accounts.sso.giveCurrent.zero": "Piešķirt {n} pašreizējiem dalībniekiem: {perms}?",
+	"accounts.sso.membersUpdated.few": "Atjaunināti {n} dalībnieki",
+	"accounts.sso.membersUpdated.many": "Atjaunināti {n} dalībnieki",
+	"accounts.sso.membersUpdated.one": "Atjaunināts {n} dalībnieks",
+	"accounts.sso.membersUpdated.other": "Atjaunināti {n} dalībnieki",
+	"accounts.sso.membersUpdated.two": "Atjaunināti {n} dalībnieki",
+	"accounts.sso.membersUpdated.zero": "Atjaunināti {n} dalībnieki"
 }

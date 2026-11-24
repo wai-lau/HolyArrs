@@ -425,5 +425,18 @@
 	"accounts.language.offerKeep": "ஆங்கிலமே போதும்",
 	"accounts.language.failed": "உங்கள் மொழியைப் பதிவிறக்க முடியவில்லை, அதனால் HolyArrs ஆங்கிலத்தில் காட்டுகிறது. அது தானாக மீண்டும் முயலும்.",
 	"accounts.language.retry": "மீண்டும் முயல்",
-	"accounts.language.dismiss": "மூடு"
+	"accounts.language.dismiss": "மூடு",
+	"accounts.sso.applyToCurrent": "தற்போதைய உறுப்பினர்களுக்குப் பயன்படுத்து ({n})",
+	"accounts.sso.giveCurrent.few": "{n} தற்போதைய உறுப்பினர்களுக்கு {perms} வழங்கவா?",
+	"accounts.sso.giveCurrent.many": "{n} தற்போதைய உறுப்பினர்களுக்கு {perms} வழங்கவா?",
+	"accounts.sso.giveCurrent.one": "{n} தற்போதைய உறுப்பினருக்கு {perms} வழங்கவா?",
+	"accounts.sso.giveCurrent.other": "{n} தற்போதைய உறுப்பினர்களுக்கு {perms} வழங்கவா?",
+	"accounts.sso.giveCurrent.two": "{n} தற்போதைய உறுப்பினர்களுக்கு {perms} வழங்கவா?",
+	"accounts.sso.giveCurrent.zero": "{n} தற்போதைய உறுப்பினர்களுக்கு {perms} வழங்கவா?",
+	"accounts.sso.membersUpdated.few": "{n} உறுப்பினர்கள் புதுப்பிக்கப்பட்டனர்",
+	"accounts.sso.membersUpdated.many": "{n} உறுப்பினர்கள் புதுப்பிக்கப்பட்டனர்",
+	"accounts.sso.membersUpdated.one": "{n} உறுப்பினர் புதுப்பிக்கப்பட்டார்",
+	"accounts.sso.membersUpdated.other": "{n} உறுப்பினர்கள் புதுப்பிக்கப்பட்டனர்",
+	"accounts.sso.membersUpdated.two": "{n} உறுப்பினர்கள் புதுப்பிக்கப்பட்டனர்",
+	"accounts.sso.membersUpdated.zero": "{n} உறுப்பினர்கள் புதுப்பிக்கப்பட்டனர்"
 }

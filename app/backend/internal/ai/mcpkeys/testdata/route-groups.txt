@@ -618,6 +618,7 @@ POST /api/v1/titles/{id}/subtitles/clean delete
 POST /api/v1/titles/{id}/versions add
 POST /api/v1/titles/{id}/versions/{vid}/adopt add
 POST /api/v1/users/invites admin
+POST /api/v1/users/new-people/apply admin
 POST /api/v1/users/{id}/password admin
 POST /api/v1/users/{id}/sessions/end-all admin
 POST /api/v1/users/{id}/sso/unlink admin
@@ -723,6 +724,7 @@ PUT /api/v1/titles/{id}/leftovers/{fid} add
 PUT /api/v1/titles/{id}/seasons/{number} add
 PUT /api/v1/titles/{id}/subtitle-wish add
 PUT /api/v1/titles/{id}/versions/{vid} add
+PUT /api/v1/users/new-people admin
 PUT /api/v1/users/{id} admin
 PUT /api/v1/users/{id}/media-link admin
 PUT /config/mediamanagement settings

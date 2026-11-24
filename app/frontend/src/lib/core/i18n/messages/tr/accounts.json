@@ -425,5 +425,18 @@
 	"accounts.language.offerKeep": "İngilizce kalsın",
 	"accounts.language.failed": "Diliniz indirilemedi, bu yüzden HolyArrs İngilizce gösteriliyor. Otomatik olarak yeniden denenecek.",
 	"accounts.language.retry": "Yeniden dene",
-	"accounts.language.dismiss": "Kapat"
+	"accounts.language.dismiss": "Kapat",
+	"accounts.sso.applyToCurrent": "Mevcut üyelere uygula ({n})",
+	"accounts.sso.giveCurrent.few": "Mevcut {n} üyeye ver: {perms}?",
+	"accounts.sso.giveCurrent.many": "Mevcut {n} üyeye ver: {perms}?",
+	"accounts.sso.giveCurrent.one": "Mevcut {n} üyeye ver: {perms}?",
+	"accounts.sso.giveCurrent.other": "Mevcut {n} üyeye ver: {perms}?",
+	"accounts.sso.giveCurrent.two": "Mevcut {n} üyeye ver: {perms}?",
+	"accounts.sso.giveCurrent.zero": "Mevcut {n} üyeye ver: {perms}?",
+	"accounts.sso.membersUpdated.few": "{n} üye güncellendi",
+	"accounts.sso.membersUpdated.many": "{n} üye güncellendi",
+	"accounts.sso.membersUpdated.one": "{n} üye güncellendi",
+	"accounts.sso.membersUpdated.other": "{n} üye güncellendi",
+	"accounts.sso.membersUpdated.two": "{n} üye güncellendi",
+	"accounts.sso.membersUpdated.zero": "{n} üye güncellendi"
 }

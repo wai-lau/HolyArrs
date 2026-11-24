@@ -425,5 +425,18 @@
 	"accounts.language.offerKeep": "انگلیسی بماند",
 	"accounts.language.failed": "زبان شما دانلود نشد، برای همین HolyArrs به انگلیسی نمایش داده می‌شود. خودکار دوباره تلاش می‌کند.",
 	"accounts.language.retry": "تلاش دوباره",
-	"accounts.language.dismiss": "بستن"
+	"accounts.language.dismiss": "بستن",
+	"accounts.sso.applyToCurrent": "اعمال برای اعضای فعلی ({n})",
+	"accounts.sso.giveCurrent.few": "به {n} عضو فعلی داده شود: {perms}؟",
+	"accounts.sso.giveCurrent.many": "به {n} عضو فعلی داده شود: {perms}؟",
+	"accounts.sso.giveCurrent.one": "به {n} عضو فعلی داده شود: {perms}؟",
+	"accounts.sso.giveCurrent.other": "به {n} عضو فعلی داده شود: {perms}؟",
+	"accounts.sso.giveCurrent.two": "به {n} عضو فعلی داده شود: {perms}؟",
+	"accounts.sso.giveCurrent.zero": "به {n} عضو فعلی داده شود: {perms}؟",
+	"accounts.sso.membersUpdated.few": "{n} عضو به‌روزرسانی شد",
+	"accounts.sso.membersUpdated.many": "{n} عضو به‌روزرسانی شد",
+	"accounts.sso.membersUpdated.one": "{n} عضو به‌روزرسانی شد",
+	"accounts.sso.membersUpdated.other": "{n} عضو به‌روزرسانی شد",
+	"accounts.sso.membersUpdated.two": "{n} عضو به‌روزرسانی شد",
+	"accounts.sso.membersUpdated.zero": "{n} عضو به‌روزرسانی شد"
 }

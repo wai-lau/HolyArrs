@@ -425,5 +425,18 @@
 	"accounts.language.offerKeep": "ใช้ภาษาอังกฤษต่อ",
 	"accounts.language.failed": "ดาวน์โหลดภาษาของคุณไม่ได้ HolyArrs จึงแสดงเป็นภาษาอังกฤษ ระบบจะลองใหม่โดยอัตโนมัติ",
 	"accounts.language.retry": "ลองอีกครั้ง",
-	"accounts.language.dismiss": "ปิด"
+	"accounts.language.dismiss": "ปิด",
+	"accounts.sso.applyToCurrent": "ใช้กับสมาชิกปัจจุบัน ({n})",
+	"accounts.sso.giveCurrent.few": "ให้สิทธิ์ {perms} แก่สมาชิกปัจจุบัน {n} คนหรือไม่?",
+	"accounts.sso.giveCurrent.many": "ให้สิทธิ์ {perms} แก่สมาชิกปัจจุบัน {n} คนหรือไม่?",
+	"accounts.sso.giveCurrent.one": "ให้สิทธิ์ {perms} แก่สมาชิกปัจจุบัน {n} คนหรือไม่?",
+	"accounts.sso.giveCurrent.other": "ให้สิทธิ์ {perms} แก่สมาชิกปัจจุบัน {n} คนหรือไม่?",
+	"accounts.sso.giveCurrent.two": "ให้สิทธิ์ {perms} แก่สมาชิกปัจจุบัน {n} คนหรือไม่?",
+	"accounts.sso.giveCurrent.zero": "ให้สิทธิ์ {perms} แก่สมาชิกปัจจุบัน {n} คนหรือไม่?",
+	"accounts.sso.membersUpdated.few": "อัปเดตสมาชิกแล้ว {n} คน",
+	"accounts.sso.membersUpdated.many": "อัปเดตสมาชิกแล้ว {n} คน",
+	"accounts.sso.membersUpdated.one": "อัปเดตสมาชิกแล้ว {n} คน",
+	"accounts.sso.membersUpdated.other": "อัปเดตสมาชิกแล้ว {n} คน",
+	"accounts.sso.membersUpdated.two": "อัปเดตสมาชิกแล้ว {n} คน",
+	"accounts.sso.membersUpdated.zero": "อัปเดตสมาชิกแล้ว {n} คน"
 }

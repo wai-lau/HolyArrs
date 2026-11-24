@@ -425,5 +425,18 @@
 	"accounts.language.offerKeep": "Запази английски",
 	"accounts.language.failed": "Езикът ви не можа да бъде изтеглен, затова HolyArrs е на английски. Ще опита отново автоматично.",
 	"accounts.language.retry": "Опитай отново",
-	"accounts.language.dismiss": "Затвори"
+	"accounts.language.dismiss": "Затвори",
+	"accounts.sso.applyToCurrent": "Прилагане към текущите членове ({n})",
+	"accounts.sso.giveCurrent.few": "Да се дадат ли на {n} текущи членове: {perms}?",
+	"accounts.sso.giveCurrent.many": "Да се дадат ли на {n} текущи членове: {perms}?",
+	"accounts.sso.giveCurrent.one": "Да се дадат ли на {n} текущ член: {perms}?",
+	"accounts.sso.giveCurrent.other": "Да се дадат ли на {n} текущи членове: {perms}?",
+	"accounts.sso.giveCurrent.two": "Да се дадат ли на {n} текущи членове: {perms}?",
+	"accounts.sso.giveCurrent.zero": "Да се дадат ли на {n} текущи членове: {perms}?",
+	"accounts.sso.membersUpdated.few": "{n} членове са обновени",
+	"accounts.sso.membersUpdated.many": "{n} членове са обновени",
+	"accounts.sso.membersUpdated.one": "{n} член е обновен",
+	"accounts.sso.membersUpdated.other": "{n} членове са обновени",
+	"accounts.sso.membersUpdated.two": "{n} членове са обновени",
+	"accounts.sso.membersUpdated.zero": "{n} членове са обновени"
 }

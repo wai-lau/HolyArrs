@@ -425,5 +425,18 @@
 	"accounts.language.offerKeep": "Maradjon angol",
 	"accounts.language.failed": "A nyelvedet nem sikerült letölteni, ezért a HolyArrs angolul jelenik meg. Automatikusan újra megpróbálja.",
 	"accounts.language.retry": "Újra",
-	"accounts.language.dismiss": "Bezárás"
+	"accounts.language.dismiss": "Bezárás",
+	"accounts.sso.applyToCurrent": "Alkalmazás a jelenlegi tagokra ({n})",
+	"accounts.sso.giveCurrent.few": "{n} jelenlegi tag megkapja: {perms}?",
+	"accounts.sso.giveCurrent.many": "{n} jelenlegi tag megkapja: {perms}?",
+	"accounts.sso.giveCurrent.one": "{n} jelenlegi tag megkapja: {perms}?",
+	"accounts.sso.giveCurrent.other": "{n} jelenlegi tag megkapja: {perms}?",
+	"accounts.sso.giveCurrent.two": "{n} jelenlegi tag megkapja: {perms}?",
+	"accounts.sso.giveCurrent.zero": "{n} jelenlegi tag megkapja: {perms}?",
+	"accounts.sso.membersUpdated.few": "{n} tag frissítve",
+	"accounts.sso.membersUpdated.many": "{n} tag frissítve",
+	"accounts.sso.membersUpdated.one": "{n} tag frissítve",
+	"accounts.sso.membersUpdated.other": "{n} tag frissítve",
+	"accounts.sso.membersUpdated.two": "{n} tag frissítve",
+	"accounts.sso.membersUpdated.zero": "{n} tag frissítve"
 }

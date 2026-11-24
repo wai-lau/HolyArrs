@@ -425,5 +425,18 @@
 	"accounts.language.offerKeep": "Залишити англійську",
 	"accounts.language.failed": "Не вдалося завантажити вашу мову, тому HolyArrs показано англійською. Спроба повториться автоматично.",
 	"accounts.language.retry": "Повторити",
-	"accounts.language.dismiss": "Закрити"
+	"accounts.language.dismiss": "Закрити",
+	"accounts.sso.applyToCurrent": "Застосувати до поточних учасників ({n})",
+	"accounts.sso.giveCurrent.few": "Надати {n} поточним учасникам: {perms}?",
+	"accounts.sso.giveCurrent.many": "Надати {n} поточним учасникам: {perms}?",
+	"accounts.sso.giveCurrent.one": "Надати {n} поточному учаснику: {perms}?",
+	"accounts.sso.giveCurrent.other": "Надати {n} поточного учасника: {perms}?",
+	"accounts.sso.giveCurrent.two": "Надати {n} поточного учасника: {perms}?",
+	"accounts.sso.giveCurrent.zero": "Надати {n} поточного учасника: {perms}?",
+	"accounts.sso.membersUpdated.few": "Оновлено {n} учасників",
+	"accounts.sso.membersUpdated.many": "Оновлено {n} учасників",
+	"accounts.sso.membersUpdated.one": "Оновлено {n} учасника",
+	"accounts.sso.membersUpdated.other": "Оновлено {n} учасника",
+	"accounts.sso.membersUpdated.two": "Оновлено {n} учасника",
+	"accounts.sso.membersUpdated.zero": "Оновлено {n} учасника"
 }

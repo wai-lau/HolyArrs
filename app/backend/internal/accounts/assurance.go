@@ -65,11 +65,13 @@ var riskyRoutes = map[string]bool{
 	"DELETE /api/v1/settings/old-app-api/keys/{side}": true,
 	// Accounts: role and state changes, new accounts (an invite, people
 	// brought in from a media server or by a Move from the old apps).
-	"PUT /api/v1/users/{id}":          true,
-	"DELETE /api/v1/users/{id}":       true,
-	"POST /api/v1/users/invites":      true,
-	"POST /api/v1/auth/import/{kind}": true,
-	"POST /api/v1/migrate/moves":      true,
+	"PUT /api/v1/users/{id}":              true,
+	"DELETE /api/v1/users/{id}":           true,
+	"POST /api/v1/users/invites":          true,
+	"PUT /api/v1/users/new-people":        true,
+	"POST /api/v1/users/new-people/apply": true,
+	"POST /api/v1/auth/import/{kind}":     true,
+	"POST /api/v1/migrate/moves":          true,
 	// Backups: the file holds the whole database.
 	"GET /api/v1/backups/{name}":    true,
 	"DELETE /api/v1/backups/{name}": true,

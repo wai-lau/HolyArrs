@@ -425,5 +425,18 @@
 	"accounts.language.offerKeep": "Pidä englanti",
 	"accounts.language.failed": "Kieltäsi ei voitu ladata, joten HolyArrs näkyy englanniksi. Se yrittää uudelleen automaattisesti.",
 	"accounts.language.retry": "Yritä uudelleen",
-	"accounts.language.dismiss": "Sulje"
+	"accounts.language.dismiss": "Sulje",
+	"accounts.sso.applyToCurrent": "Käytä nykyisiin jäseniin ({n})",
+	"accounts.sso.giveCurrent.few": "Annetaanko {n} nykyiselle jäsenelle: {perms}?",
+	"accounts.sso.giveCurrent.many": "Annetaanko {n} nykyiselle jäsenelle: {perms}?",
+	"accounts.sso.giveCurrent.one": "Annetaanko {n} nykyiselle jäsenelle: {perms}?",
+	"accounts.sso.giveCurrent.other": "Annetaanko {n} nykyiselle jäsenelle: {perms}?",
+	"accounts.sso.giveCurrent.two": "Annetaanko {n} nykyiselle jäsenelle: {perms}?",
+	"accounts.sso.giveCurrent.zero": "Annetaanko {n} nykyiselle jäsenelle: {perms}?",
+	"accounts.sso.membersUpdated.few": "{n} jäsentä päivitetty",
+	"accounts.sso.membersUpdated.many": "{n} jäsentä päivitetty",
+	"accounts.sso.membersUpdated.one": "{n} jäsen päivitetty",
+	"accounts.sso.membersUpdated.other": "{n} jäsentä päivitetty",
+	"accounts.sso.membersUpdated.two": "{n} jäsentä päivitetty",
+	"accounts.sso.membersUpdated.zero": "{n} jäsentä päivitetty"
 }

@@ -425,5 +425,18 @@
 	"accounts.language.offerKeep": "अंग्रेज़ी रखें",
 	"accounts.language.failed": "आपकी भाषा डाउनलोड नहीं हो सकी, इसलिए HolyArrs अंग्रेज़ी में दिख रहा है। यह अपने आप फिर से कोशिश करेगा।",
 	"accounts.language.retry": "फिर से कोशिश करें",
-	"accounts.language.dismiss": "बंद करें"
+	"accounts.language.dismiss": "बंद करें",
+	"accounts.sso.applyToCurrent": "मौजूदा मेंबर पर लागू करें ({n})",
+	"accounts.sso.giveCurrent.few": "{n} मौजूदा मेंबर को दें: {perms}?",
+	"accounts.sso.giveCurrent.many": "{n} मौजूदा मेंबर को दें: {perms}?",
+	"accounts.sso.giveCurrent.one": "{n} मौजूदा मेंबर को दें: {perms}?",
+	"accounts.sso.giveCurrent.other": "{n} मौजूदा मेंबर को दें: {perms}?",
+	"accounts.sso.giveCurrent.two": "{n} मौजूदा मेंबर को दें: {perms}?",
+	"accounts.sso.giveCurrent.zero": "{n} मौजूदा मेंबर को दें: {perms}?",
+	"accounts.sso.membersUpdated.few": "{n} मेंबर अपडेट हुए",
+	"accounts.sso.membersUpdated.many": "{n} मेंबर अपडेट हुए",
+	"accounts.sso.membersUpdated.one": "{n} मेंबर अपडेट हुआ",
+	"accounts.sso.membersUpdated.other": "{n} मेंबर अपडेट हुए",
+	"accounts.sso.membersUpdated.two": "{n} मेंबर अपडेट हुए",
+	"accounts.sso.membersUpdated.zero": "{n} मेंबर अपडेट हुए"
 }

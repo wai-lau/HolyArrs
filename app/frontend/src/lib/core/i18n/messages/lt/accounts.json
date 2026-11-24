@@ -425,5 +425,18 @@
 	"accounts.language.offerKeep": "Palikti anglų",
 	"accounts.language.failed": "Jūsų kalbos nepavyko atsisiųsti, todėl HolyArrs rodomas angliškai. Bus bandoma dar kartą automatiškai.",
 	"accounts.language.retry": "Bandyti dar kartą",
-	"accounts.language.dismiss": "Uždaryti"
+	"accounts.language.dismiss": "Uždaryti",
+	"accounts.sso.applyToCurrent": "Taikyti dabartiniams nariams ({n})",
+	"accounts.sso.giveCurrent.few": "Suteikti {n} dabartiniams nariams: {perms}?",
+	"accounts.sso.giveCurrent.many": "Suteikti {n} dabartinio nario: {perms}?",
+	"accounts.sso.giveCurrent.one": "Suteikti {n} dabartiniam nariui: {perms}?",
+	"accounts.sso.giveCurrent.other": "Suteikti {n} dabartinių narių: {perms}?",
+	"accounts.sso.giveCurrent.two": "Suteikti {n} dabartinių narių: {perms}?",
+	"accounts.sso.giveCurrent.zero": "Suteikti {n} dabartinių narių: {perms}?",
+	"accounts.sso.membersUpdated.few": "{n} nariai atnaujinti",
+	"accounts.sso.membersUpdated.many": "{n} nario atnaujinta",
+	"accounts.sso.membersUpdated.one": "{n} narys atnaujintas",
+	"accounts.sso.membersUpdated.other": "{n} narių atnaujinta",
+	"accounts.sso.membersUpdated.two": "{n} narių atnaujinta",
+	"accounts.sso.membersUpdated.zero": "{n} narių atnaujinta"
 }

@@ -425,5 +425,18 @@
 	"accounts.language.offerKeep": "Kekalkan bahasa Inggeris",
 	"accounts.language.failed": "Bahasa anda tidak dapat dimuat turun, jadi HolyArrs dipaparkan dalam bahasa Inggeris. Ia akan cuba lagi secara automatik.",
 	"accounts.language.retry": "Cuba lagi",
-	"accounts.language.dismiss": "Tutup"
+	"accounts.language.dismiss": "Tutup",
+	"accounts.sso.applyToCurrent": "Guna pada ahli semasa ({n})",
+	"accounts.sso.giveCurrent.few": "Beri {n} ahli semasa: {perms}?",
+	"accounts.sso.giveCurrent.many": "Beri {n} ahli semasa: {perms}?",
+	"accounts.sso.giveCurrent.one": "Beri {n} ahli semasa: {perms}?",
+	"accounts.sso.giveCurrent.other": "Beri {n} ahli semasa: {perms}?",
+	"accounts.sso.giveCurrent.two": "Beri {n} ahli semasa: {perms}?",
+	"accounts.sso.giveCurrent.zero": "Beri {n} ahli semasa: {perms}?",
+	"accounts.sso.membersUpdated.few": "{n} ahli dikemas kini",
+	"accounts.sso.membersUpdated.many": "{n} ahli dikemas kini",
+	"accounts.sso.membersUpdated.one": "{n} ahli dikemas kini",
+	"accounts.sso.membersUpdated.other": "{n} ahli dikemas kini",
+	"accounts.sso.membersUpdated.two": "{n} ahli dikemas kini",
+	"accounts.sso.membersUpdated.zero": "{n} ahli dikemas kini"
 }

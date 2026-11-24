@@ -425,5 +425,18 @@
 	"accounts.language.offerKeep": "Păstrează engleza",
 	"accounts.language.failed": "Limba ta nu a putut fi descărcată, așa că HolyArrs apare în engleză. Va încerca din nou automat.",
 	"accounts.language.retry": "Încearcă din nou",
-	"accounts.language.dismiss": "Închide"
+	"accounts.language.dismiss": "Închide",
+	"accounts.sso.applyToCurrent": "Aplicați membrilor actuali ({n})",
+	"accounts.sso.giveCurrent.few": "Acordați {n} membri actuali: {perms}?",
+	"accounts.sso.giveCurrent.many": "Acordați {n} de membri actuali: {perms}?",
+	"accounts.sso.giveCurrent.one": "Acordați {n} membru actual: {perms}?",
+	"accounts.sso.giveCurrent.other": "Acordați {n} de membri actuali: {perms}?",
+	"accounts.sso.giveCurrent.two": "Acordați {n} de membri actuali: {perms}?",
+	"accounts.sso.giveCurrent.zero": "Acordați {n} de membri actuali: {perms}?",
+	"accounts.sso.membersUpdated.few": "{n} membri actualizați",
+	"accounts.sso.membersUpdated.many": "{n} de membri actualizați",
+	"accounts.sso.membersUpdated.one": "{n} membru actualizat",
+	"accounts.sso.membersUpdated.other": "{n} de membri actualizați",
+	"accounts.sso.membersUpdated.two": "{n} de membri actualizați",
+	"accounts.sso.membersUpdated.zero": "{n} de membri actualizați"
 }

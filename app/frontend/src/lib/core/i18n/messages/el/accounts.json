@@ -425,5 +425,18 @@
 	"accounts.language.offerKeep": "Διατήρηση αγγλικών",
 	"accounts.language.failed": "Η γλώσσα σας δεν ήταν δυνατό να ληφθεί, οπότε το HolyArrs εμφανίζεται στα αγγλικά. Θα ξαναδοκιμάσει αυτόματα.",
 	"accounts.language.retry": "Δοκιμάστε ξανά",
-	"accounts.language.dismiss": "Κλείσιμο"
+	"accounts.language.dismiss": "Κλείσιμο",
+	"accounts.sso.applyToCurrent": "Εφαρμογή στα τρέχοντα μέλη ({n})",
+	"accounts.sso.giveCurrent.few": "Να δοθούν σε {n} τρέχοντα μέλη: {perms};",
+	"accounts.sso.giveCurrent.many": "Να δοθούν σε {n} τρέχοντα μέλη: {perms};",
+	"accounts.sso.giveCurrent.one": "Να δοθούν σε {n} τρέχον μέλος: {perms};",
+	"accounts.sso.giveCurrent.other": "Να δοθούν σε {n} τρέχοντα μέλη: {perms};",
+	"accounts.sso.giveCurrent.two": "Να δοθούν σε {n} τρέχοντα μέλη: {perms};",
+	"accounts.sso.giveCurrent.zero": "Να δοθούν σε {n} τρέχοντα μέλη: {perms};",
+	"accounts.sso.membersUpdated.few": "Ενημερώθηκαν {n} μέλη",
+	"accounts.sso.membersUpdated.many": "Ενημερώθηκαν {n} μέλη",
+	"accounts.sso.membersUpdated.one": "Ενημερώθηκε {n} μέλος",
+	"accounts.sso.membersUpdated.other": "Ενημερώθηκαν {n} μέλη",
+	"accounts.sso.membersUpdated.two": "Ενημερώθηκαν {n} μέλη",
+	"accounts.sso.membersUpdated.zero": "Ενημερώθηκαν {n} μέλη"
 }
