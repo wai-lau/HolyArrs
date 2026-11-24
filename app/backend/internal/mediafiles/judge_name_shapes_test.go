@@ -317,6 +317,21 @@ func TestNameShapesAmpersand(t *testing.T) {
 	}
 }
 
+// A CJK alt-title next to the Latin title, before or after it, is not part
+// of the Title that is matched.
+func TestNameShapesCJKAltTitle(t *testing.T) {
+	lib := []TitleRef{{ID: 1, Name: "New PANTY & STOCKING with GARTERBELT", Year: 2025, Kind: "show", OriginalLanguage: "ja"}}
+	for _, rel := range []string{
+		"[7³ACG] New Panty & Stocking with Garterbelt パンティ & ストッキングwithガーターベルト S2 [BDRip 1080p AV1 OPUS]",
+		"[Kumomaru] 新吊带袜天使 New Panty & Stocking with Garterbelt S2 [1080p]",
+	} {
+		p := releasename.Parse(rel, releasename.Hints{Show: true})
+		if m := MatchTitle(p, lib); m.Title == nil {
+			t.Errorf("%q: no match; parsed title %q; %s", rel, p.Title.Value, m.Detail)
+		}
+	}
+}
+
 // A real word "Amp" in a library name still matches a Release that has it,
 // and the "amp" of a Release's "&amp;" is read as "&".
 func TestNameShapesAmpWord(t *testing.T) {
@@ -342,6 +357,24 @@ func TestNameShapesAmpWord(t *testing.T) {
 		p := releasename.Parse(c.rel, releasename.Hints{Show: c.show})
 		if m := MatchTitle(p, lib); (m.Title != nil) != c.want {
 			t.Errorf("%s %q vs %q: matched %v, want %v; parsed title %q", c.id, c.name, c.rel, m.Title != nil, c.want, p.Title.Value)
+		}
+	}
+}
+
+// Latin words after a CJK word in the middle of the title stay in the Title.
+func TestNameShapesCJKAltTitleMidTitle(t *testing.T) {
+	for _, c := range []struct {
+		rel, lib, kind string
+		show           bool
+	}{
+		{"[Grp] Sword Art Online アリシゼーション Alicization - 05 [1080p]", "Sword Art Online Alicization", "show", true},
+		{"Star Wars スター・ウォーズ Episode IV 2010 1080p BluRay x264-GRP", "Star Wars Episode IV", "movie", false},
+		{"[Grp] The Promised Neverland 約束のネバーランド The Final Season - 05 [1080p]", "The Promised Neverland The Final Season", "show", true},
+	} {
+		p := releasename.Parse(c.rel, releasename.Hints{Show: c.show})
+		lib := []TitleRef{{ID: 1, Name: c.lib, Year: 2010, Kind: c.kind, OriginalLanguage: "ja"}}
+		if m := MatchTitle(p, lib); m.Title == nil {
+			t.Errorf("%q: no match; parsed title %q; %s", c.rel, p.Title.Value, m.Detail)
 		}
 	}
 }
