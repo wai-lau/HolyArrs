@@ -427,5 +427,18 @@
 	"accounts.language.offerKeep": "Engels houden",
 	"accounts.language.failed": "Je taal kon niet worden gedownload, dus HolyArrs toont Engels. Het probeert het automatisch opnieuw.",
 	"accounts.language.retry": "Opnieuw proberen",
-	"accounts.language.dismiss": "Sluiten"
+	"accounts.language.dismiss": "Sluiten",
+	"accounts.sso.applyToCurrent": "Toepassen op huidige leden ({n})",
+	"accounts.sso.giveCurrent.few": "{n} huidige leden geven: {perms}?",
+	"accounts.sso.giveCurrent.many": "{n} huidige leden geven: {perms}?",
+	"accounts.sso.giveCurrent.one": "{n} huidig lid geven: {perms}?",
+	"accounts.sso.giveCurrent.other": "{n} huidige leden geven: {perms}?",
+	"accounts.sso.giveCurrent.two": "{n} huidige leden geven: {perms}?",
+	"accounts.sso.giveCurrent.zero": "{n} huidige leden geven: {perms}?",
+	"accounts.sso.membersUpdated.few": "{n} leden bijgewerkt",
+	"accounts.sso.membersUpdated.many": "{n} leden bijgewerkt",
+	"accounts.sso.membersUpdated.one": "{n} lid bijgewerkt",
+	"accounts.sso.membersUpdated.other": "{n} leden bijgewerkt",
+	"accounts.sso.membersUpdated.two": "{n} leden bijgewerkt",
+	"accounts.sso.membersUpdated.zero": "{n} leden bijgewerkt"
 }

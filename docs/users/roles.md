@@ -70,7 +70,7 @@ The list applies to everyone made from then on:
 
 It never applies to Kids, who stay ask-only, or to admins. Approving, running the Library and changing settings are never on the list; give those one person at a time.
 
-Only the owner can change the list, and it needs a password sign-in. People already here keep what they have.
+**Apply to current members** sets the same request permissions on the members already here. The screen shows how many would change and asks you to confirm. It leaves the owner, admins and Kids alone, and leaves any other power a member holds. Save the ticks first. Only the owner can change the list or apply it, and both need a password sign-in.
 
 ## Change a person
 

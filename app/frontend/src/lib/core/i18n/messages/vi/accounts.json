@@ -427,5 +427,18 @@
 	"accounts.language.offerKeep": "Giữ tiếng Anh",
 	"accounts.language.failed": "Không tải được ngôn ngữ của bạn nên HolyArrs đang hiển thị tiếng Anh. Ứng dụng sẽ tự thử lại.",
 	"accounts.language.retry": "Thử lại",
-	"accounts.language.dismiss": "Đóng"
+	"accounts.language.dismiss": "Đóng",
+	"accounts.sso.applyToCurrent": "Áp dụng cho thành viên hiện tại ({n})",
+	"accounts.sso.giveCurrent.few": "Cấp cho {n} thành viên hiện tại: {perms}?",
+	"accounts.sso.giveCurrent.many": "Cấp cho {n} thành viên hiện tại: {perms}?",
+	"accounts.sso.giveCurrent.one": "Cấp cho {n} thành viên hiện tại: {perms}?",
+	"accounts.sso.giveCurrent.other": "Cấp cho {n} thành viên hiện tại: {perms}?",
+	"accounts.sso.giveCurrent.two": "Cấp cho {n} thành viên hiện tại: {perms}?",
+	"accounts.sso.giveCurrent.zero": "Cấp cho {n} thành viên hiện tại: {perms}?",
+	"accounts.sso.membersUpdated.few": "Đã cập nhật {n} thành viên",
+	"accounts.sso.membersUpdated.many": "Đã cập nhật {n} thành viên",
+	"accounts.sso.membersUpdated.one": "Đã cập nhật {n} thành viên",
+	"accounts.sso.membersUpdated.other": "Đã cập nhật {n} thành viên",
+	"accounts.sso.membersUpdated.two": "Đã cập nhật {n} thành viên",
+	"accounts.sso.membersUpdated.zero": "Đã cập nhật {n} thành viên"
 }

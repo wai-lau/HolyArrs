@@ -427,5 +427,18 @@
 	"accounts.language.offerKeep": "英語のままにする",
 	"accounts.language.failed": "言語をダウンロードできなかったため、HolyArrs は英語で表示されています。自動的に再試行します。",
 	"accounts.language.retry": "再試行",
-	"accounts.language.dismiss": "閉じる"
+	"accounts.language.dismiss": "閉じる",
+	"accounts.sso.applyToCurrent": "現在のメンバーに適用 ({n})",
+	"accounts.sso.giveCurrent.few": "現在のメンバー{n}人に付与しますか?{perms}",
+	"accounts.sso.giveCurrent.many": "現在のメンバー{n}人に付与しますか?{perms}",
+	"accounts.sso.giveCurrent.one": "現在のメンバー{n}人に付与しますか?{perms}",
+	"accounts.sso.giveCurrent.other": "現在のメンバー{n}人に付与しますか?{perms}",
+	"accounts.sso.giveCurrent.two": "現在のメンバー{n}人に付与しますか?{perms}",
+	"accounts.sso.giveCurrent.zero": "現在のメンバー{n}人に付与しますか?{perms}",
+	"accounts.sso.membersUpdated.few": "{n}人のメンバーを更新しました",
+	"accounts.sso.membersUpdated.many": "{n}人のメンバーを更新しました",
+	"accounts.sso.membersUpdated.one": "{n}人のメンバーを更新しました",
+	"accounts.sso.membersUpdated.other": "{n}人のメンバーを更新しました",
+	"accounts.sso.membersUpdated.two": "{n}人のメンバーを更新しました",
+	"accounts.sso.membersUpdated.zero": "{n}人のメンバーを更新しました"
 }

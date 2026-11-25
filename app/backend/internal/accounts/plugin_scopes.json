@@ -634,6 +634,7 @@
   "POST /api/v1/subtitle-sites/{id}/test",
   "POST /api/v1/system/key-kit",
   "POST /api/v1/users/invites",
+  "POST /api/v1/users/new-people/apply",
   "POST /api/v1/users/{id}/password",
   "POST /api/v1/users/{id}/sessions/end-all",
   "POST /api/v1/users/{id}/sso/unlink",

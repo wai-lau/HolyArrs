@@ -21,8 +21,9 @@ func permsOf(t *testing.T, f *fixture, id int64) string {
 }
 
 type newPeopleView struct {
-	Perms   []string `json:"perms"`
-	Options []string `json:"options"`
+	Perms    []string `json:"perms"`
+	Options  []string `json:"options"`
+	ToChange int      `json:"to_change"`
 }
 
 func newPeopleOf(t *testing.T, f *fixture, p person) newPeopleView {
@@ -85,7 +86,8 @@ func TestNewPeopleListAndValidation(t *testing.T) {
 	}
 }
 
-// Only the owner changes the list; an admin may read it (the
+// route: POST /api/v1/users/new-people/apply
+// Only the owner changes the list or applies it; an admin may read it (the
 // invite form starts from it) and a member may not.
 func TestNewPeopleOnlyOwnerChanges(t *testing.T) {
 	f := gated(t, Options{})
@@ -95,8 +97,14 @@ func TestNewPeopleOnlyOwnerChanges(t *testing.T) {
 	if resp, out := ad.do(t, f, "PUT", "/api/v1/users/new-people", `{"perms":["ask","auto_approve"]}`); resp.StatusCode != 403 {
 		t.Fatalf("admin changed the list: %d %s", resp.StatusCode, out)
 	}
+	if resp, out := ad.do(t, f, "POST", "/api/v1/users/new-people/apply", ""); resp.StatusCode != 403 {
+		t.Fatalf("admin applied the list: %d %s", resp.StatusCode, out)
+	}
 	if resp, _ := mem.do(t, f, "PUT", "/api/v1/users/new-people", `{"perms":["ask","auto_approve"]}`); resp.StatusCode != 403 {
 		t.Fatalf("member changed the list: %d", resp.StatusCode)
+	}
+	if resp, _ := mem.do(t, f, "POST", "/api/v1/users/new-people/apply", ""); resp.StatusCode != 403 {
+		t.Fatalf("member applied the list: %d", resp.StatusCode)
 	}
 	if resp, _ := mem.do(t, f, "GET", "/api/v1/users", ""); resp.StatusCode != 403 {
 		t.Fatalf("member read the people list: %d", resp.StatusCode)
@@ -105,11 +113,11 @@ func TestNewPeopleOnlyOwnerChanges(t *testing.T) {
 		t.Fatalf("admin reads %+v", got)
 	}
 	if permsOf(t, f, userID(t, f, "bob")) != `["ask"]` {
-		t.Fatal("a refused change altered someone")
+		t.Fatal("a refused apply changed someone")
 	}
-	// The write sits behind the stale-session gate like other account changes.
-	if !riskyRoutes["PUT /api/v1/users/new-people"] {
-		t.Fatal("changing the list does not ask for a fresh sign-in")
+	// Both writes sit behind the stale-session gate like other account changes.
+	if !riskyRoutes["PUT /api/v1/users/new-people"] || !riskyRoutes["POST /api/v1/users/new-people/apply"] {
+		t.Fatal("changing or applying the list does not ask for a fresh sign-in")
 	}
 }
 
@@ -248,6 +256,68 @@ func TestNewPeopleImportedFromMediaServer(t *testing.T) {
 	}
 	if got := permsOf(t, f, userID(t, f, "Little")); got != `["ask"]` {
 		t.Fatalf("imported kid: %s", got)
+	}
+}
+
+// Apply to current members sets the three request permissions on members
+// only: not the owner, admins or Kids, and not the other powers an owner
+// gave a member. It says how many changed, and a second run changes none.
+func TestNewPeopleApplyToCurrentMembers(t *testing.T) {
+	f := gated(t, Options{})
+	own := ownerOf(t, f)
+	join(t, f, invite(t, f, own, `{}`), "plain")
+	join(t, f, invite(t, f, own, `{"perms":["ask","auto_approve","auto_approve_four_k"]}`), "already")
+	join(t, f, invite(t, f, own, `{"perms":["ask","manage_library","approve"]}`), "helper")
+	join(t, f, invite(t, f, own, `{"role":"admin"}`), "boss")
+	join(t, f, invite(t, f, own, `{"max_rating":"PG"}`), "child")
+	join(t, f, invite(t, f, own, `{"perms":["ask"]}`), "off")
+	if resp, out := own.do(t, f, "PUT", "/api/v1/users/"+itoa(userID(t, f, "off")), `{"state":"disabled"}`); resp.StatusCode != 200 {
+		t.Fatalf("turn off: %d %s", resp.StatusCode, out)
+	}
+	ownerBefore := permsOf(t, f, userID(t, f, "luis"))
+	adminBefore := permsOf(t, f, userID(t, f, "boss"))
+
+	startWith(t, f, own, autoList)
+	// plain, helper and off differ; already matches; boss, child and the owner are not counted.
+	if got := newPeopleOf(t, f, own); got.ToChange != 3 {
+		t.Fatalf("to_change %d, want 3", got.ToChange)
+	}
+	resp, out := own.do(t, f, "POST", "/api/v1/users/new-people/apply", "")
+	if resp.StatusCode != 200 || !strings.Contains(out, `"changed":3`) {
+		t.Fatalf("apply: %d %s", resp.StatusCode, out)
+	}
+	for name, want := range map[string]string{
+		"plain":   autoList,
+		"already": autoList,
+		"helper":  `["manage_library","approve","ask","auto_approve","auto_approve_four_k"]`,
+		"off":     autoList,
+		"child":   `["ask"]`,
+		"boss":    adminBefore,
+		"luis":    ownerBefore,
+	} {
+		if got := permsOf(t, f, userID(t, f, name)); got != want {
+			t.Errorf("%s: %s, want %s", name, got, want)
+		}
+	}
+	if got := newPeopleOf(t, f, own); got.ToChange != 0 {
+		t.Fatalf("to_change after apply %d", got.ToChange)
+	}
+	if _, out := own.do(t, f, "POST", "/api/v1/users/new-people/apply", ""); !strings.Contains(out, `"changed":0`) {
+		t.Fatalf("second apply: %s", out)
+	}
+	// Taking a permission off the list takes it off members too, and leaves their other powers.
+	startWith(t, f, own, `["ask"]`)
+	if _, out := own.do(t, f, "POST", "/api/v1/users/new-people/apply", ""); !strings.Contains(out, `"changed":4`) {
+		t.Fatalf("shrinking apply: %s", out)
+	}
+	if got := permsOf(t, f, userID(t, f, "helper")); got != `["manage_library","approve","ask"]` {
+		t.Fatalf("helper after shrink: %s", got)
+	}
+	// The change is recorded for the owner to see.
+	var n int
+	_ = f.s.ReadEvents().QueryRow("SELECT count(*) FROM events WHERE summary LIKE '%new people start with%'").Scan(&n)
+	if n == 0 {
+		t.Fatal("no event for changing what new people start with")
 	}
 }
 

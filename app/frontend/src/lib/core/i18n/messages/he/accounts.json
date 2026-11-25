@@ -427,5 +427,18 @@
 	"accounts.language.offerKeep": "להישאר באנגלית",
 	"accounts.language.failed": "לא ניתן היה להוריד את השפה שלך, ולכן HolyArrs מוצג באנגלית. הוא ינסה שוב באופן אוטומטי.",
 	"accounts.language.retry": "לנסות שוב",
-	"accounts.language.dismiss": "סגירה"
+	"accounts.language.dismiss": "סגירה",
+	"accounts.sso.applyToCurrent": "החל על החברים הנוכחיים ({n})",
+	"accounts.sso.giveCurrent.few": "להעניק ל-{n} חברים נוכחיים: {perms}?",
+	"accounts.sso.giveCurrent.many": "להעניק ל-{n} חברים נוכחיים: {perms}?",
+	"accounts.sso.giveCurrent.one": "להעניק ל-{n} חבר נוכחי: {perms}?",
+	"accounts.sso.giveCurrent.other": "להעניק ל-{n} חברים נוכחיים: {perms}?",
+	"accounts.sso.giveCurrent.two": "להעניק ל-{n} חברים נוכחיים: {perms}?",
+	"accounts.sso.giveCurrent.zero": "להעניק ל-{n} חברים נוכחיים: {perms}?",
+	"accounts.sso.membersUpdated.few": "{n} חברים עודכנו",
+	"accounts.sso.membersUpdated.many": "{n} חברים עודכנו",
+	"accounts.sso.membersUpdated.one": "{n} חבר עודכן",
+	"accounts.sso.membersUpdated.other": "{n} חברים עודכנו",
+	"accounts.sso.membersUpdated.two": "{n} חברים עודכנו",
+	"accounts.sso.membersUpdated.zero": "{n} חברים עודכנו"
 }

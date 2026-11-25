@@ -427,5 +427,18 @@
 	"accounts.language.offerKeep": "Jäta inglise keel",
 	"accounts.language.failed": "Sinu keelt ei õnnestunud alla laadida, seega on HolyArrs inglise keeles. See proovib automaatselt uuesti.",
 	"accounts.language.retry": "Proovi uuesti",
-	"accounts.language.dismiss": "Sulge"
+	"accounts.language.dismiss": "Sulge",
+	"accounts.sso.applyToCurrent": "Rakenda praegustele liikmetele ({n})",
+	"accounts.sso.giveCurrent.few": "Anda {n} praegusele liikmele: {perms}?",
+	"accounts.sso.giveCurrent.many": "Anda {n} praegusele liikmele: {perms}?",
+	"accounts.sso.giveCurrent.one": "Anda {n} praegusele liikmele: {perms}?",
+	"accounts.sso.giveCurrent.other": "Anda {n} praegusele liikmele: {perms}?",
+	"accounts.sso.giveCurrent.two": "Anda {n} praegusele liikmele: {perms}?",
+	"accounts.sso.giveCurrent.zero": "Anda {n} praegusele liikmele: {perms}?",
+	"accounts.sso.membersUpdated.few": "{n} liiget uuendatud",
+	"accounts.sso.membersUpdated.many": "{n} liiget uuendatud",
+	"accounts.sso.membersUpdated.one": "{n} liige uuendatud",
+	"accounts.sso.membersUpdated.other": "{n} liiget uuendatud",
+	"accounts.sso.membersUpdated.two": "{n} liiget uuendatud",
+	"accounts.sso.membersUpdated.zero": "{n} liiget uuendatud"
 }
