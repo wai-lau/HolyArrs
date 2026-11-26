@@ -339,21 +339,3 @@ func (v *Verdict) betterImported(rules PickRulesBody, cur *Current, idx, curIdx,
 		v.add("better", "not_better", "fail", "not better than the current file", 0)
 	}
 }
-
-// seederBand puts seeders into the bands of section 3.2.
-func seederBand(s *int) int {
-	if s == nil {
-		return 0
-	}
-	switch {
-	case *s >= 200:
-		return 4
-	case *s >= 50:
-		return 3
-	case *s >= 10:
-		return 2
-	case *s >= 1:
-		return 1
-	}
-	return 0
-}

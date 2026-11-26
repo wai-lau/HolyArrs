@@ -110,11 +110,13 @@ func rank(rels []ReleaseFacts, vs []Verdict, rules PickRulesBody, packsFirst boo
 			}
 			return 1, "on Source priority"
 		}
-		if x, y := seederBand(rels[a].Seeders), seederBand(rels[b].Seeders); x != y {
+		// The exact count, not its band: 190 seeders beat 60 before size or
+		// age decide. A missing count ranks below any known one.
+		if x, y := seederCount(rels[a].Seeders), seederCount(rels[b].Seeders); x != y {
 			if x > y {
-				return -1, "on seeders"
+				return -1, fmt.Sprintf("on seeders (%d vs %d)", max(y, 0), x)
 			}
-			return 1, "on seeders"
+			return 1, fmt.Sprintf("on seeders (%d vs %d)", max(x, 0), y)
 		}
 		if x, y := middle(a), middle(b); x != y {
 			if x > y {
@@ -277,4 +279,12 @@ func StepOf(name string, rules PickRulesBody) (string, int) {
 		return "", -1
 	}
 	return step, stepIndex(rules, step)
+}
+
+// seederCount is a Release's seeder count for ranking, -1 when unknown.
+func seederCount(s *int) int {
+	if s == nil {
+		return -1
+	}
+	return *s
 }
