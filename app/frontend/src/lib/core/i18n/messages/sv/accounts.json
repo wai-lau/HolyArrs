@@ -427,5 +427,18 @@
 	"accounts.language.offerKeep": "Behåll engelska",
 	"accounts.language.failed": "Ditt språk kunde inte laddas ner, så HolyArrs visas på engelska. Det försöker igen automatiskt.",
 	"accounts.language.retry": "Försök igen",
-	"accounts.language.dismiss": "Stäng"
+	"accounts.language.dismiss": "Stäng",
+	"accounts.sso.applyToCurrent": "Tillämpa på nuvarande medlemmar ({n})",
+	"accounts.sso.giveCurrent.few": "Ge {n} nuvarande medlemmar: {perms}?",
+	"accounts.sso.giveCurrent.many": "Ge {n} nuvarande medlemmar: {perms}?",
+	"accounts.sso.giveCurrent.one": "Ge {n} nuvarande medlem: {perms}?",
+	"accounts.sso.giveCurrent.other": "Ge {n} nuvarande medlemmar: {perms}?",
+	"accounts.sso.giveCurrent.two": "Ge {n} nuvarande medlemmar: {perms}?",
+	"accounts.sso.giveCurrent.zero": "Ge {n} nuvarande medlemmar: {perms}?",
+	"accounts.sso.membersUpdated.few": "{n} medlemmar uppdaterade",
+	"accounts.sso.membersUpdated.many": "{n} medlemmar uppdaterade",
+	"accounts.sso.membersUpdated.one": "{n} medlem uppdaterad",
+	"accounts.sso.membersUpdated.other": "{n} medlemmar uppdaterade",
+	"accounts.sso.membersUpdated.two": "{n} medlemmar uppdaterade",
+	"accounts.sso.membersUpdated.zero": "{n} medlemmar uppdaterade"
 }

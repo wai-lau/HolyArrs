@@ -4,11 +4,13 @@
 	export interface NewPeople {
 		perms: Perm[];
 		options: Perm[];
+		to_change: number;
 	}
 </script>
 
 <script lang="ts">
-		import { t } from '#lib/core/i18n/i18n.svelte.ts';
+	import { ask } from '#lib/ui/ask.svelte.ts';
+	import { t, pluralKey } from '#lib/core/i18n/i18n.svelte.ts';
 	import SettingsCard from '#lib/ui/SettingsCard.svelte';
 	import Button from '#lib/ui/Button.svelte';
 	import { api, ApiError } from '#lib/core/api.ts';
@@ -17,11 +19,12 @@
 	import { toasts } from '#lib/core/toasts.svelte.ts';
 	import { outsideWay } from '#lib/ui/sensitive.ts';
 
-	// people is what the server holds; onsaved gets the saved list.
-	let { people, permWord, isOwner, onsaved }: { people: NewPeople; permWord: Record<Perm, string>; isOwner: boolean; onsaved: (next: NewPeople) => void } = $props();
+	// people is what the server holds; onsaved gets the saved list, onapplied runs after members were changed.
+	let { people, permWord, isOwner, onsaved, onapplied }: { people: NewPeople; permWord: Record<Perm, string>; isOwner: boolean; onsaved: (next: NewPeople) => void; onapplied: () => void } = $props();
 
 	let draft = $state<Perm[]>([]);
 	let saving = $state(false);
+	let applying = $state(false);
 	let note = $state('');
 	// The ticks start from, and return to, what the server holds.
 	$effect.pre(() => {
@@ -46,14 +49,29 @@
 		saving = true;
 		note = '';
 		try {
-			const r = await api.put<{ perms: Perm[] }>('/users/new-people', { perms: draft });
-			onsaved({ ...people, perms: r.perms });
+			const r = await api.put<{ perms: Perm[]; to_change: number }>('/users/new-people', { perms: draft });
+			onsaved({ ...people, perms: r.perms, to_change: r.to_change });
 			toasts.push(t('settings.users.saved', { name: t('accounts.sso.newPeople') }), 'ok');
 		} catch (e) {
 			note = strongNote(e);
 			toasts.push(t('settings.users.couldntSave'), 'fail', { body: note });
 		} finally {
 			saving = false;
+		}
+	}
+	async function apply() {
+		if (!(await ask(t(pluralKey('accounts.sso.giveCurrent', people.to_change), { n: people.to_change, perms: people.perms.map((p) => permWord[p]).join(', ') || '-' }), { yes: t('ui.confirm.confirm') }))) return;
+		applying = true;
+		note = '';
+		try {
+			const r = await api.post<{ changed: number }>('/users/new-people/apply');
+			toasts.push(t(pluralKey('accounts.sso.membersUpdated', r.changed), { n: r.changed }), 'ok');
+			onapplied();
+		} catch (e) {
+			note = strongNote(e);
+			toasts.push(t('settings.users.couldntSave'), 'fail', { body: note });
+		} finally {
+			applying = false;
 		}
 	}
 </script>
@@ -73,6 +91,7 @@
 	{:else}
 		<div class="row">
 			<Button variant="primary" type="button" data-testid="new-people-save" disabled={!dirty || saving} onclick={save}>{t('settings.users.save')}</Button>
+			<Button variant="secondary" type="button" data-testid="new-people-apply" disabled={dirty || applying || people.to_change === 0} onclick={apply}>{t('accounts.sso.applyToCurrent', { n: people.to_change })}</Button>
 		</div>
 		{#if note}<p class="xs" role="alert">{note}</p>{/if}
 	{/if}

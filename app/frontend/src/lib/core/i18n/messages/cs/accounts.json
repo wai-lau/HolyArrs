@@ -427,5 +427,18 @@
 	"accounts.language.offerKeep": "Ponechat angličtinu",
 	"accounts.language.failed": "Váš jazyk se nepodařilo stáhnout, proto je HolyArrs v angličtině. Zkusí to znovu automaticky.",
 	"accounts.language.retry": "Zkusit znovu",
-	"accounts.language.dismiss": "Zavřít"
+	"accounts.language.dismiss": "Zavřít",
+	"accounts.sso.applyToCurrent": "Použít na současné členy ({n})",
+	"accounts.sso.giveCurrent.few": "Dát {n} současným členům: {perms}?",
+	"accounts.sso.giveCurrent.many": "Dát {n} současného člena: {perms}?",
+	"accounts.sso.giveCurrent.one": "Dát {n} současnému členovi: {perms}?",
+	"accounts.sso.giveCurrent.other": "Dát {n} současným členům: {perms}?",
+	"accounts.sso.giveCurrent.two": "Dát {n} současným členům: {perms}?",
+	"accounts.sso.giveCurrent.zero": "Dát {n} současným členům: {perms}?",
+	"accounts.sso.membersUpdated.few": "Aktualizováni {n} členové",
+	"accounts.sso.membersUpdated.many": "Aktualizováno {n} člena",
+	"accounts.sso.membersUpdated.one": "Aktualizován {n} člen",
+	"accounts.sso.membersUpdated.other": "Aktualizováno {n} členů",
+	"accounts.sso.membersUpdated.two": "Aktualizováno {n} členů",
+	"accounts.sso.membersUpdated.zero": "Aktualizováno {n} členů"
 }

@@ -427,5 +427,18 @@
 	"accounts.language.offerKeep": "保留英文",
 	"accounts.language.failed": "无法下载你的语言，因此 HolyArrs 显示英文。它会自动重试。",
 	"accounts.language.retry": "重试",
-	"accounts.language.dismiss": "关闭"
+	"accounts.language.dismiss": "关闭",
+	"accounts.sso.applyToCurrent": "应用于现有成员（{n}）",
+	"accounts.sso.giveCurrent.few": "授予 {n} 位现有成员：{perms}？",
+	"accounts.sso.giveCurrent.many": "授予 {n} 位现有成员：{perms}？",
+	"accounts.sso.giveCurrent.one": "授予 {n} 位现有成员：{perms}？",
+	"accounts.sso.giveCurrent.other": "授予 {n} 位现有成员：{perms}？",
+	"accounts.sso.giveCurrent.two": "授予 {n} 位现有成员：{perms}？",
+	"accounts.sso.giveCurrent.zero": "授予 {n} 位现有成员：{perms}？",
+	"accounts.sso.membersUpdated.few": "已更新 {n} 位成员",
+	"accounts.sso.membersUpdated.many": "已更新 {n} 位成员",
+	"accounts.sso.membersUpdated.one": "已更新 {n} 位成员",
+	"accounts.sso.membersUpdated.other": "已更新 {n} 位成员",
+	"accounts.sso.membersUpdated.two": "已更新 {n} 位成员",
+	"accounts.sso.membersUpdated.zero": "已更新 {n} 位成员"
 }

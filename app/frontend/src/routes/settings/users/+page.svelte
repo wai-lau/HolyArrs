@@ -58,7 +58,7 @@
 		member: ['ask']
 	};
 	// What new people start with, set in the New people card; the invite form opens with it.
-	let newPeople = $state<NewPeople>({ perms: [...defaults.member], options: ['ask', 'auto_approve', 'auto_approve_four_k'] });
+	let newPeople = $state<NewPeople>({ perms: [...defaults.member], options: ['ask', 'auto_approve', 'auto_approve_four_k'], to_change: 0 });
 	const memberDefaults = $derived(newPeople.perms.filter((p) => session.can(p)));
 	const roleWord = $derived<Record<string, string>>({ owner: t('settings.users.owner'), admin: t('settings.users.admin'), member: t('settings.users.member') });
 	const providerWord: Record<string, string> = { plex: 'Plex', jellyfin: 'Jellyfin', emby: 'Emby' };
@@ -508,7 +508,7 @@
 		</ul>
 	</SettingsCard>
 
-	<NewPeopleCard people={newPeople} {permWord} {isOwner} onsaved={savedNewPeople} />
+	<NewPeopleCard people={newPeople} {permWord} {isOwner} onsaved={savedNewPeople} onapplied={load} />
 
 	{#if hasData}<HiddenCard people={names} />{/if}
 

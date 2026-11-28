@@ -624,6 +624,7 @@ POST /api/v1/titles/{id}/subtitles/clean auth=manage_library scope=write assuran
 POST /api/v1/titles/{id}/versions auth=manage_library scope=write assurance=false part=title
 POST /api/v1/titles/{id}/versions/{vid}/adopt auth=manage_library scope=write assurance=false part=title
 POST /api/v1/users/invites auth=users scope=admin assurance=true part=core
+POST /api/v1/users/new-people/apply auth=owner scope=admin assurance=true part=core
 POST /api/v1/users/{id}/password auth=users scope=admin assurance=true part=core
 POST /api/v1/users/{id}/sessions/end-all auth=users scope=admin assurance=false part=core
 POST /api/v1/users/{id}/sso/unlink auth=owner scope=admin assurance=true part=core

@@ -7,6 +7,7 @@ import (
 	"errors"
 	"net/http"
 	"slices"
+	"strconv"
 	"strings"
 
 	"github.com/HolyArrs/holyarrs/app/backend/internal/core/database"
@@ -71,10 +72,39 @@ func readNewPeoplePerms(raw []string) ([]webserver.Perm, error) {
 	return onlyOptions(in), nil
 }
 
-// newPeopleView is what the Users screen shows: the list and the boxes it
-// may tick.
-func (a *Auth) newPeopleView(ctx context.Context) map[string]any {
-	return map[string]any{"perms": a.newPeoplePerms(ctx), "options": newPeopleOptions}
+// mergeNewPeople gives a member the list as their request permissions and
+// keeps every other power they hold.
+func mergeNewPeople(have, list []webserver.Perm) []webserver.Perm {
+	out := slices.DeleteFunc(slices.Clone(have), func(p webserver.Perm) bool { return slices.Contains(newPeopleOptions, p) })
+	return append(out, list...)
+}
+
+// membersToChange are the members (Kids, admins and the owner left out) whose
+// request permissions differ from the list, with what they would hold.
+func membersToChange(ctx context.Context, q conn, list []webserver.Perm) (map[int64][]webserver.Perm, error) {
+	rows, err := adultMemberPerms(ctx, q)
+	if err != nil {
+		return nil, err
+	}
+	out := map[int64][]webserver.Perm{}
+	for id, raw := range rows {
+		have := parsePerms(raw)
+		if next := mergeNewPeople(have, list); !samePerms(next, have) {
+			out[id] = next
+		}
+	}
+	return out, nil
+}
+
+// newPeopleView is what the Users screen shows: the list, the boxes it may
+// tick and how many members Apply would change.
+func (a *Auth) newPeopleView(ctx context.Context) (map[string]any, error) {
+	list := a.newPeoplePerms(ctx)
+	change, err := membersToChange(ctx, a.s.Read(), list)
+	if err != nil {
+		return nil, err
+	}
+	return map[string]any{"perms": list, "options": newPeopleOptions, "to_change": len(change)}, nil
 }
 
 // route: PUT /api/v1/users/new-people
@@ -105,7 +135,48 @@ func (a *Auth) putNewPeople(w http.ResponseWriter, r *http.Request) {
 	}
 	name, what := newPeopleWords, permWords(list)
 	a.accountEvent(r, by.UserID, "new_people_set", byName(r)+" changed "+name+": "+what, map[string]any{"perms": list})
-	writeJSON(w, http.StatusOK, a.newPeopleView(r.Context()))
+	v, err := a.newPeopleView(r.Context())
+	if err != nil {
+		serverError(w, "new people", err)
+		return
+	}
+	writeJSON(w, http.StatusOK, v)
+}
+
+// route: POST /api/v1/users/new-people/apply
+// applyNewPeople sets the saved list on the members already here: not the
+// owner, admins or Kids, and not the other powers a member holds.
+func (a *Auth) applyNewPeople(w http.ResponseWriter, r *http.Request) {
+	if !webserver.RequireStrong(w, r) {
+		return
+	}
+	by, _ := webserver.From(r.Context())
+	list := a.newPeoplePerms(r.Context())
+	actor, _ := json.Marshal(webserver.Actor(r.Context()))
+	changed := 0
+	err := a.s.WriteCore(r.Context(), func(tx *sql.Tx) error {
+		change, err := membersToChange(r.Context(), tx, list)
+		if err != nil {
+			return err
+		}
+		for id, next := range change {
+			if err := setMemberPerms(r.Context(), tx, id, permsJSON(next), database.FormatTime(a.now()), string(actor)); err != nil {
+				return err
+			}
+		}
+		changed = len(change)
+		return nil
+	})
+	if err != nil {
+		serverError(w, "new people", err)
+		return
+	}
+	if changed > 0 {
+		name, what := newPeopleWords, permWords(list)+", set on "+strconv.Itoa(changed)+" current members"
+		a.accountEvent(r, by.UserID, "new_people_applied", byName(r)+" changed "+name+": "+what,
+			map[string]any{"perms": list, "changed": changed})
+	}
+	writeJSON(w, http.StatusOK, map[string]any{"changed": changed, "perms": list})
 }
 
 // newPeopleWords names the setting in an Event line, which reads

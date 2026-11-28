@@ -427,5 +427,18 @@
 	"accounts.language.offerKeep": "Behold engelsk",
 	"accounts.language.failed": "Språket ditt kunne ikke lastes ned, så HolyArrs vises på engelsk. Det prøver igjen automatisk.",
 	"accounts.language.retry": "Prøv igjen",
-	"accounts.language.dismiss": "Lukk"
+	"accounts.language.dismiss": "Lukk",
+	"accounts.sso.applyToCurrent": "Bruk på nåværende medlemmer ({n})",
+	"accounts.sso.giveCurrent.few": "Gi {n} nåværende medlemmer: {perms}?",
+	"accounts.sso.giveCurrent.many": "Gi {n} nåværende medlemmer: {perms}?",
+	"accounts.sso.giveCurrent.one": "Gi {n} nåværende medlem: {perms}?",
+	"accounts.sso.giveCurrent.other": "Gi {n} nåværende medlemmer: {perms}?",
+	"accounts.sso.giveCurrent.two": "Gi {n} nåværende medlemmer: {perms}?",
+	"accounts.sso.giveCurrent.zero": "Gi {n} nåværende medlemmer: {perms}?",
+	"accounts.sso.membersUpdated.few": "{n} medlemmer oppdatert",
+	"accounts.sso.membersUpdated.many": "{n} medlemmer oppdatert",
+	"accounts.sso.membersUpdated.one": "{n} medlem oppdatert",
+	"accounts.sso.membersUpdated.other": "{n} medlemmer oppdatert",
+	"accounts.sso.membersUpdated.two": "{n} medlemmer oppdatert",
+	"accounts.sso.membersUpdated.zero": "{n} medlemmer oppdatert"
 }

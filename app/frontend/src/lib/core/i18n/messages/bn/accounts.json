@@ -427,5 +427,18 @@
 	"accounts.language.offerKeep": "ইংরেজি রাখুন",
 	"accounts.language.failed": "আপনার ভাষা ডাউনলোড করা যায়নি, তাই HolyArrs ইংরেজিতে দেখাচ্ছে। এটি নিজে থেকে আবার চেষ্টা করবে।",
 	"accounts.language.retry": "আবার চেষ্টা করুন",
-	"accounts.language.dismiss": "বন্ধ করুন"
+	"accounts.language.dismiss": "বন্ধ করুন",
+	"accounts.sso.applyToCurrent": "বর্তমান মেম্বারদের জন্য প্রয়োগ করুন ({n})",
+	"accounts.sso.giveCurrent.few": "{n} জন বর্তমান মেম্বারকে দেবেন: {perms}?",
+	"accounts.sso.giveCurrent.many": "{n} জন বর্তমান মেম্বারকে দেবেন: {perms}?",
+	"accounts.sso.giveCurrent.one": "{n} জন বর্তমান মেম্বারকে দেবেন: {perms}?",
+	"accounts.sso.giveCurrent.other": "{n} জন বর্তমান মেম্বারকে দেবেন: {perms}?",
+	"accounts.sso.giveCurrent.two": "{n} জন বর্তমান মেম্বারকে দেবেন: {perms}?",
+	"accounts.sso.giveCurrent.zero": "{n} জন বর্তমান মেম্বারকে দেবেন: {perms}?",
+	"accounts.sso.membersUpdated.few": "{n} জন মেম্বার আপডেট হয়েছে",
+	"accounts.sso.membersUpdated.many": "{n} জন মেম্বার আপডেট হয়েছে",
+	"accounts.sso.membersUpdated.one": "{n} জন মেম্বার আপডেট হয়েছে",
+	"accounts.sso.membersUpdated.other": "{n} জন মেম্বার আপডেট হয়েছে",
+	"accounts.sso.membersUpdated.two": "{n} জন মেম্বার আপডেট হয়েছে",
+	"accounts.sso.membersUpdated.zero": "{n} জন মেম্বার আপডেট হয়েছে"
 }

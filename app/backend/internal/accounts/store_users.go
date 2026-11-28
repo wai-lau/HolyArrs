@@ -235,3 +235,30 @@ func personNames(ctx context.Context, q conn) ([]PersonName, error) {
 	}
 	return out, rows.Err()
 }
+
+// adultMemberPerms reads the stored permissions of every member who is not
+// a Kid, turned on or off (the owner and admins are not members here).
+func adultMemberPerms(ctx context.Context, q conn) (map[int64]string, error) {
+	rows, err := q.QueryContext(ctx, "SELECT id, perms FROM users WHERE role = 'member' AND max_rating = '' AND removed_at = ''")
+	if err != nil {
+		return nil, err
+	}
+	defer rows.Close()
+	out := map[int64]string{}
+	for rows.Next() {
+		var id int64
+		var perms string
+		if err := rows.Scan(&id, &perms); err != nil {
+			return nil, err
+		}
+		out[id] = perms
+	}
+	return out, rows.Err()
+}
+
+// setMemberPerms replaces a member's permissions; the owner, admins and Kids
+// are never changed by it.
+func setMemberPerms(ctx context.Context, q conn, id int64, perms, now, by string) error {
+	_, err := q.ExecContext(ctx, "UPDATE users SET perms = ?, updated_at = ?, updated_by = ? WHERE id = ? AND role = 'member' AND max_rating = '' AND removed_at = ''", perms, now, by, id)
+	return err
+}

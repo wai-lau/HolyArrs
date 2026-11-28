@@ -35852,6 +35852,9 @@
                         "type": "string"
                       },
                       "type": "array"
+                    },
+                    "to_change": {
+                      "type": "integer"
                     }
                   },
                   "type": "object"
@@ -35882,6 +35885,52 @@
           }
         },
         "summary": "Choose what new people start with",
+        "tags": [
+          "People"
+        ],
+        "x-holyarrs-part": "core",
+        "x-holyarrs-permission": "owner",
+        "x-holyarrs-scope": "admin"
+      }
+    },
+    "/api/v1/users/new-people/apply": {
+      "post": {
+        "description": "Owner only. Sets the saved list on every member who is not a Kid, leaving the owner, admins, Kids and any other power a member holds alone. Answers how many members changed.",
+        "operationId": "applyNewPeoplePerms",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "changed": {
+                      "type": "integer"
+                    },
+                    "perms": {
+                      "items": {
+                        "type": "string"
+                      },
+                      "type": "array"
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Done."
+          },
+          "403": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "description": "Only the owner, with a recent password sign-in."
+          }
+        },
+        "summary": "Apply what new people start with to current members",
         "tags": [
           "People"
         ],

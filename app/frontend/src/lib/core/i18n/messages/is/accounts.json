@@ -427,5 +427,18 @@
 	"accounts.language.offerKeep": "Halda ensku",
 	"accounts.language.failed": "Ekki tókst að sækja tungumálið þitt, svo HolyArrs sýnir ensku. Það reynir aftur sjálfkrafa.",
 	"accounts.language.retry": "Reyna aftur",
-	"accounts.language.dismiss": "Loka"
+	"accounts.language.dismiss": "Loka",
+	"accounts.sso.applyToCurrent": "Nota á núverandi meðlimi ({n})",
+	"accounts.sso.giveCurrent.few": "Veita {n} núverandi meðlimum: {perms}?",
+	"accounts.sso.giveCurrent.many": "Veita {n} núverandi meðlimum: {perms}?",
+	"accounts.sso.giveCurrent.one": "Veita {n} núverandi meðlimi: {perms}?",
+	"accounts.sso.giveCurrent.other": "Veita {n} núverandi meðlimum: {perms}?",
+	"accounts.sso.giveCurrent.two": "Veita {n} núverandi meðlimum: {perms}?",
+	"accounts.sso.giveCurrent.zero": "Veita {n} núverandi meðlimum: {perms}?",
+	"accounts.sso.membersUpdated.few": "{n} meðlimir uppfærðir",
+	"accounts.sso.membersUpdated.many": "{n} meðlimir uppfærðir",
+	"accounts.sso.membersUpdated.one": "{n} meðlimur uppfærður",
+	"accounts.sso.membersUpdated.other": "{n} meðlimir uppfærðir",
+	"accounts.sso.membersUpdated.two": "{n} meðlimir uppfærðir",
+	"accounts.sso.membersUpdated.zero": "{n} meðlimir uppfærðir"
 }
